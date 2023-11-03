@@ -8,6 +8,7 @@ import { CabeceraComponent } from './cabecera/cabecera.component';
 import { PieDePaginaComponent } from './pie-de-pagina/pie-de-pagina.component';
 import { ListaComponent } from './lista/lista.component';
 import { InformacionDetalladaComponent } from './informacion-detallada/informacion-detallada.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { InformacionDetalladaComponent } from './informacion-detallada/informaci
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

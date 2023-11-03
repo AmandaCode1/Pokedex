@@ -1,19 +1,24 @@
-import { Component } from '@angular/core';
-//import { PokemonService } from '../pokemon.service';
+import { Component, OnInit } from '@angular/core';
+import { PokemonService } from '../pokemon.service';
 
 @Component({
   selector: 'app-lista',
   templateUrl: './lista.component.html',
   styleUrls: ['./lista.component.css']
 })
-export class ListaComponent {
+export class ListaComponent implements OnInit{
 
-  /*pokemon = '';
+  name: string = '';
+  urlImage: string = '';
 
   constructor(private pokemonService: PokemonService){}
 
+  ngOnInit(): void {
+  }
+
   cargaPokemon(){
-    this.pokemon = 'Cargando Pokemon';
-    this.pokemonService.getPokemon()subscribe
-  }*/
+    this.pokemonService.getPokemon(this.name).subscribe((data:any) => {
+      this.urlImage = data.sprites.front_default
+    })
+  }
 }
