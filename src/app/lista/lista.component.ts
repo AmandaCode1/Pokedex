@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+//import { PokemonService } from '../pokemon.service';
 
 @Component({
   selector: 'app-lista',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class ListaComponent {
 
+  /*pokemon = '';
+
+  constructor(private pokemonService: PokemonService){}
+
+  cargaPokemon(){
+    this.pokemon = 'Cargando Pokemon';
+    this.pokemonService.getPokemon()subscribe
+  }*/
 }
