@@ -13,4 +13,9 @@ export class PokemonService {
   getPokemon(name: string){
     return this.http.get(`${this.url}/${name}`)
   }
+
+  getListaPokemon(indice: number){
+    return this.http.get(`${this.url}/${indice}`)
+  }
+  
 }
