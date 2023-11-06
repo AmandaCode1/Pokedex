@@ -17,11 +17,11 @@ export class InformacionDetalladaComponent implements OnInit{
   ngOnInit(): void {
   }
 
-  cargaPokemon(){
+  /*cargaPokemon(){
     this.pokemonService.getPokemon(this.name).subscribe((data:any) => {
       this.urlImage = data.sprites.other.dream_world.front_default,
       this.tipo = data.types.map((tipo: any) => tipo.type.name);
     })
-  }
+  }*/
 
 }
