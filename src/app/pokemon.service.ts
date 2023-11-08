@@ -20,7 +20,7 @@ export class PokemonService {
         map((data: any) => ({
           id: data.id,
           name: data.species.name,
-          image: data.sprites.other.dream_world.front_default,
+          image: data.sprites.other.home.front_default,
           types: data.types.map((tipo: any) => tipo.type.name),
           peso: data.weight,
           altura: data.height
