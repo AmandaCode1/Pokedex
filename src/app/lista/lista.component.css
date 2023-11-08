@@ -1,49 +1,37 @@
-/* Estilo para el título "Pokémon List" */
-h1 {
-    font-size: 24px;
+
+.titulo{
+    font-size: 50px;
     text-align: center;
     margin-bottom: 20px;
   }
-  
-  /* Estilo para el contenedor de Pokémon */
-  .pokemon-container {
+  .contenedor {
+    grid-template-columns: 1fr 4;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px; /* Espacio entre columnas */
-    row-gap: 20px; /* Espacio entre filas */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px; /* Espacio entre columnas */
+    row-gap: 50px; /* Espacio entre filas */
   }
-  
-  /* Estilo para cada tarjeta de Pokémon */
-  .pokemon-card {
+  .pokemon-carta {
     border: 1px solid #de1515;
-    border-radius: 10px;
-    padding: 10px;
+    border-radius: 20px;
+    padding: 5px;
     width: 100%;
   }
-  
-  /* Estilo para la imagen del Pokémon */
+
   .pokemon-image img {
     width: 100%;
     border: 1px solid #ccc;
     border-radius: 5px;
+    
   }
-  
-  /* Estilo para los detalles del Pokémon */
-  .pokemon-details {
+  .pokemon-detalles {
     padding: 10px;
     text-align: center;
   }
-  
-  /* Estilo para el nombre del Pokémon con la primera letra en mayúscula */
-  .pokemon-details h2 {
-    font-size: 20px;
-    margin: 10px 0;
+
+  .pokemon-detalles h2 {
+    font-size: 50px;
+    margin: 5px 0;
     text-transform: capitalize;
   }
-  
-  /* Estilo para los demás detalles del Pokémon */
-  .pokemon-details p {
-    font-size: 14px;
-    margin: 5px 0;
-  }
-  
+ 

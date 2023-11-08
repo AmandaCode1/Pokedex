@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { PokemonService } from '../pokemon.service';
 import { Pokemon } from '../model/pokemon';
-/*import { LISTA_DE_POKEMON } from 'src/assets/data/lista-de-pokemon';*/
+
 
 @Component({
   selector: 'app-lista',
