@@ -1,0 +1,30 @@
+<!--<h1>Pokémon List</h1>
+<div class="lista">
+<ul>
+  <li *ngFor="let pokemon of pokemons">
+    <img [src]="pokemon.image" alt="{{ pokemon.name }}">
+    <h2>{{ pokemon.name }}</h2>
+    <p>ID: {{ pokemon.id }}</p>
+    <p>Types: {{ pokemon.types.join(', ') }}</p>
+    <p>Weight: {{ pokemon.peso }} kg</p>
+    <p>Height: {{ pokemon.altura }} m</p>
+  </li>
+</ul>
+</div>-->
+
+<h1>Pokémon List</h1>
+<div class="pokemon-container">
+  <div class="pokemon-card" *ngFor="let pokemon of pokemons">
+    <div class="pokemon-image">
+      <img [src]="pokemon.image" alt="{{ pokemon.name }}">
+    </div>
+    <div class="pokemon-details">
+      <h2>{{ pokemon.name }}</h2>
+      <p>ID: {{ pokemon.id }}</p>
+      <p>Types: {{ pokemon.types.join(', ') }}</p>
+      <p>Weight: {{ pokemon.peso }} kg</p>
+      <p>Height: {{ pokemon.altura }} m</p>
+    </div>
+  </div>
+</div>
+

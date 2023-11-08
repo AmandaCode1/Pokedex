@@ -15,8 +15,15 @@ export class ListaComponent implements OnInit{
   constructor(private pokemonService: PokemonService){}
 
   ngOnInit(){
-    this.pokemonService.getPokemons(151).subscribe((response:Pokemon[]) =>{
+   
+    this.cargar();
+      }
+   cargar(){
+    this.pokemonService.getPokemons(150).subscribe((response:Pokemon[]) =>{
       this.pokemons = response;
+
       });
-  }
+      console.log(this.pokemons);
+   }
+    
 }

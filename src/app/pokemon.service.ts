@@ -12,9 +12,9 @@ export class PokemonService {
 
   constructor(private http: HttpClient) { }
 
-  getPokemons(count: number): Observable<Pokemon[]> {
+   /*getPokemons(count: number): Observable<Pokemon[]> {
     
-    const requests: Observable<Pokemon>[] = [];
+   const requests: Observable<Pokemon>[] = [];
     
     for(let i = 1 ; i <= 150 ; i++){
       this.http.get(`${this.url}/${i}`).pipe(map((data: any) => {
@@ -27,9 +27,31 @@ export class PokemonService {
           altura: data.height
         }
       }))
+
+      requests.push(request);
     }
     
     return forkJoin(requests);
-  }
+  }*/
 
+  getPokemons(count: number): Observable<Pokemon[]> {
+    const requests: Observable<Pokemon>[] = [];
+  
+    for (let i = 1; i <= count; i++) {
+      const request = this.http.get(`${this.url}/${i}`).pipe(
+        map((data: any) => ({
+          id: data.id,
+          name: data.species.name,
+          image: data.sprites.other.dream_world.front_default,
+          types: data.types.map((tipo: any) => tipo.type.name),
+          peso: data.weight,
+          altura: data.height
+        }))
+      );
+      requests.push(request);
+    }
+  
+    return forkJoin(requests);
+  }
+  
 }
