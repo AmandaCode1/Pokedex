@@ -31,5 +31,7 @@ export class PokemonService {
   
     return forkJoin(requests);
   }
+
+  
   
 }

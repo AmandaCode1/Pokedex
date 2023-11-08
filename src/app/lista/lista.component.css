@@ -17,9 +17,15 @@
     width: 100%;
   }
   .pokemon-image img {
+<<<<<<< HEAD
     width: 100%;
     border: 1px solid #802d2d;
     border-radius: 10px;
+=======
+    width: 70%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+>>>>>>> ae7406eee40fe57068383320281fb0ce20c6e3f3
   }
   .pokemon-detalles {
     padding: 10px;
