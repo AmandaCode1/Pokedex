@@ -1,18 +1,5 @@
-<!--<h1>Pokémon List</h1>
-<div class="lista">
-<ul>
-  <li *ngFor="let pokemon of pokemons">
-    <img [src]="pokemon.image" alt="{{ pokemon.name }}">
-    <h2>{{ pokemon.name }}</h2>
-    <p>ID: {{ pokemon.id }}</p>
-    <p>Types: {{ pokemon.types.join(', ') }}</p>
-    <p>Weight: {{ pokemon.peso }} kg</p>
-    <p>Height: {{ pokemon.altura }} m</p>
-  </li>
-</ul>
-</div>-->
 
-<h1>Pokémon List</h1>
+<!--<h1>Pokémon List</h1>
 <div class="pokemon-container">
   <div class="pokemon-card" *ngFor="let pokemon of pokemons">
     <div class="pokemon-image">
@@ -24,6 +11,22 @@
       <p>Types: {{ pokemon.types.join(', ') }}</p>
       <p>Weight: {{ pokemon.peso }} kg</p>
       <p>Height: {{ pokemon.altura }} m</p>
+    </div>
+  </div>
+</div>
+-->
+<h1 class="title">Pokémon List</h1>
+<div class="pokemon-container">
+  <div class="pokemon-card" *ngFor="let pokemon of pokemons">
+    <div class="pokemon-image">
+      <img [src]="pokemon.image" alt="{{ pokemon.name }}" class="pokemon-img">
+    </div>
+    <div class="pokemon-details">
+      <h2 class="pokemon-name">{{ pokemon.name }}</h2>
+      <p class="pokemon-id">ID: {{ pokemon.id }}</p>
+      <p class="pokemon-types">Types: {{ pokemon.types.join(', ') }}</p>
+      <p class="pokemon-weight">Weight: {{ pokemon.peso }} kg</p>
+      <p class="pokemon-height">Height: {{ pokemon.altura }} m</p>
     </div>
   </div>
 </div>
