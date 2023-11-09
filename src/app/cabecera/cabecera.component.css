@@ -1,0 +1,18 @@
+.cabecera{
+display: flex;
+border: 5px solid white;
+align-items: center;
+
+}
+img{
+    width: 400px;    
+}
+.buscador {
+    margin: auto;
+    position: relative;
+}
+input {
+    position: absolute;
+    top:47%;
+    left: 30%;
+}

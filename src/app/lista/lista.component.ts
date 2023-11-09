@@ -19,7 +19,7 @@ export class ListaComponent implements OnInit{
   }
 
    cargar(){
-    this.pokemonService.getPokemons(150).subscribe((response:Pokemon[]) =>{
+    this.pokemonService.getPokemons(493).subscribe((response:Pokemon[]) =>{
       this.pokemons = response;
     });
     console.log(this.pokemons);
