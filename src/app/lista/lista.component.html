@@ -1,4 +1,5 @@
 
+<!--- <img src="../../assets/fondo.jpg">-->
 <h1 class="titulo">Pokémon List</h1>
 <div class="contenedor">
   <div class="pokemon-carta" *ngFor="let pokemon of pokemons">
@@ -8,7 +9,7 @@
     </div>
     <div class="pokemon-detalles">
       <h2 class="pokemon-name">{{ pokemon.name }}</h2>
-      <p class="pokemon-types">Types: {{ pokemon.types.join(', ') }}</p>
+      <p class="pokemon-types">{{ pokemon.types.join(', ') }}</p>
     </div>
   </div>
 </div>
