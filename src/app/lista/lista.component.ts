@@ -11,6 +11,7 @@ import { Pokemon } from '../model/pokemon';
 export class ListaComponent implements OnInit{
 
   pokemons: Pokemon [] = [];
+  nameP: string = '';
 
   constructor(private pokemonService: PokemonService){}
 
@@ -25,8 +26,10 @@ export class ListaComponent implements OnInit{
     console.log(this.pokemons);
    }
 
-   /*buscador(name: string){
-    this.pokemons = 
-   }*/
+   buscador(){
+    this.pokemons = this.pokemons.filter((pokemon) => pokemon.name == this.nameP);
+    console.log(this.pokemons);
+   }
+
     
 }

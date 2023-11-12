@@ -1,8 +1,9 @@
 
 <!--- <img src="../../assets/fondo.jpg">-->
 <div class="buscador-botones">
-  <input type="search" name="busquedapokemon" placeholder="Nombre pokemon">
-  <button class="buscar">Buscar</button>
+  <input class="cajatextobuscador" type="search" [(ngModel)]="nameP" placeholder="Nombre pokemon">
+  <button class="buscar" (click)="buscador()">Buscar</button>
+  <button class="buscar" (click)="cargar()">Volver a la lista</button>
 
   <div class="botones-generacion">
     <button class="1generacion">1ª Generación</button>
