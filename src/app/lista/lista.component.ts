@@ -25,8 +25,8 @@ export class ListaComponent implements OnInit{
     console.log(this.pokemons);
    }
 
-   buscador(){
-    
-   }
+   /*buscador(name: string){
+    this.pokemons = 
+   }*/
     
 }
