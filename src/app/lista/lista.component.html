@@ -3,39 +3,40 @@
 <div class="buscador-botones">
   <input class="cajatextobuscador" type="search" [(ngModel)]="nameP" placeholder="Nombre pokemon">
   <button class="buscar" (click)="buscador()">Buscar</button>
-  <button class="buscar" (click)="cargar()">Volver a la lista</button>
+  <button class="buscar" (click)="cargar()">Todos los Pokemon</button>
 
   <div class="botones-generacion">
-    <button class="1generacion">1ª Generación</button>
-    <button class="2generacion">2ª Generación</button>
-    <button class="3generacion">3ª Generación</button>
-    <button class="4generacion">4ª Generación</button>
+    <button class="1generacion" (click)="generacion(0,151)">1ª Generación</button>
+    <button class="2generacion" (click)="generacion(151,251)">2ª Generación</button>
+    <button class="3generacion" (click)="generacion(251,386)">3ª Generación</button>
+    <button class="4generacion" (click)="generacion(386,493)">4ª Generación</button>
   </div>
 
   <div class="botones-tipo">
-    <button class="normal">Normal</button>
-    <button class="acero">Acero</button>
-    <button class="agua">Agua</button>
-    <button class="bicho">Bicho</button>
-    <button class="dragon">Dragón</button>
-    <button class="electrico">Eléctrico</button>
-    <button class="fantasma">Fantasma</button>
-    <button class="fuego">Fuego</button>
-    <button class="hada">Hada</button>
-    <button class="hielo">Hielo</button>
-    <button class="lucha">Lucha</button>
-    <button class="planta">Planta</button>
-    <button class="psiquico">Psíquico</button>
-    <button class="roca">Roca</button>
-    <button class="siniestro">Siniestro</button>
-    <button class="tierra">Tierra</button>
-    <button class="volador">Volador</button>
+    <button class="acero" (click)="tipos('steel')">Acero</button>
+    <button class="agua" (click)="tipos('water')">Agua</button>
+    <button class="bicho" (click)="tipos('bug')">Bicho</button>
+    <button class="dragon" (click)="tipos('dragon')">Dragón</button>
+    <button class="electrico" (click)="tipos('electric')">Eléctrico</button>
+    <button class="fantasma" (click)="tipos('ghost')">Fantasma</button>
+    <button class="fuego" (click)="tipos('fire')">Fuego</button>
+    <button class="hada" (click)="tipos('fairy')">Hada</button>
+    <button class="hielo" (click)="tipos('ice')">Hielo</button>
+    <button class="lucha" (click)="tipos('fighting')">Lucha</button>
+    <button class="normal" (click)="tipos('normal')">Normal</button>
+    <button class="planta" (click)="tipos('grass')">Planta</button>
+    <button class="psiquico" (click)="tipos('psychic')">Psíquico</button>
+    <button class="roca" (click)="tipos('rock')">Roca</button>
+    <button class="siniestro" (click)="tipos('dark')">Siniestro</button>
+    <button class="tierra" (click)="tipos('ground')">Tierra</button>
+    <button class="volador" (click)="tipos('poison')">Veneno</button>
+    <button class="volador" (click)="tipos('flying')">Volador</button>
   </div>
 
 </div>
 
 <div class="contenedor">
-  <div class="pokemon-carta" *ngFor="let pokemon of pokemons">
+  <div class="pokemon-carta" *ngFor="let pokemon of copiapokemons">
     <div class="pokemon-image">
       <p class="pokemon-id">{{ pokemon.id | number:'3.0-0'}}</p> <!--asegura de que la ID del Pokémon tenga al menos tres dígitos rellenando con ceros a la izquierda  -->
       <img [src]="pokemon.image" alt="{{ pokemon.name }}" class="pokemon-img">
