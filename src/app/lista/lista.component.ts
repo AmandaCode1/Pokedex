@@ -76,7 +76,7 @@ export class ListaComponent implements OnInit {
   }
 
   /*listaPokemon(){
-      this.filtrar();
+      this.filtraKJGHGDHGGLr();
       return this.pokemons;
   }*/
 
