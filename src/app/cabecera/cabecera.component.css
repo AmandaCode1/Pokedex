@@ -1,18 +1,30 @@
-.cabecera{
-display: flex;
-border: 5px solid white;
-align-items: center;
+body {
+    text-align: center;
+}
+
+.contenedor {
+    text-align: center;
+    /* Alinea el contenido del contenedor al centro */
+}
+
+.titulo {
+    width: 500px;
+}
+
+.cabecera {
+    display: inline-block;
+}
+
+.imagen-izquierda {
+    width: 200px;
+    /* Ajusta el tamaño deseado */
+    display: inline-block;
 
 }
-img{
-    width: 400px;    
-}
-.buscador {
-    margin: auto;
-    position: relative;
-}
-input {
-    position: absolute;
-    top:47%;
-    left: 30%;
+
+.imagen-derecha {
+    width: 200px;
+    /* Ajusta el tamaño deseado */
+    display: inline-block;
+
 }

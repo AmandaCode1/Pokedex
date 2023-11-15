@@ -5,7 +5,6 @@ body {
 
 .buscador-botones {
   display: flex;
-  border: 3px solid white;
   align-items: center;
 }
 
@@ -88,4 +87,61 @@ body {
   color: #ffffff;
   margin-bottom: 0;
   border-radius: 3px;
+}
+
+/* ------------------------------------------------------------*/
+.botones-tipo {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.botones-tipo button {
+  background-color: #f8d030;
+  color: #fff;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 8px 12px; /* Ajuste del espaciado interno para hacer los botones un poco más pequeños */
+  margin: 5px;
+  cursor: pointer;
+  font-size: 14px; /* Tamaño del texto reducido */
+}
+
+.buscador-botones {
+  display: flex;
+  flex-direction: column; /* Ajusta la dirección de los elementos a columna */
+  align-items: center;
+  margin-top: 10px; /* Ajusta el margen superior para separar de la cabecera */
+}
+
+.botones-generacion,
+.botones-tipo {
+  margin-bottom: 10px; /* Ajusta el margen inferior de los contenedores de botones */
+}
+
+.botones-generacion button,
+.botones-tipo button {
+  padding: 6px 10px; /* Ajusta el tamaño de los botones */
+
+  font-size: 12px; /* Ajusta el tamaño del texto de los botones */
+}
+
+.cajatextobuscador {
+  margin-top: 10px; /* Ajusta el margen superior del buscador */
+}
+
+/* Otras reglas de estilo... */
+
+
+/* --------------------------*/
+.tipo-acero {
+  background-color: #b8b8d0; /* Color para el tipo Acero */
+}
+
+.tipo-agua {
+  background-color: #6890f0; /* Color para el tipo Agua */
+}
+
+.tipo-bicho {
+  background-color: #a8b820; /* Color para el tipo Bicho */
 }

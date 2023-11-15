@@ -1,8 +1,6 @@
 
 <!--- <img src="../../assets/fondo.jpg">-->
 <div class="buscador-botones">
-  <input class="cajatextobuscador" type="search" [(ngModel)]="nameP" (ngModelChange)="buscador()" placeholder="Nombre pokemon">
-  
 
   <div class="botones-generacion">
     <button class="1generacion" (click)="generacion(0,151)">1ª Generación</button>
@@ -10,7 +8,10 @@
     <button class="3generacion" (click)="generacion(251,386)">3ª Generación</button>
     <button class="4generacion" (click)="generacion(386,493)">4ª Generación</button>
     <button class="todasGeneraciones" (click)="generacion(0,493)">1ª a 4ª generación</button>
+    <button class="reset" (click)="reset()">Reiniciar Lista Completa</button>
   </div>
+
+  <input class="cajatextobuscador" type="search" [(ngModel)]="nameP" (ngModelChange)="buscador()" placeholder="Nombre pokemon">
 
   <div class="botones-tipo">
     <button class="acero" (click)="tipos('steel')">Acero</button>
@@ -31,7 +32,6 @@
     <button class="tierra" (click)="tipos('ground')">Tierra</button>
     <button class="volador" (click)="tipos('poison')">Veneno</button>
     <button class="volador" (click)="tipos('flying')">Volador</button>
-    <button class="reset" (click)="reset()">Reiniciar Lista Completa</button>
   </div>
 
 </div>
