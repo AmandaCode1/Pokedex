@@ -34,7 +34,7 @@ export class ListaComponent implements OnInit {
     if(!this.nameP){
       this.cargar();
     } else {
-      const pokemonBuscador = this.pokemons.filter((pokemon) => pokemon.name.toLowerCase().includes(this.nameP.toLowerCase()));
+      const pokemonBuscador = this.copiapokemons.filter((pokemon) => pokemon.name.toLowerCase().includes(this.nameP.toLowerCase()));
       this.pokemons = pokemonBuscador;
     }
   }
@@ -65,7 +65,7 @@ export class ListaComponent implements OnInit {
   filtrar(){
     this.pokemons = [...this.copiapokemons];
 
-    if (this.inicio && this.fin) {
+    if ((this.inicio || this.inicio === 0) && this.fin) {
       this.pokemons = this.pokemons.slice(this.inicio, this.fin);
     }
   
@@ -78,5 +78,14 @@ export class ListaComponent implements OnInit {
   listaPokemon(){
       this.filtrar();
       return this.pokemons;
+  }
+
+  reset(){
+    this.cargar();
+    this.nameP = '';
+    this.tipo = '';
+    this.inicio = 0;
+    this.fin = 493;
+    this.filtrar();
   }
 }

@@ -1,7 +1,7 @@
 
 <!--- <img src="../../assets/fondo.jpg">-->
 <div class="buscador-botones">
-  <input class="cajatextobuscador" type="search" [(ngModel)]="nameP" (input)="buscador()" placeholder="Nombre pokemon">
+  <input class="cajatextobuscador" type="search" [(ngModel)]="nameP" (ngModelChange)="buscador()" placeholder="Nombre pokemon">
   
 
   <div class="botones-generacion">
@@ -9,7 +9,7 @@
     <button class="2generacion" (click)="generacion(151,251)">2ª Generación</button>
     <button class="3generacion" (click)="generacion(251,386)">3ª Generación</button>
     <button class="4generacion" (click)="generacion(386,493)">4ª Generación</button>
-    <button class="todasGeneraciones" (click)="generacion(0,493)">Todos los Pokemon</button>
+    <button class="todasGeneraciones" (click)="generacion(0,493)">1ª a 4ª generación</button>
   </div>
 
   <div class="botones-tipo">
@@ -31,12 +31,13 @@
     <button class="tierra" (click)="tipos('ground')">Tierra</button>
     <button class="volador" (click)="tipos('poison')">Veneno</button>
     <button class="volador" (click)="tipos('flying')">Volador</button>
+    <button class="reset" (click)="reset()">Reiniciar Lista Completa</button>
   </div>
 
 </div>
 
 <div class="contenedor">
-  <div class="pokemon-carta" *ngFor="let pokemon of listaPokemon()">
+  <div class="pokemon-carta" *ngFor="let pokemon of pokemons">
     <div class="pokemon-image">
       <p class="pokemon-id">{{ pokemon.id | number:'3.0-0'}}</p> <!--asegura de que la ID del Pokémon tenga al menos tres dígitos rellenando con ceros a la izquierda  -->
       <img [src]="pokemon.image" alt="{{ pokemon.name }}" class="pokemon-img">
