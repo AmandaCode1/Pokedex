@@ -98,7 +98,7 @@ body {
 
 .botones-tipo button {
   background-color: #f8d030;
-  color: #fff;
+  color: #000;
   border: 1px solid #000;
   border-radius: 5px;
   padding: 8px 12px; /* Ajuste del espaciado interno para hacer los botones un poco más pequeños */

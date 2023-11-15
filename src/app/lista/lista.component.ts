@@ -13,7 +13,7 @@ export class ListaComponent implements OnInit {
   pokemons: Pokemon[] = [];//guardamos la lista original
   copiapokemons: Pokemon[] = [];//copia del primer array en el que haremos las busquedas
   nameP: string = '';
-  tipo: string = '';
+  tipo: string = '';//Creo que tiene q ser un array
   inicio: number = 0;
   fin: number = 0;
 
@@ -31,13 +31,17 @@ export class ListaComponent implements OnInit {
   }
 
   buscador() {
+    this.filtrar();
+  }
+
+  /*buscador() {
     if(!this.nameP){
       this.cargar();
     } else {
       const pokemonBuscador = this.copiapokemons.filter((pokemon) => pokemon.name.toLowerCase().includes(this.nameP.toLowerCase()));
       this.pokemons = pokemonBuscador;
     }
-  }
+  }*/
 
   generacion(inicio: number, fin: number) {
     this.inicio = inicio;
@@ -71,6 +75,12 @@ export class ListaComponent implements OnInit {
   
     if (this.tipo) {
       this.pokemons = this.pokemons.filter(pokemon => pokemon.types.includes(this.tipo));
+    }
+
+    if(!this.nameP){
+      //this.cargar();
+    } else {
+      this.pokemons = this.pokemons.filter((pokemon) => pokemon.name.toLowerCase().includes(this.nameP.toLowerCase()));
     }
 
   }
