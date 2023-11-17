@@ -9,6 +9,7 @@ import { PieDePaginaComponent } from './pie-de-pagina/pie-de-pagina.component';
 import { ListaComponent } from './lista/lista.component';
 import { InformacionDetalladaComponent } from './informacion-detallada/informacion-detallada.component';
 import { FormsModule } from '@angular/forms';
+import { Pagina404Component } from './pagina404/pagina404.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
     CabeceraComponent,
     PieDePaginaComponent,
     ListaComponent,
-    InformacionDetalladaComponent
+    InformacionDetalladaComponent,
+    Pagina404Component
   ],
   imports: [
     BrowserModule,

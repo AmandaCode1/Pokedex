@@ -37,14 +37,14 @@
 </div>
 
 <div class="contenedor">
-  <div class="pokemon-carta" *ngFor="let pokemon of pokemons">
+  <div class="pokemon-carta" *ngFor="let pokemon of pokemons" [routerLink]="['/detalle', pokemon.id]">
     <div class="pokemon-image">
       <p class="pokemon-id">{{ pokemon.id | number:'3.0-0'}}</p> <!--asegura de que la ID del Pokémon tenga al menos tres dígitos rellenando con ceros a la izquierda  -->
       <img [src]="pokemon.image" alt="{{ pokemon.name }}" class="pokemon-img">
     </div>
     <div class="pokemon-detalles">
       <h2 class="pokemon-name">{{ pokemon.name }}</h2>
-      <p class="pokemon-types">{{ pokemon.types.join(', ') }}</p>
+      <div  class="{{ type }} " *ngFor="let type of pokemon.types" > {{ type }}</div>
     </div>
   </div>
 </div>

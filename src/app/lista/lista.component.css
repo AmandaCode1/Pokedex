@@ -145,3 +145,7 @@ body {
 .tipo-bicho {
   background-color: #a8b820; /* Color para el tipo Bicho */
 }
+.fire{
+  background: red;
+  border-radius: 20px;
+}
