@@ -132,20 +132,30 @@ body {
 
 /* Otras reglas de estilo... */
 
-
-/* --------------------------*/
-.tipo-acero {
-  background-color: #b8b8d0; /* Color para el tipo Acero */
-}
-
-.tipo-agua {
-  background-color: #6890f0; /* Color para el tipo Agua */
-}
-
-.tipo-bicho {
-  background-color: #a8b820; /* Color para el tipo Bicho */
-}
 .fire{
   background: red;
   border-radius: 20px;
 }
+
+.botones-tipo button.acero {
+  background-color: #b8b8d0; /* Color para el tipo Acero */
+}
+
+.botones-tipo button.agua {
+  background-color: #6890f0; /* Color para el tipo Agua */
+}
+
+.botones-tipo button.bicho {
+  background-color: #a8b820; /* Color para el tipo Bicho */
+}
+
+/* Agregar estilos hover */
+.botones-tipo button.acero:hover,
+.botones-tipo button.agua:hover,
+.botones-tipo button.bicho:hover {
+  opacity: 0.8; /* Reducir opacidad al pasar el cursor */
+  /* Agregar otros estilos hover si lo deseas */
+}
+
+
+
