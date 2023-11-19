@@ -130,32 +130,226 @@ body {
   margin-top: 10px; /* Ajusta el margen superior del buscador */
 }
 
-/* Otras reglas de estilo... */
+/* Estilo de los nombres de tipos que hay */
 
 .fire{
-  background: red;
+  background:  rgba(240, 128, 48);
   border-radius: 20px;
+  text-transform: capitalize;
 }
 
-.botones-tipo button.acero {
-  background-color: #b8b8d0; /* Color para el tipo Acero */
+.normal{
+  background: rgba(168, 168, 120);
+  border-radius: 20px;
+  text-transform: capitalize;
 }
 
-.botones-tipo button.agua {
-  background-color: #6890f0; /* Color para el tipo Agua */
+.water{
+   background: rgba(104, 144, 240);
+   border-radius: 20px;
+   text-transform: capitalize;
+  }
+
+.electric{
+   background: rgba(248, 208, 48);
+   border-radius: 20px;
+   text-transform: capitalize;
+  }
+   
+
+.grass{
+   background: rgba(120, 200, 80);
+   border-radius: 20px;
+   text-transform: capitalize;
+  }
+
+.ice{
+   background: rgba(152, 216, 216);
+   border-radius: 20px;
+   text-transform: capitalize;
+  }
+
+.fighting{ 
+  background: rgba(192, 48, 40);
+  border-radius: 20px;
+  text-transform: capitalize;
 }
 
-.botones-tipo button.bicho {
-  background-color: #a8b820; /* Color para el tipo Bicho */
+.poison{ 
+  background: rgba(160, 64, 160);
+  border-radius: 20px;
+  text-transform: capitalize;
 }
 
-/* Agregar estilos hover */
-.botones-tipo button.acero:hover,
-.botones-tipo button.agua:hover,
-.botones-tipo button.bicho:hover {
-  opacity: 0.8; /* Reducir opacidad al pasar el cursor */
-  /* Agregar otros estilos hover si lo deseas */
+.ground{
+   background: rgba(224, 192, 104);
+   border-radius: 20px;
+   text-transform: capitalize;
+  }
+
+.flying{
+   background: rgba(168, 144, 240);
+   border-radius: 20px;
+   text-transform: capitalize;
+  }
+
+.psychic{ 
+  background: rgba(248, 88, 136);
+  border-radius: 20px;
+  text-transform: capitalize;
+}
+.bug{ 
+  background: rgba(168, 184, 32);
+  border-radius: 20px;
+  text-transform: capitalize;
 }
 
+.rock{ 
+  background: rgba(184, 160, 56);
+  border-radius: 20px;
+  text-transform: capitalize;
+}
 
+.ghost{
+   background: rgba(112, 88, 152);
+   border-radius: 20px;
+   text-transform: capitalize;
+  }
+
+.dragon{
+   background: rgba(112, 56, 248);
+   border-radius: 20px;
+   text-transform: capitalize;
+  }
+
+  .fairy{
+    background: rgba(238, 153, 172);
+    border-radius: 20px;
+    text-transform: capitalize;
+   }
+
+
+   .steel{
+    background: rgba(184, 184, 208);
+    border-radius: 20px;
+    text-transform: capitalize;
+   }
+
+   .dark{
+    background: rgba(112, 88, 72);
+    border-radius: 20px;
+    text-transform: capitalize;
+   }
+
+   /* Estilo de los botones de tipos  */
+
+   
+  .botones-tipo button.acero {
+    background-color: #b8b8d0; /* Color para el tipo Acero */
+    color: #fff; /* Color del texto */
+    text-transform: capitalize;
+  }
+  
+  .botones-tipo button.agua {
+    background-color: #6890f0; /* Color para el tipo Agua */
+    color: #fff; /* Color del texto */
+    text-transform: capitalize;
+  }
+  
+  .botones-tipo button.bicho {
+    background-color: #a8b820; /* Color para el tipo Bicho */
+    color: #fff; /* Color del texto */
+    text-transform: capitalize;
+  }
+  
+  .botones-tipo button.dragon {
+    background-color: #7038f8; /* Color para el tipo Dragón */
+    color: #fff; /* Color del texto */
+    text-transform: capitalize;
+  }
+  
+  .botones-tipo button.electrico {
+    background-color: #f8d030; /* Color para el tipo Eléctrico */
+    color: #000; /* Color del texto */
+    text-transform: capitalize;
+  }
+  
+  .botones-tipo button.fantasma {
+    background-color: #705898; /* Color para el tipo Fantasma */
+    color: #fff; /* Color del texto */
+    text-transform: capitalize;
+  }
+  
+  .botones-tipo button.fuego {
+    background-color: #f08030; /* Color para el tipo Fuego */
+    color: #fff; /* Color del texto */
+    text-transform: capitalize;
+  }
+  
+  .botones-tipo button.hada {
+    background-color: #ee99ac; /* Color para el tipo Hada */
+    color: #000; /* Color del texto */
+    text-transform: capitalize;
+  }
+  
+  .botones-tipo button.hielo {
+    background-color: #98d8d8; /* Color para el tipo Hielo */
+    color: #000; /* Color del texto */
+    text-transform: capitalize;
+  }
+  
+  .botones-tipo button.lucha {
+    background-color: #c03028; /* Color para el tipo Lucha */
+    color: #fff; /* Color del texto */
+    text-transform: capitalize;
+  }
+  
+  .botones-tipo button.normal {
+    background-color: #a8a878; /* Color para el tipo Normal */
+    color: #000; /* Color del texto */
+    text-transform: capitalize;
+  }
+  
+  .botones-tipo button.planta {
+    background-color: #78c850; /* Color para el tipo Planta */
+    color: #000; /* Color del texto */
+    text-transform: capitalize;
+  }
+  
+  .botones-tipo button.psiquico {
+    background-color: #f85888; /* Color para el tipo Psíquico */
+    color: #fff; /* Color del texto */
+    text-transform: capitalize;
+  }
+  
+  .botones-tipo button.roca {
+    background-color: #b8a038; /* Color para el tipo Roca */
+    color: #000; /* Color del texto */
+    text-transform: capitalize;
+  }
+  
+  .botones-tipo button.siniestro {
+    background-color: #705848; /* Color para el tipo Siniestro */
+    color: #fff; /* Color del texto */
+    text-transform: capitalize;
+  }
+  
+  .botones-tipo button.tierra {
+    background-color: #e0c068; /* Color para el tipo Tierra */
+    color: #000; /* Color del texto */
+    text-transform: capitalize;
+  }
+  
+  .botones-tipo button.veneno {
+    background-color: #a040a0; /* Color para el tipo Veneno */
+    color: #fff; /* Color del texto */
+    text-transform: capitalize;
+  }
+  
+  .botones-tipo button.volador {
+    background-color: #a890f0; /* Color para el tipo Volador */
+    color: #000; /* Color del texto */
+    text-transform: capitalize;
+  }
+  
 
