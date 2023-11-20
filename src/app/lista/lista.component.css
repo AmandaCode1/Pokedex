@@ -246,7 +246,7 @@ body {
    
   .botones-tipo button.acero {
     background-color: #b8b8d0; /* Color para el tipo Acero */
-    color: #fff; /* Color del texto */
+    color: black; /* Color del texto */
     text-transform: capitalize;
   }
   

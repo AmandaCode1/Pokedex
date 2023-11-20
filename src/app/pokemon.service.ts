@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, forkJoin, map, tap } from 'rxjs';
+import { Observable, forkJoin, map, switchMap, tap } from 'rxjs';
 import { Pokemon } from './model/pokemon';
 import { detallePokemon } from './model/detallePokemon';
-//import { detallePokemon } from './model/detallePokemon';
-
+import { Efectividad } from './model/efectividades';
 @Injectable({
   providedIn: 'root'
 })
@@ -68,8 +67,6 @@ export class PokemonService {
     );
   }
 
-
-
   getIdDetallePokemon(id: number): Observable<any> {
     const url = `${this.url}/${id}`;
     return this.http.get(url).pipe(
@@ -79,29 +76,36 @@ export class PokemonService {
     );
   }
 
-  /*getDebilidadesTipo(tipo: string): Observable<any> {
+  getUrlTipo(tipo: string): Observable<any> {
     const url = `https://pokeapi.co/api/v2/type/${tipo}`;
     return this.http.get(url).pipe(
       tap((response: any) => {
-        console.log('Respuesta de la API de debilidades:', response);
+        console.log('Respuesta de la API:', response);
       })
     );
   }
 
-  getDebilidades(id: number): Observable<any> {
-    return this.getIdDetallePokemon(id).pipe(
-      switchMap((pokemon: any) => {
-        //Obtenemos los tipos del Pokémon
+  getDebilidades(id: number): Efectividad {
+    this.getIdDetallePokemon(id).pipe(
+      map((pokemon: any) => {
+        //Obtenemos los tipos del Pokémon de la url de dellates pokemon
         const tipos = pokemon.types.map((tipo: any) => tipo.type.name);
 
-        //Obtenemos sus debilidades
-        const debilidades = tipos.map((tipo: string) => this.getDebilidadesTipo(tipo));
-
-        return forkJoin(debilidades);
+        //Obtenemos las debilidades de ese tipo
+        const debilidades = this.getUrlTipo(tipos).pipe(
+          map((data: any) => ({
+            dobleDañoA: data.damage_relations.double_damage_to.map((daño: any) => daño.double_damage_to.name),
+            mitadDañoA: data.damage_relations.half_damage_to.map((daño: any) => daño.half_damage_to.name),
+            noDañoA: data.damage_relations.no_damage_to.map((daño: any) => daño.no_damage_to.name),
+            dobleDañoDesde: data.damage_relations.double_damage_from.map((daño: any) => daño.double_damage_from.name),
+            mitadDañoDesde: data.damage_relations.half_damage_from.map((daño: any) => daño.half_damage_from.name),
+            noDañoDesde: data.damage_relations.no_damage_from.map((daño: any) => daño.no_damage_from.name),
+          }))
+        );
+        console.log(debilidades);
+        return (debilidades);
       })
     );
-  }*/
-
-
+      return debilidades;
+  }
 }
-
