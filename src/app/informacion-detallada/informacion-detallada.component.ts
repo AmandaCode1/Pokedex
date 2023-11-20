@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../pokemon.service';
+import { detallePokemon } from '../model/detallePokemon';
+import { ActivatedRoute } from '@angular/router';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-informacion-detallada',
@@ -8,14 +11,56 @@ import { PokemonService } from '../pokemon.service';
 })
 export class InformacionDetalladaComponent implements OnInit{
 
-  name: string = '';
-  urlImage: string = '';
-  tipo: string = '';
+  detallePokemon: detallePokemon | undefined;
+  descrip: any;
+  debilidades: any;
 
-  constructor(private pokemonService: PokemonService){}
+
+  constructor(private ruta: ActivatedRoute, private pokemonService: PokemonService){}
 
   ngOnInit(): void {
+    this.cargarDetallesPokemon();
   }
+
+  cargarDetallesPokemon() {
+    //Obtenemos el id de la url que se abre al hacer clic en un pokemon
+    this.ruta.params.subscribe(params => {
+      const id = params['id'];
+
+      forkJoin({
+        detPokemon: this.pokemonService.getIdDetallePokemon(id),
+        descrip: this.pokemonService.getIdDescripcionPokemon(id),
+        //debilidades: this.pokemonService.getDebilidades(id)
+      }).subscribe(
+        ({detPokemon, descrip, /*debilidades*/ }) => {
+          this.detallePokemon = this.pokemonService.getDetallePokemon(detPokemon, descrip);
+          //this.detallePokemon.debilidades = debilidades;
+        },
+        (error: any) => {
+          console.log('Error obteniendo descripcion del pokemon', error);
+        }
+      );
+      /*//Obtengo los detalles del pokemon
+      this.pokemonService.getIdDetallePokemon(id).subscribe(
+        (detPokemon: any) => {
+          //Obtengo la descripcion del pokemon
+          this.pokemonService.getIdDescripcionPokemon(id).subscribe(
+            (descrip: any) => {
+              //Obtengo detalles
+              this.detallePokemon = this.pokemonService.getDetallePokemon(detPokemon, descrip);
+            },
+            (error: any) => {
+              console.log('Error obteniendo descripcion del pokemon', error);
+            }
+          );
+        },
+        (error: any) =>{
+          console.log('Error obteniendo detalles del pokemon', error);
+        }
+      );*/
+    });
+  }
+
 
   /*cargaPokemon(){
     this.pokemonService.getPokemon(this.name).subscribe((data:any) => {

@@ -13,7 +13,7 @@ export class ListaComponent implements OnInit {
   pokemons: Pokemon[] = [];//guardamos la lista original
   copiapokemons: Pokemon[] = [];//copia del primer array en el que haremos las busquedas
   nameP: string = '';
-  tipo: string[] = [];//Creo que tiene q ser un array
+  tipo: string[] = [];
   inicio: number = 0;
   fin: number = 0;
 
