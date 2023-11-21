@@ -9,11 +9,21 @@ import { Efectividad } from './model/efectividades';
 })
 export class PokemonService {
 
-  Efectividades: any = tablaPokemon;
+  //Efectividades: any = tablaPokemon;
+  efectividades: any = {};
+  seCargaJson = false;
 
   private url: string = 'https://pokeapi.co/api/v2/pokemon';
 
   constructor(private http: HttpClient) { }
+
+  /*getTablaJson(): Observable<any>{
+    this.http.get("../../assets/efectividades.json")
+      .subscribe(data => {
+        this.efectividades = data;
+        this.seCargaJson = true;
+      });
+  }*/
 
   getPokemons(count: number): Observable<Pokemon[]> {
     const requests: Observable<Pokemon>[] = [];
@@ -73,7 +83,7 @@ export class PokemonService {
   }
 
   //Url para los tipos
-  getTipoEfectividades(tipo: string): Observable<any> {
+  /*getTipoEfectividades(tipo: string): Observable<any> {
     const url = `https://pokeapi.co/api/v2/type/${tipo}`;
     return this.http.get(url)
   }
@@ -98,6 +108,6 @@ export class PokemonService {
         noDanoDesde: data.damage_relations.no_damage_from.map((dano: any) => dano.no_damage_from.name),
       }))
     );
-  }
+  }*/
 
 }

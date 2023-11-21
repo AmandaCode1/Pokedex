@@ -4,6 +4,7 @@ import { detallePokemon } from '../model/detallePokemon';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, forkJoin, map } from 'rxjs';
 import { Efectividad } from '../model/efectividades';
+import tablaEfectividades from 'src/assets/json/efectividades.json';
 
 @Component({
   selector: 'app-informacion-detallada',
@@ -15,7 +16,8 @@ export class InformacionDetalladaComponent implements OnInit {
   detallePokemon: detallePokemon | undefined;
   descrip: any;
   //efectividades: Efectividad | undefined;
-  
+  Efectividades: any = tablaEfectividades;
+
 
 
   constructor(private ruta: ActivatedRoute, private pokemonService: PokemonService) { }

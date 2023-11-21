@@ -1,0 +1,29 @@
+[
+    {
+        "tipo": "Electrico",
+        "dda": 30,
+        "mda": "Madrid",
+        "nda": "Facundo",
+        "ddd": 30,
+        "mdd": "Madrid",
+        "ndd": "Facundo"
+    },
+    {
+        "tipo": "F",
+        "dda": 30,
+        "mda": "Madrid",
+        "nda": "Facundo",
+        "ddd": 30,
+        "mdd": "Madrid",
+        "ndd": "Facundo"
+    },
+    {
+        "tipo": "a",
+        "dda": 30,
+        "mda": "Madrid",
+        "nda": "Facundo",
+        "ddd": 30,
+        "mdd": "Madrid",
+        "ndd": "Facundo"
+    }
+]

@@ -17,7 +17,33 @@
         <p>Altura: {{ detallePokemon.altura }}</p>
         <p>Peso: {{ detallePokemon.peso }}</p>
 
-        <div *ngIf="efectividades">
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Tipo</th>
+                <th scope="col">Doble Daño a</th>
+                <th scope="col">Mitad Daño a</th>
+                <th scope="col">Ningun Daño a</th>
+                <th scope="col">Doble Daño desde</th>
+                <th scope="col">Mitad Daño desde</th>
+                <th scope="col">Ningun Daño desde</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let prueba of Efectividades">
+                <th scope="row">{{prueba.tipo}}</th>
+                <td>{{prueba.dda}}</td>
+                <td>{{prueba.mda}}</td>
+                <td>{{prueba.nda}}</td>
+                <td>{{prueba.ddd}}</td>
+                <td>{{prueba.mdd}}</td>
+                <td>{{prueba.ndd}}</td>
+              </tr>
+            </tbody>
+          </table>
+
+
+        <!--<div *ngIf="efectividades">
             <h3>Efectividades:</h3>
             <ul>
                 <li><strong>Doble Daño a:</strong> {{ efectividades.dobleDanoA.join(', ') }}</li>
@@ -27,7 +53,7 @@
                 <li><strong>Mitad Daño Desde:</strong> {{ efectividades.mitadDanoDesde.join(', ') }}</li>
                 <li><strong>No Daño Desde:</strong> {{ efectividades.noDanoDesde.join(', ') }}</li>
             </ul>
-        </div>
+        </div>-->
 
         <div>
             <img [src]="detallePokemon.image" alt="{{ detallePokemon.name }}">
