@@ -3,23 +3,25 @@ import { PokemonService } from '../pokemon.service';
 import { detallePokemon } from '../model/detallePokemon';
 import { ActivatedRoute } from '@angular/router';
 import { forkJoin } from 'rxjs';
+import { Efectividad } from '../model/efectividades';
 
 @Component({
   selector: 'app-informacion-detallada',
   templateUrl: './informacion-detallada.component.html',
   styleUrls: ['./informacion-detallada.component.css']
 })
-export class InformacionDetalladaComponent implements OnInit{
+export class InformacionDetalladaComponent implements OnInit {
 
   detallePokemon: detallePokemon | undefined;
   descrip: any;
-  debilidades: any;
+  efectividades: Efectividad | undefined;
 
 
-  constructor(private ruta: ActivatedRoute, private pokemonService: PokemonService){}
+  constructor(private ruta: ActivatedRoute, private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
     this.cargarDetallesPokemon();
+    this.cargarEfectividades();
   }
 
   cargarDetallesPokemon() {
@@ -32,7 +34,7 @@ export class InformacionDetalladaComponent implements OnInit{
         descrip: this.pokemonService.getIdDescripcionPokemon(id),
         //debilidades: this.pokemonService.getDebilidades(id)
       }).subscribe(
-        ({detPokemon, descrip, /*debilidades*/ }) => {
+        ({ detPokemon, descrip, /*debilidades*/ }) => {
           this.detallePokemon = this.pokemonService.getDetallePokemon(detPokemon, descrip);
           //this.detallePokemon.debilidades = debilidades;
         },
@@ -68,5 +70,18 @@ export class InformacionDetalladaComponent implements OnInit{
       this.tipo = data.types.map((tipo: any) => tipo.type.name);
     })
   }*/
+
+  cargarEfectividades() {
+    //Obtenemos el id de la url que se abre al hacer clic en un pokemon
+    this.ruta.params.subscribe(params => {
+      const id = params['id'];
+
+        const efectividades: this.pokemonService.getEfectividades(getTipoPorId(id)),//Aqui quiero pasar como parametro el resultado de la funcion que devuelve los tipos
+        }).subscribe(
+          
+        )
+    });
+
+  }
 
 }
