@@ -1,8 +1,9 @@
+
 export interface Efectividad{
-    dobleDañoA: string[];
-    mitadDañoA: string[];
-    noDañoA: string[];
-    dobleDañoDesde: string[];
-    mitadDañoDesde: string[];
-    noDañoDesde: string[];
+    dobleDanoA: string[];
+    mitadDanoA: string[];
+    noDanoA: string[];
+    dobleDanoDesde: string[];
+    mitadDanoDesde: string[];
+    noDanoDesde: string[];
 }

@@ -9,6 +9,8 @@ import { Efectividad } from './model/efectividades';
 })
 export class PokemonService {
 
+  Efectividades: any = tablaPokemon;
+
   private url: string = 'https://pokeapi.co/api/v2/pokemon';
 
   constructor(private http: HttpClient) { }
@@ -73,7 +75,7 @@ export class PokemonService {
   //Url para los tipos
   getTipoEfectividades(tipo: string): Observable<any> {
     const url = `https://pokeapi.co/api/v2/type/${tipo}`;
-    return this.http.get(url);
+    return this.http.get(url)
   }
 
   //Buscar tipo por id //Si hay dos tipos como la modifico?
@@ -84,44 +86,18 @@ export class PokemonService {
     
   }
 
-  
-
   getEfectividades(tipo: string): Observable<Efectividad> {
     //Obtenemos efectividades de los pokemon desde la api
     return this.http.get(`https://pokeapi.co/api/v2/type/${tipo}`).pipe(
       map((data: any) => ({
-        dobleDañoA: data.damage_relations.double_damage_to.map((daño: any) => daño.double_damage_to.name),
-        mitadDañoA: data.damage_relations.half_damage_to.map((daño: any) => daño.half_damage_to.name),
-        noDañoA: data.damage_relations.no_damage_to.map((daño: any) => daño.no_damage_to.name),
-        dobleDañoDesde: data.damage_relations.double_damage_from.map((daño: any) => daño.double_damage_from.name),
-        mitadDañoDesde: data.damage_relations.half_damage_from.map((daño: any) => daño.half_damage_from.name),
-        noDañoDesde: data.damage_relations.no_damage_from.map((daño: any) => daño.no_damage_from.name),
+        dobleDanoA: data.damage_relations.double_damage_to.map((dano: any) => dano.double_damage_to.name),
+        mitadDanoA: data.damage_relations.half_damage_to.map((dano: any) => dano.half_damage_to.name),
+        noDanoA: data.damage_relations.no_damage_to.map((dano: any) => dano.no_damage_to.name),
+        dobleDanoDesde: data.damage_relations.double_damage_from.map((dano: any) => dano.double_damage_from.name),
+        mitadDanoDesde: data.damage_relations.half_damage_from.map((dano: any) => dano.half_damage_from.name),
+        noDanoDesde: data.damage_relations.no_damage_from.map((dano: any) => dano.no_damage_from.name),
       }))
     );
   }
-
-  /*getEfectividadesPokemon(data: any, tipo: any): Efectividad{
-
-    let tipos = [data.types[0].type.name];
-    if(data.types[1]){
-      tipos.push(data.types[1].type.name);
-    }
-
-    const tipo: string[] = this.getIdDetallePokemon(id).pipe(
-      map((pokemon: any) => {
-        //Tipo del pokemon de la id
-        const tipos = pokemon.types.map((tipo: any) => tipo.type.name);
-        //Efectividades por tipo
-        const arrayEfectividades: Observable<any>[] = tipos.map(tipo => this.getTipoEfectividades(tipo));
-        return forkJoin(arrayEfectividades);
-      }),
-      map(arrayEfectividades =>{
-        return {
-          
-        }
-      })
-      )
-    );
-  }*/
 
 }

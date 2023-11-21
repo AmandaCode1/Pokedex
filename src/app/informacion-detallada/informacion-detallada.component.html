@@ -16,6 +16,19 @@
         <p>Descripcion: {{ detallePokemon.descripcion }}</p>
         <p>Altura: {{ detallePokemon.altura }}</p>
         <p>Peso: {{ detallePokemon.peso }}</p>
+
+        <div *ngIf="efectividades">
+            <h3>Efectividades:</h3>
+            <ul>
+                <li><strong>Doble Daño a:</strong> {{ efectividades.dobleDanoA.join(', ') }}</li>
+                <li><strong>Mitad Daño a:</strong> {{ efectividades.mitadDanoA.join(', ') }}</li>
+                <li><strong>No Daño a:</strong> {{ efectividades.noDanoA.join(', ') }}</li>
+                <li><strong>Doble Daño Desde:</strong> {{ efectividades.dobleDanoDesde.join(', ') }}</li>
+                <li><strong>Mitad Daño Desde:</strong> {{ efectividades.mitadDanoDesde.join(', ') }}</li>
+                <li><strong>No Daño Desde:</strong> {{ efectividades.noDanoDesde.join(', ') }}</li>
+            </ul>
+        </div>
+
         <div>
             <img [src]="detallePokemon.image" alt="{{ detallePokemon.name }}">
             <img [src]="detallePokemon.imageShiny" alt="{{ detallePokemon.name }}">
@@ -28,11 +41,6 @@
             <li><strong>Defensa: </strong> {{ detallePokemon.defensa }}</li>
             <li><strong>Defensa Especial: </strong> {{ detallePokemon.defensaEspecial }}</li>
         </ul>
-        <!--<div class="debilidades">
-            <h3>Debilidades:</h3>
-            <ul>
-                <li *ngFor="let debilidad of detallePokemon.debilidades">{{ debilidad }}</li>
-            </ul>
-        </div>-->
+        
     </div>
 </body>
