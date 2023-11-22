@@ -3,7 +3,7 @@ import { PokemonService } from '../pokemon.service';
 import { detallePokemon } from '../model/detallePokemon';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, forkJoin, map } from 'rxjs';
-import { Efectividad } from '../model/efectividades';
+import { Tipos } from '../model/tipos';
 import tablaEfectividades from 'src/assets/json/efectividades.json';
 
 @Component({
@@ -15,17 +15,68 @@ export class InformacionDetalladaComponent implements OnInit {
 
   detallePokemon: detallePokemon | undefined;
   descrip: any;
-  //efectividades: Efectividad | undefined;
-  Efectividades: any = tablaEfectividades;
-
-
+  Efectividades: any[] = tablaEfectividades;
+  efectividadSeleccionada: any[] = [];
+  //json: any[] = [];
+  //tipos: any;
+  tipo: string[] = [];
 
   constructor(private ruta: ActivatedRoute, private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
     this.cargarDetallesPokemon();
-    //this.cargarEfectividades();
+    this.tipoPorId();
+    //this.cargarJson();
   }
+
+  tipoPorId(){
+    this.ruta.params.subscribe(params => {
+      const id = params['id'];
+
+      this.pokemonService.getTipoPorId(id).subscribe(
+        tipos => {
+          this.tipo = tipos.types;
+          console.log('tipos por id', this.tipo);
+
+          this.cargarJson();
+        },
+        error => {
+          console.log('Error obteniendo tipos', error);
+        }
+      );
+    });
+  }
+
+  cargarJson(){
+    console.log('Este es el resultado de cargar json', this.tipo);
+    console.log('Efectividades:', this.Efectividades);
+    this.efectividadSeleccionada = this.Efectividades.filter(filtro => this.tipo.includes(filtro.id));
+    console.log('filtrado en json', this.efectividadSeleccionada);
+  }
+  
+
+      //this.pokemonService.getJson()
+
+    /*if(this.detallePokemon && this.detallePokemon.types){
+      const tipos = this.detallePokemon.types.map((tipo: any) => tipo.type.name);
+
+      this.pokemonService.getJson().subscribe(data =>{
+        this.Efectividades = data;
+
+        this.efectividadSeleccionada = tipos.map(type =>
+          this.Efectividades.find(efectividad => efectividad.id === type)
+          );
+      });
+    } else {
+      console.log("detallepokemon es undefined")
+    }*/
+      
+  
+    /*.subscribe(data => {
+      this.efectividades = data;
+      this.seCargaJson = true;
+    });*/
+ 
 
   cargarDetallesPokemon() {
     //Obtenemos el id de la url que se abre al hacer clic en un pokemon

@@ -3,27 +3,24 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, forkJoin, map, switchMap, tap } from 'rxjs';
 import { Pokemon } from './model/pokemon';
 import { detallePokemon } from './model/detallePokemon';
-import { Efectividad } from './model/efectividades';
+import { Tipos } from './model/tipos';
+//import { Efectividad } from './model/efectividades';
+
 @Injectable({
   providedIn: 'root'
 })
 export class PokemonService {
 
-  //Efectividades: any = tablaPokemon;
-  efectividades: any = {};
-  seCargaJson = false;
+  //efectividades: any = {};
+  //seCargaJson = false;
 
   private url: string = 'https://pokeapi.co/api/v2/pokemon';
 
   constructor(private http: HttpClient) { }
 
-  /*getTablaJson(): Observable<any>{
-    this.http.get("../../assets/efectividades.json")
-      .subscribe(data => {
-        this.efectividades = data;
-        this.seCargaJson = true;
-      });
-  }*/
+  getJson(): Observable<any[]>{
+    return this.http.get<any[]>("../../assets/json/efectividades.json");
+  }
 
   getPokemons(count: number): Observable<Pokemon[]> {
     const requests: Observable<Pokemon>[] = [];
@@ -46,7 +43,7 @@ export class PokemonService {
     return forkJoin(requests);
   }
 
-  getDetallePokemon(pokemon: any, species: any): detallePokemon {
+  getDetallePokemon(pokemon: any, species?: any): detallePokemon {
 
     const descripcion = species.flavor_text_entries.find(
       (data: any) => data.language.name === 'es' && data.version.name === 'x').flavor_text;
@@ -86,17 +83,18 @@ export class PokemonService {
   /*getTipoEfectividades(tipo: string): Observable<any> {
     const url = `https://pokeapi.co/api/v2/type/${tipo}`;
     return this.http.get(url)
-  }
+  }*/
 
   //Buscar tipo por id //Si hay dos tipos como la modifico?
-  getTipoPorId(id: number): Observable<string[]> {
-    return this.getIdDetallePokemon(id).pipe(
-      map((pokemon: any) => pokemon.types.map((tipo: any) => tipo.type.name))
+  getTipoPorId(id: number): Observable<Tipos> {
+    return this.http.get(`${this.url}/${id}`).pipe(
+      map((data: any) => ({
+        types: data.types.map((tipo: any) => tipo.type.name),
+      }))
     );
-    
   }
 
-  getEfectividades(tipo: string): Observable<Efectividad> {
+  /*getEfectividades(tipo: string): Observable<Efectividad> {
     //Obtenemos efectividades de los pokemon desde la api
     return this.http.get(`https://pokeapi.co/api/v2/type/${tipo}`).pipe(
       map((data: any) => ({

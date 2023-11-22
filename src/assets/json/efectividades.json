@@ -1,29 +1,45 @@
 [
-    {
-        "tipo": "Electrico",
-        "dda": 30,
-        "mda": "Madrid",
-        "nda": "Facundo",
-        "ddd": 30,
-        "mdd": "Madrid",
-        "ndd": "Facundo"
-    },
-    {
-        "tipo": "F",
-        "dda": 30,
-        "mda": "Madrid",
-        "nda": "Facundo",
-        "ddd": 30,
-        "mdd": "Madrid",
-        "ndd": "Facundo"
-    },
-    {
-        "tipo": "a",
-        "dda": 30,
-        "mda": "Madrid",
-        "nda": "Facundo",
-        "ddd": 30,
-        "mdd": "Madrid",
-        "ndd": "Facundo"
-    }
+  {
+    "id": "normal",
+    "Normal": 1,
+    "Fire": 1,
+    "Water": 1,
+    "Grass": 1,
+    "Electric": 1,
+    "Ice": 1,
+    "Fighting": 2,
+    "Poison": 1,
+    "Ground": 1,
+    "Flying": 1,
+    "Psychic": 1,
+    "Bug": 1,
+    "Rock": 0.5,
+    "Ghost": 0,
+    "Dragon": 1,
+    "Dark": 1,
+    "Steel": 0.5,
+    "Fairy": 1
+  },
+  {
+    "id": "fire",
+    "Normal": 1,
+    "Fire": 0.5,
+    "Water": 0.5,
+    "Grass": 2,
+    "Electric": 1,
+    "Ice": 2,
+    "Fighting": 1,
+    "Poison": 1,
+    "Ground": 1,
+    "Flying": 1,
+    "Psychic": 1,
+    "Bug": 2,
+    "Rock": 0.5,
+    "Ghost": 1,
+    "Dragon": 0.5,
+    "Dark": 1,
+    "Steel": 2,
+    "Fairy": 1
+  }
+    
 ]

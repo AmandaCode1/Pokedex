@@ -21,23 +21,51 @@
             <thead class="thead-dark">
               <tr>
                 <th scope="col">Tipo</th>
-                <th scope="col">Doble Daño a</th>
-                <th scope="col">Mitad Daño a</th>
-                <th scope="col">Ningun Daño a</th>
-                <th scope="col">Doble Daño desde</th>
-                <th scope="col">Mitad Daño desde</th>
-                <th scope="col">Ningun Daño desde</th>
+                <th scope="col">Normal</th>
+                <th scope="col">Fuego</th>
+                <th scope="col">Agua</th>
+                <th scope="col">Palnta</th>
+                <th scope="col">Electrico</th>
+                <th scope="col">Hielo</th>
+                <th scope="col">Lucha</th>
+                <th scope="col">Veneno</th>
+                <th scope="col">Tierra</th>
+                <th scope="col">Volador</th>
+                <th scope="col">Psiquico</th>
+                <th scope="col">Bicho</th>
+                <th scope="col">Roca</th>
+                <th scope="col">Fantasma</th>
+                <th scope="col">Dragon</th>
+                <th scope="col">Siniestro</th>
+                <th scope="col">Acero</th>
+                <th scope="col">Hada</th>
               </tr>
             </thead>
+
             <tbody>
-              <tr *ngFor="let prueba of Efectividades">
-                <th scope="row">{{prueba.tipo}}</th>
-                <td>{{prueba.dda}}</td>
-                <td>{{prueba.mda}}</td>
-                <td>{{prueba.nda}}</td>
-                <td>{{prueba.ddd}}</td>
-                <td>{{prueba.mdd}}</td>
-                <td>{{prueba.ndd}}</td>
+              <tr *ngFor="let tipo of efectividadSeleccionada">
+                <th scope="row">{{tipo.id}}</th>
+                <td>x{{tipo.Normal}}</td>
+                <td>x{{tipo.Fire}}</td>
+                <td>x{{tipo.Water}}</td>
+                <td>x{{tipo.Grass}}</td>
+                <td>x{{tipo.Electric}}</td>
+                <td>x{{tipo.Ice}}</td>
+                <td>x{{tipo.Fighting}}</td>
+                <td>x{{tipo.Poison}}</td>
+                <td>x{{tipo.Ground}}</td>
+                <td>x{{tipo.Flying}}</td>
+                <td>x{{tipo.Psychic}}</td>
+                <td>x{{tipo.Bug}}</td>
+                <td>x{{tipo.Rock}}</td>
+                <td>x{{tipo.Ghost}}</td>
+                <td>x{{tipo.Dragon}}</td>
+                <td>x{{tipo.Dark}}</td>
+                <td>x{{tipo.Steel}}</td>
+                <td>x{{tipo.Fairy}}</td>
+              </tr>
+              <tr>
+                <td></td>
               </tr>
             </tbody>
           </table>
