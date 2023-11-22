@@ -20,13 +20,13 @@
         <table class="table">
             <thead class="thead-dark">
               <tr>
-                <th scope="col">Tipo</th>
-                <th scope="col">Normal</th>
-                <th scope="col">Fuego</th>
-                <th scope="col">Agua</th>
-                <th scope="col">Palnta</th>
-                <th scope="col">Electrico</th>
-                <th scope="col">Hielo</th>
+                <th scope="col">id</th>
+                <th scope="col">EficazContra</th>
+                <th scope="col">DébilContra</th>
+                <th scope="col">EstándarContra</th>
+                <th scope="col">VulnerableA</th>
+                <th scope="col">InmuneA</th>
+            <!--  <th scope="col">Hielo</th>
                 <th scope="col">Lucha</th>
                 <th scope="col">Veneno</th>
                 <th scope="col">Tierra</th>
@@ -38,19 +38,19 @@
                 <th scope="col">Dragon</th>
                 <th scope="col">Siniestro</th>
                 <th scope="col">Acero</th>
-                <th scope="col">Hada</th>
+                <th scope="col">Hada</th>-->
               </tr>
             </thead>
 
             <tbody>
               <tr *ngFor="let tipo of efectividadSeleccionada">
                 <th scope="row">{{tipo.id}}</th>
-                <td>x{{tipo.Normal}}</td>
-                <td>x{{tipo.Fire}}</td>
-                <td>x{{tipo.Water}}</td>
-                <td>x{{tipo.Grass}}</td>
-                <td>x{{tipo.Electric}}</td>
-                <td>x{{tipo.Ice}}</td>
+                <td>{{tipo.EficazContra}}</td>
+                <td>{{tipo.DebilContra}}</td>
+                <td>{{tipo.EstandarContra}}</td>
+                <td>{{tipo.VulnerableA}}</td>
+                <td>{{tipo.InmuneA}}</td>
+            <!--<td>x{{tipo.Ice}}</td>
                 <td>x{{tipo.Fighting}}</td>
                 <td>x{{tipo.Poison}}</td>
                 <td>x{{tipo.Ground}}</td>
@@ -62,13 +62,15 @@
                 <td>x{{tipo.Dragon}}</td>
                 <td>x{{tipo.Dark}}</td>
                 <td>x{{tipo.Steel}}</td>
-                <td>x{{tipo.Fairy}}</td>
+                <td>x{{tipo.Fairy}}</td>-->    
               </tr>
               <tr>
                 <td></td>
               </tr>
             </tbody>
           </table>
+
+
 
 
         <!--<div *ngIf="efectividades">
