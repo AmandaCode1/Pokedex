@@ -17,78 +17,34 @@
         <p>Altura: {{ detallePokemon.altura }}</p>
         <p>Peso: {{ detallePokemon.peso }}</p>
 
-        <table class="table">
+        <table class="table" *ngFor="let tipo of efectividadSeleccionada">
             <thead class="thead-dark">
+              
               <tr>
-                <th scope="col">id</th>
-                <th scope="col">EficazContra</th>
-                <th scope="col">DébilContra</th>
-                <th scope="col">EstándarContra</th>
-                <th scope="col">VulnerableA</th>
-                <th scope="col">InmuneA</th>
-            <!--  <th scope="col">Hielo</th>
-                <th scope="col">Lucha</th>
-                <th scope="col">Veneno</th>
-                <th scope="col">Tierra</th>
-                <th scope="col">Volador</th>
-                <th scope="col">Psiquico</th>
-                <th scope="col">Bicho</th>
-                <th scope="col">Roca</th>
-                <th scope="col">Fantasma</th>
-                <th scope="col">Dragon</th>
-                <th scope="col">Siniestro</th>
-                <th scope="col">Acero</th>
-                <th scope="col">Hada</th>-->
+                <th>TABLA DE EFECTIVIDADES</th>
+             </tr>
+             <tr>
+              <th>Muy eficaz: </th><td></td>
+            </tr>
+               <tr>
+                <th>Eficaz: </th><td>{{tipo.EficazContra}}</td>
+              </tr>
+              <tr> 
+                <th>Resistente: </th><td>{{tipo.DebilContra}}</td>
+              </tr>
+              <tr>
+                <th>Muy resistente: </th><td></td>
+              </tr>
+               <tr>
+                <th>No le afecta: </th><td>{{tipo.InmuneA}}</td>
               </tr>
             </thead>
-
-            <tbody>
-              <tr *ngFor="let tipo of efectividadSeleccionada">
-                <th scope="row">{{tipo.id}}</th>
-                <td>{{tipo.EficazContra}}</td>
-                <td>{{tipo.DebilContra}}</td>
-                <td>{{tipo.EstandarContra}}</td>
-                <td>{{tipo.VulnerableA}}</td>
-                <td>{{tipo.InmuneA}}</td>
-            <!--<td>x{{tipo.Ice}}</td>
-                <td>x{{tipo.Fighting}}</td>
-                <td>x{{tipo.Poison}}</td>
-                <td>x{{tipo.Ground}}</td>
-                <td>x{{tipo.Flying}}</td>
-                <td>x{{tipo.Psychic}}</td>
-                <td>x{{tipo.Bug}}</td>
-                <td>x{{tipo.Rock}}</td>
-                <td>x{{tipo.Ghost}}</td>
-                <td>x{{tipo.Dragon}}</td>
-                <td>x{{tipo.Dark}}</td>
-                <td>x{{tipo.Steel}}</td>
-                <td>x{{tipo.Fairy}}</td>-->    
-              </tr>
-              <tr>
-                <td></td>
-              </tr>
-            </tbody>
           </table>
-
-
-
-
-        <!--<div *ngIf="efectividades">
-            <h3>Efectividades:</h3>
-            <ul>
-                <li><strong>Doble Daño a:</strong> {{ efectividades.dobleDanoA.join(', ') }}</li>
-                <li><strong>Mitad Daño a:</strong> {{ efectividades.mitadDanoA.join(', ') }}</li>
-                <li><strong>No Daño a:</strong> {{ efectividades.noDanoA.join(', ') }}</li>
-                <li><strong>Doble Daño Desde:</strong> {{ efectividades.dobleDanoDesde.join(', ') }}</li>
-                <li><strong>Mitad Daño Desde:</strong> {{ efectividades.mitadDanoDesde.join(', ') }}</li>
-                <li><strong>No Daño Desde:</strong> {{ efectividades.noDanoDesde.join(', ') }}</li>
-            </ul>
-        </div>-->
-
         <div>
             <img [src]="detallePokemon.image" alt="{{ detallePokemon.name }}">
             <img [src]="detallePokemon.imageShiny" alt="{{ detallePokemon.name }}">
         </div>
+
         <ul>
             <li><strong>Vida: </strong> {{ detallePokemon.vida }}</li>
             <li><strong>Velocidad: </strong> {{ detallePokemon.velocidad }}</li>

@@ -1,169 +1,85 @@
 
 [
-  {
-    "id":"steel",
-    "EficazContra": ["Hada", "Hielo", "Roca"],
-    "DebilContra": ["Acero", "Agua", "Eléctrico", "Fuego"],
-    "EstandarContra": ["Acero", "Bicho", "Dragón", "Hada", "Hielo", "Normal", "Planta", "Psíquico", "Roca", "Veneno", "Volador"],
-    "VulnerableA": ["Fuego", "Lucha", "Tierra"],
-    "InmuneA": ["Veneno"]
-    
-  },
-  
-  {
-      "id":"water",
-      "EficazContra": ["Fuego", "Roca", "Tierra"],
-      "DébilContra": ["Agua", "Dragón", "Planta"],
-      "EstándarContra": ["Acero", "Agua", "Fuego", "Hielo"],
-      "VulnerableA": ["Fuego", "Roca", "Volador"],
-      "InmuneA": []
-  },
-  
-  {
-    "id":"bug",
-    "EficazContra": ["Planta", "Psíquico", "Siniestro"],
-    "DebilContra": ["Acero", "Fantasma", "Fuego", "Hada", "Lucha", "Volador"],
-    "EstandarContra": ["Lucha", "Planta", "Tierra"],
-    "VulnerableA": ["Fuego", "Roca", "Volador"],
-    "InmuneA": []
-  },
-  
-  {
-    "id":"dragon",
-    "EficazContra": ["Dragón"],
-    "DebilContra": ["Acero", "Hada"],
-    "EstandarContra": ["Agua", "Fuego", "Eléctrico", "Planta"],
-    "VulnerableA": ["Dragón", "Hada", "Hielo"],
-    "InmuneA": []
-  },
-  
-  {
-    "id":"electric",
-    "EficazContra": ["Agua", "Volador"],
-    "DebilContra": ["Dragón", "Eléctrico", "Planta", "Tierra"],
-    "EstandarContra": ["Acero", "Eléctrico", "Volador"],
-    "VulnerableA": ["Tierra"],
-    "InmuneA": [] 
-  },
-  
-  {
-    "id": "ghost",
-    "EficazContra": ["Fantasma", "Volador"],
-    "DebilContra": ["Bicho", "Siniestro"],
-    "EstandarContra": ["Bicho", "Lucha", "Normal", "Siniestro"],
-    "VulnerableA": ["Fantasma", "Siniestro"],
-    "InmuneA": ["Lucha", "Normal"]
-  },
-  
-  {
-   "id": "fire",
-    "EficazContra": ["Acero", "Bicho", "Hielo", "Planta"],
-    "DébilContra": ["Agua", "Dragón", "Fuego", "Roca"],
-    "EstándarContra": ["Acero", "Bicho", "Fuego", "Hielo", "Planta"],
-    "VulnerableA": ["Agua", "Roca", "Tierra"],
-    "InmuneA": []
-    
-  },
-  
-  {
-    "id":"fairy",
-    "EficazContra": ["Dragón", "Lucha", "Siniestro"],
-    "DebilContra": ["Acero", "Fuego", "Veneno"],
-    "EstandarContra": ["Bicho", "Dragón", "Lucha", "Siniestro"],
-    "VulnerableA": ["Acero", "Siniestro"],
-    "InmuneA": ["Dragón"]
-    
-  },
-  
-  {
-    "id":"ice",
-    "EficazContra": ["Dragón", "Planta", "Tierra", "Volador"],
-    "DébilContra": ["Acero", "Agua", "Fuego", "Hielo"],
-    "EstandarContra": ["Hielo"],
-    "VulnerableA": ["Acero", "Fuego", "Lucha", "Roca"],
-    "InmuneA": []
-    },
-  
-  {
-    "id":"fighting",
-    "EficazContra": ["Normal"],
-    "DebilContra": ["Bicho", "Fantasma", "Hada", "Psíquico", "Volador"],
-    "EstandarContra": ["Bicho", "Siniestro", "Volador"],
-    "VulnerableA": ["Hada", "Psíquico", "Volador"],
-    "InmuneA": ["Fantasma"]
-  },
-  
-  {
-    "id":"normal",
-    "EficazContra": [],
-    "DebilContra": ["Acero", "Fantasma", "Roca"],
-    "EstandarContra": ["Fantasma"],
-    "VulnerableA": ["Lucha"],
-    "InmuneA": ["Fantasma"]
-  },
-  
-  {
-    "id":"grass", 
-    "EficazContra": ["Agua", "Roca", "Tierra"],
-    "DebilContra": ["Acero", "Bicho", "Dragón", "Fuego", "Hierba", "Volador"],
-    "EstandarContra": ["Agua", "Eléctrico", "Hierba", "Tierra"],
-    "VulnerableA": ["Bicho", "Fuego", "Hielo", "Veneno", "Volador"],
-    "InmuneA": []
-  },
-  
-  {
-    "id":"psychic" ,
-    "EficazContra": ["Lucha", "Veneno"],
-    "DebilContra": ["Acero", "Psíquico", "Siniestro"],
-    "EstandarContra": ["Lucha", "Psíquico"],
-    "VulnerableA": ["Bicho", "Fantasma", "Siniestro"],
-    "InmuneA": ["Siniestro"]
-  },
-  
-  {
-    "id":"rock",
-    "EficazContra": ["Bicho", "Fuego", "Hielo", "Volador"],
-    "DebilContra": ["Acero", "Lucha", "Tierra"],
-    "EstandarContra": ["Fuego", "Normal", "Veneno", "Volador"],
-    "VulnerableA": ["Acero", "Agua", "Lucha", "Hierba", "Tierra"],
-    "InmuneA": []
-  },
-  
-  {
-    "id": "dark",
-    "EficazContra": ["Fantasma", "Psíquico"],
-    "DebilContra": ["Hada", "Lucha", "Siniestro"],
-    "EstandarContra": ["Fantasma", "Psíquico", "Siniestro"],
-    "VulnerableA": ["Bicho", "Hada", "Lucha"],
-    "InmuneA": []
-  },
-  
-  {  
-      "id": "ground",
-      "EficazContra": ["Acero", "Eléctrico", "Fuego", "Roca", "Veneno"],
-      "DebilContra": ["Bicho", "Planta", "Volador"],
-      "EstandarContra": ["Eléctrico", "Roca", "Veneno"],
-      "VulnerableA": ["Agua", "Hielo", "Planta"],
-      "InmuneA": ["Eléctrico"]
-    },
-  
-  {
-      "id": "poison",
-      "EficazContra": ["Hada", "Planta"],
-      "DebilContra": ["Acero", "Fantasma", "Roca", "Tierra", "Veneno"],
-      "EstandarContra": ["Hada", "Planta", "Veneno"],
-      "VulnerableA": ["Psíquico", "Tierra"],
-      "InmuneA": []
-    },
-  
-  {
-    "id": "flying",
-    "EficazContra": ["Bicho", "Lucha", "Planta"],
-    "DebilContra": ["Acero", "Eléctrico", "Roca"],
-    "EstandarContra": ["Lucha", "Planta", "Tierra"],
-    "VulnerableA": ["Eléctrico", "Hielo", "Roca"],
-    "InmuneA": ["Tierra"]
-  }
-  
+{
+  "id": "normal",
+  "EficazContra": ["Fighting"],
+  "InmuneA": ["Ghost"],
+  "DebilContra": []
+},
 
+{
+  "id":"fire",
+  "EficazContra": ["Water", "Ground", "Rock"],
+  "DebilContra": ["Grass", "Ice", "Bug", "Steel","Fire","Fairy"]
+},
+{  "id":"water", 
+  "EficazContra": ["Grass", "Electric"],
+  "DebilContra": ["Fire", "Ground", "Rock","Water"]
+},
+{   "id":"grass",
+  "EficazContra": ["Fire", "Ice", "Poison", "Flying", "Bug"],
+  "DebilContra": ["Water", "Ground", "Electric","Grass"]
+},
+{     "id":"electric",
+  "EficazContra": ["Ground"],
+  "DebilContra": ["Water", "Flying","Steel"]
+},
+{   "id":"ice",
+  "EficazContra": ["Fire", "Fighting", "Rock", "Steel"],
+  "DebilContra": ["Grass", "Ground", "Flying", "Dragon"]
+},
+{   "id":"fighting",
+  "EficazContra": ["Flying", "Psychic", "Fairy"],
+  "DebilContra": [ "Bug", "Rock", "Dark"]
+},
+{   "id":"poison",
+  "EficazContra": ["Ground", "Psychic"],
+  "DebilContra": ["Grass", "Fairy", "Poison", "Bug","Fighting"]
+},
+{     "id":"ground",
+  "EficazContra": ["Water", "Grass", "Ice"],
+  "InmuneA": ["Electric"],
+  "DebilContra": ["Electric", "Poison", "Rock"]
+},
+{   "id":"flying",
+  "EficazContra": ["Electric", "Ice", "Rock"],
+  "InmuneA": ["Ground"],
+  "DebilContra": ["Grass", "Fighting", "Bug"]
+},
+{  "id":"psychic",
+  "EficazContra": ["Bug", "Ghost", "Dark"],
+  "DebilContra": ["Fighting", "Poison"]
+},
+{    "id":"bug",
+  "EficazContra": ["Fire", "Flying", "Rock"],
+  "DebilContra": ["Grass", "Fighting"]
+},
+{   "id":"rock",
+  "EficazContra": ["Water", "Grass", "Fighting", "Ground", "Steel"],
+  "DebilContra": ["Fire", "Poison", "Flying", "Bug", "Normal"]
+},
+{  "id":"ghost",
+  "EficazContra": ["Ghost", "Dark"],
+  "InmuneA": ["Normal", "Fighting"],
+  "DebilContra": ["Poison","Bug"]
+},
+{   "id":"steel",
+  "EficazContra": ["Fire", "Fighting", "Ground"],
+  "InmuneA": ["Poison"],
+  "DebilContra": ["Ice", "Rock", "Fairy","Steel","Bug","Dragon","Normal","Grass","Psychic","Flying"]
+},
+{    "id":"fairy",
+  "EficazContra": ["Poison", "Steel"],
+  "InmuneA": ["Dragon"],
+  "DebilContra": ["Fighting", "Bug"]
+},
+{  "id":"dragon",
+  "EficazContra": ["Ice", "Fairy", "Dragon"],
+  "DebilContra": ["Water","Grass","Fire","Electric"]
+},
+{    "id":"dark",
+  "EficazContra": ["Fighting", "Fairy", "Bug"],
+  "InmuneA": ["Psychic"],
+  "DebilContra": ["Ghost","Dark"]
+}
 ]
