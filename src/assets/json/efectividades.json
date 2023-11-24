@@ -10,15 +10,18 @@
 {
   "id":"fire",
   "EficazContra": ["Water", "Ground", "Rock"],
-  "DebilContra": ["Grass", "Ice", "Bug", "Steel","Fire","Fairy"]
+  "DebilContra": ["Grass", "Ice", "Bug", "Steel","Fire","Fairy"],
+  "InmuneA": []
 },
 {  "id":"water", 
   "EficazContra": ["Grass", "Electric"],
-  "DebilContra": ["Fire", "Ground", "Rock","Water"]
+  "DebilContra": ["Fire", "Ground", "Rock","Water"],
+  "InmuneA": []
 },
 {   "id":"grass",
   "EficazContra": ["Fire", "Ice", "Poison", "Flying", "Bug"],
-  "DebilContra": ["Water", "Ground", "Electric","Grass"]
+  "DebilContra": ["Water", "Ground", "Electric","Grass"],
+  "InmuneA": []
 },
 {     "id":"electric",
   "EficazContra": ["Ground"],
@@ -26,15 +29,18 @@
 },
 {   "id":"ice",
   "EficazContra": ["Fire", "Fighting", "Rock", "Steel"],
-  "DebilContra": ["Grass", "Ground", "Flying", "Dragon"]
+  "DebilContra": ["Grass", "Ground", "Flying", "Dragon"],
+  "InmuneA": []
 },
 {   "id":"fighting",
   "EficazContra": ["Flying", "Psychic", "Fairy"],
-  "DebilContra": [ "Bug", "Rock", "Dark"]
+  "DebilContra": [ "Bug", "Rock", "Dark"],
+  "InmuneA": []
 },
 {   "id":"poison",
   "EficazContra": ["Ground", "Psychic"],
-  "DebilContra": ["Grass", "Fairy", "Poison", "Bug","Fighting"]
+  "DebilContra": ["Grass", "Fairy", "Poison", "Bug","Fighting"],
+  "InmuneA": []
 },
 {     "id":"ground",
   "EficazContra": ["Water", "Grass", "Ice"],
@@ -52,11 +58,13 @@
 },
 {    "id":"bug",
   "EficazContra": ["Fire", "Flying", "Rock"],
-  "DebilContra": ["Grass", "Fighting"]
+  "DebilContra": ["Grass", "Fighting"],
+  "InmuneA": []
 },
 {   "id":"rock",
   "EficazContra": ["Water", "Grass", "Fighting", "Ground", "Steel"],
-  "DebilContra": ["Fire", "Poison", "Flying", "Bug", "Normal"]
+  "DebilContra": ["Fire", "Poison", "Flying", "Bug", "Normal"],
+  "InmuneA": []
 },
 {  "id":"ghost",
   "EficazContra": ["Ghost", "Dark"],
@@ -75,7 +83,8 @@
 },
 {  "id":"dragon",
   "EficazContra": ["Ice", "Fairy", "Dragon"],
-  "DebilContra": ["Water","Grass","Fire","Electric"]
+  "DebilContra": ["Water","Grass","Fire","Electric"],
+  "InmuneA": []
 },
 {    "id":"dark",
   "EficazContra": ["Fighting", "Fairy", "Bug"],
