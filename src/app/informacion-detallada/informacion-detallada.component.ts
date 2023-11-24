@@ -17,6 +17,9 @@ export class InformacionDetalladaComponent implements OnInit {
   descrip: any;
   Efectividades: any[] = tablaEfectividades;
   efectividadSeleccionada: any[] = [];
+  auxMuyEf: any[] = [];
+  auxMuyRes: any[] = [];
+  //tipo2: any[] = [];
   //json: any[] = [];
   //tipos: any;
   tipo: string[] = [];
@@ -50,10 +53,79 @@ export class InformacionDetalladaComponent implements OnInit {
   cargarJson(){
     console.log('Este es el resultado de cargar json', this.tipo);
     console.log('Efectividades:', this.Efectividades);
-    this.efectividadSeleccionada = this.Efectividades.filter(filtro => this.tipo.includes(filtro.id));
-    console.log('filtrado en json', this.efectividadSeleccionada);
+    if(this.tipo.length == 1){
+      this.efectividadSeleccionada = this.Efectividades.filter(filtro => this.tipo.includes(filtro.id));
+      console.log('filtrado en json', this.efectividadSeleccionada);
+    } else {
+      this.efectividadSeleccionada = this.Efectividades.filter(filtro => this.tipo.includes(filtro.id));
+      console.log('filtrado en json si hay mas de un tipo', this.efectividadSeleccionada);
+
+      //const nuevaEfectividadSeleccionada = [...this.efectividadSeleccionada];
+      for(let i = 0; i < this.efectividadSeleccionada.length; i++){
+        for(let j = i + 1; j < this.efectividadSeleccionada.length; j++){
+          const tipo1 = this.efectividadSeleccionada[i];
+          console.log('Tipo1:', tipo1 );
+          const tipo2 = this.efectividadSeleccionada[j];
+          console.log('Tipo2:', tipo2 );
+
+          //Comparo elementos de EficazContra
+          //const nuevosEficaces = [];
+          for(const tipo11 of tipo1.EficazContra){
+            //let encontrado = false;
+            for(const tipo22 of tipo2.EficazContra){
+              if(tipo11 === tipo22){
+                this.auxMuyEf.push(tipo11);
+                //encontrado = true;
+                console.log('Elemento del array Muyeficaz: ',tipo11);
+                break;
+              } 
+              //if(!encontrado){
+                //nuevosEficaces.push(tipo22);
+              //}
+            }
+          }
+          //Comparo elementos de MuyResistente
+          //const nuevosResistentes = [];
+          for(const tipo11 of tipo1.DebilContra){
+            //let encontrado = false;
+            for(const tipo22 of tipo2.DebilContra){
+              if(tipo11 === tipo22){
+                this.auxMuyRes.push(tipo11);
+                //encontrado = true;
+                console.log('Elemento del array MuyResis: ',tipo11);
+                break;
+              } 
+              //if(!encontrado){
+                //nuevosResistentes.push(tipo22);
+              //}
+            }
+
+            //nuevaEfectividadSeleccionada[0].EficazContra.push(...nuevosEficaces);
+            //nuevaEfectividadSeleccionada[0].DebilContra.push(...nuevosResistentes);
+
+          }
+        }
+
+        //this.efectividadSeleccionada = nuevaEfectividadSeleccionada;
+
+        //if(this.efectividadSeleccionada.length === 2){
+          //this.efectividadSeleccionada.pop();
+          //console.log('se borra el segundo tipo.')
+        //}
+
+      }
+
+      this.efectividadSeleccionada[0].EficazContra.push(this.efectividadSeleccionada[1].EficazContra);
+      this.efectividadSeleccionada[0].DebilContra.push(this.efectividadSeleccionada[1].DebilContra);
+      this.efectividadSeleccionada[0].InmuneA.push(this.efectividadSeleccionada[1].InmuneA);
+      console.log('Inmune tipo 1: ', this.efectividadSeleccionada[0].InmuneA, 'Inmune tipo 2: ', this.efectividadSeleccionada[1].InmuneA);
+      
+
+      this.efectividadSeleccionada.pop();
+      console.log(this.efectividadSeleccionada);
+
+    }
   }
-  
 
       //this.pokemonService.getJson()
 
