@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../pokemon.service';
 import { detallePokemon } from '../model/detallePokemon';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, forkJoin, map } from 'rxjs';
-import { Tipos } from '../model/tipos';
+import { forkJoin } from 'rxjs';
 import tablaEfectividades from 'src/assets/json/efectividades.json';
 
 @Component({
@@ -19,9 +18,6 @@ export class InformacionDetalladaComponent implements OnInit {
   efectividadSeleccionada: any[] = [];
   auxMuyEf: any[] = [];
   auxMuyRes: any[] = [];
-  //tipo2: any[] = [];
-  //json: any[] = [];
-  //tipos: any;
   tipo: string[] = [];
 
   constructor(private ruta: ActivatedRoute, private pokemonService: PokemonService) { }
@@ -29,7 +25,6 @@ export class InformacionDetalladaComponent implements OnInit {
   ngOnInit(): void {
     this.cargarDetallesPokemon();
     this.tipoPorId();
-    //this.cargarJson();
   }
 
   tipoPorId(){
@@ -53,12 +48,11 @@ export class InformacionDetalladaComponent implements OnInit {
   cargarJson(){
     console.log('Este es el resultado de cargar json', this.tipo);
     console.log('Efectividades:', this.Efectividades);
-    if(this.tipo.length == 1){
-      this.efectividadSeleccionada = this.Efectividades.filter(filtro => this.tipo.includes(filtro.id));
-      console.log('filtrado en json', this.efectividadSeleccionada);
-    } else {
+    
+    if(this.tipo.length > 1){
       this.efectividadSeleccionada = this.Efectividades.filter(filtro => this.tipo.includes(filtro.id));
       console.log('filtrado en json si hay mas de un tipo', this.efectividadSeleccionada);
+      const nuevosEficaces = this.efectividadSeleccionada[0].EficazContra;
 
       //const nuevaEfectividadSeleccionada = [...this.efectividadSeleccionada];
       for(let i = 0; i < this.efectividadSeleccionada.length; i++){
@@ -69,62 +63,80 @@ export class InformacionDetalladaComponent implements OnInit {
           console.log('Tipo2:', tipo2 );
 
           //Comparo elementos de EficazContra
-          //const nuevosEficaces = [];
-          for(const tipo11 of tipo1.EficazContra){
+          const nuevosEficaces = [];
+          for(let tipo11 of tipo1.EficazContra){
             //let encontrado = false;
-            for(const tipo22 of tipo2.EficazContra){
+            for(let tipo22 of tipo2.EficazContra){
               if(tipo11 === tipo22){
-                this.auxMuyEf.push(tipo11);
+                this.auxMuyEf.push(tipo22);
                 //encontrado = true;
                 console.log('Elemento del array Muyeficaz: ',tipo11);
-                break;
-              } 
-              //if(!encontrado){
+                break;//Para que salga del bucle una vez lo encuentre
+              } //else {
                 //nuevosEficaces.push(tipo22);
               //}
             }
           }
           //Comparo elementos de MuyResistente
           //const nuevosResistentes = [];
-          for(const tipo11 of tipo1.DebilContra){
+          for(let tipo11 of tipo1.DebilContra){
             //let encontrado = false;
-            for(const tipo22 of tipo2.DebilContra){
+            for(let tipo22 of tipo2.DebilContra){
               if(tipo11 === tipo22){
                 this.auxMuyRes.push(tipo11);
                 //encontrado = true;
                 console.log('Elemento del array MuyResis: ',tipo11);
                 break;
               } 
-              //if(!encontrado){
-                //nuevosResistentes.push(tipo22);
-              //}
             }
-
-            //nuevaEfectividadSeleccionada[0].EficazContra.push(...nuevosEficaces);
-            //nuevaEfectividadSeleccionada[0].DebilContra.push(...nuevosResistentes);
-
           }
         }
 
-        //this.efectividadSeleccionada = nuevaEfectividadSeleccionada;
-
-        //if(this.efectividadSeleccionada.length === 2){
-          //this.efectividadSeleccionada.pop();
-          //console.log('se borra el segundo tipo.')
-        //}
-
       }
 
-      this.efectividadSeleccionada[0].EficazContra.push(this.efectividadSeleccionada[1].EficazContra);
-      this.efectividadSeleccionada[0].DebilContra.push(this.efectividadSeleccionada[1].DebilContra);
-      this.efectividadSeleccionada[0].InmuneA.push(this.efectividadSeleccionada[1].InmuneA);
-      console.log('Inmune tipo 1: ', this.efectividadSeleccionada[0].InmuneA, 'Inmune tipo 2: ', this.efectividadSeleccionada[1].InmuneA);
-      
+      this.efectividadSeleccionada[0].EficazContra.push(...this.efectividadSeleccionada[1].EficazContra);
+      console.log('eficazContra antes ', this.efectividadSeleccionada[0].EficazContra);
+      const setEficazContra = new Set(this.efectividadSeleccionada[0].EficazContra);
+      this.efectividadSeleccionada[0].EficazContra = Array.from(setEficazContra);
+      console.log('eficazContra despues ', this.efectividadSeleccionada[0].EficazContra);
+
+      this.efectividadSeleccionada[0].DebilContra.push(...this.efectividadSeleccionada[1].DebilContra);
+      console.log('debilContra antes ', this.efectividadSeleccionada[0].DebilContra);
+      //Al convertir el array en un conjunto se eliminan los duplicados
+      const setDebilContra = new Set(this.efectividadSeleccionada[0].DebilContra);
+      //Vuelvo a convertirlo en array
+      this.efectividadSeleccionada[0].DebilContra = Array.from(setDebilContra);
+      console.log('debilContra despues del set ', this.efectividadSeleccionada[0].DebilContra);
+
+      this.efectividadSeleccionada[0].InmuneA.push(...this.efectividadSeleccionada[1].InmuneA);
+      console.log('InmuneA antes ', this.efectividadSeleccionada[0].InmuneA);
+      const setInmuneA = new Set(this.efectividadSeleccionada[0].InmuneA);
+      this.efectividadSeleccionada[0].InmuneA = Array.from(setInmuneA);
+      console.log('InmuneA despues del set ', this.efectividadSeleccionada[0].InmuneA);
 
       this.efectividadSeleccionada.pop();
-      console.log(this.efectividadSeleccionada);
+      console.log('despues de borrar el segundo tipo',this.efectividadSeleccionada);
 
     }
+  }
+
+  cargarDetallesPokemon() {
+    //Obtenemos el id de la url que se abre al hacer clic en un pokemon
+    this.ruta.params.subscribe(params => {
+      const id = params['id'];
+      //manejamos dos respuestas cn el forkjoin
+      forkJoin({
+        detPokemon: this.pokemonService.getIdDetallePokemon(id),
+        descrip: this.pokemonService.getIdDescripcionPokemon(id)
+      }).subscribe(
+        ({ detPokemon, descrip }) => {
+          this.detallePokemon = this.pokemonService.getDetallePokemon(detPokemon, descrip);
+        },
+        (error: any) => {
+          console.log('Error obteniendo descripcion del pokemon', error);
+        }
+      );
+    });
   }
 
       //this.pokemonService.getJson()
@@ -148,26 +160,6 @@ export class InformacionDetalladaComponent implements OnInit {
       this.efectividades = data;
       this.seCargaJson = true;
     });*/
- 
-
-  cargarDetallesPokemon() {
-    //Obtenemos el id de la url que se abre al hacer clic en un pokemon
-    this.ruta.params.subscribe(params => {
-      const id = params['id'];
-      //manejamos dos respuestas cn el forkjoin
-      forkJoin({
-        detPokemon: this.pokemonService.getIdDetallePokemon(id),
-        descrip: this.pokemonService.getIdDescripcionPokemon(id)
-      }).subscribe(
-        ({ detPokemon, descrip }) => {
-          this.detallePokemon = this.pokemonService.getDetallePokemon(detPokemon, descrip);
-        },
-        (error: any) => {
-          console.log('Error obteniendo descripcion del pokemon', error);
-        }
-      );
-    });
-  }
 
   /*cargarEfectividades() {
     //Obtenemos el id de la url que se abre al hacer clic en un pokemon

@@ -4,7 +4,6 @@ import { Observable, forkJoin, map, switchMap, tap } from 'rxjs';
 import { Pokemon } from './model/pokemon';
 import { detallePokemon } from './model/detallePokemon';
 import { Tipos } from './model/tipos';
-//import { Efectividad } from './model/efectividades';
 
 @Injectable({
   providedIn: 'root'
@@ -78,12 +77,6 @@ export class PokemonService {
     const url = `${this.url}/${id}`;
     return this.http.get(url);
   }
-
-  //Url para los tipos
-  /*getTipoEfectividades(tipo: string): Observable<any> {
-    const url = `https://pokeapi.co/api/v2/type/${tipo}`;
-    return this.http.get(url)
-  }*/
 
   //Buscar tipo por id //Si hay dos tipos como la modifico?
   getTipoPorId(id: number): Observable<Tipos> {
