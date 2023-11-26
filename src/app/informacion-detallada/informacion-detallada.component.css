@@ -7,3 +7,49 @@ h1{
 body{
     color: white;
 }
+
+
+.vida{
+    border: 2px;
+border-color: antiquewhite;
+
+    color: aqua;
+}
+
+/*******************Imangen shiny***********************/
+.image-container {
+    text-align: center;
+    position: relative;
+  }
+
+#toggleShiny {
+    display: none;
+  }
+  
+  .toggle-label {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  /* Estilo para la imagen normal */
+  .normal-image {
+    display: block;
+  }
+  
+  /* Oculta la imagen brillante inicialmente */
+  .shiny-image {
+    display: none;
+  }
+  
+  /* Cuando el checkbox está marcado, muestra la imagen brillante */
+  #toggleShiny:checked + .toggle-label .normal-image {
+    display: none;
+  }
+  
+  #toggleShiny:checked + .toggle-label .shiny-image {
+    display: block;
+  }
+
+  /*************************************************/
+

@@ -9,6 +9,7 @@
 <h1>Detalle del pokemon</h1>
 
 <body>
+  
     <div *ngIf="detallePokemon">
         <h2>ID: {{detallePokemon.id}}</h2>
         <h2>Nombre: {{ detallePokemon.name }}</h2>
@@ -16,7 +17,33 @@
         <p>Descripcion: {{ detallePokemon.descripcion }}</p>
         <p>Altura: {{ detallePokemon.altura }}</p>
         <p>Peso: {{ detallePokemon.peso }}</p>
+        
+    <div *ngIf="detallePokemon" class="image-container">
+      <input type="checkbox" id="toggleShiny">
+      <label for="toggleShiny" class="toggle-label">
+      <img class="pokemon-image normal-image" [src]="detallePokemon.image" alt="{{ detallePokemon.name }}">
+      <img class="pokemon-image shiny-image" [src]="detallePokemon.imageShiny" alt="{{ detallePokemon.name }}">
+      </label>
+      </div>
+    </div>
 
+   
+
+
+    <div>
+    <ul *ngIf="detallePokemon">
+        <li class="vida"><strong>Vida: </strong> {{ detallePokemon.vida }}</li>
+        <li><strong>Velocidad: </strong> {{ detallePokemon.velocidad }}</li>
+        <li><strong>Ataque: </strong> {{ detallePokemon.ataque }}</li>
+        <li><strong>Ataque Especial: </strong> {{ detallePokemon.ataqueEspecial }}</li>
+        <li><strong>Defensa: </strong> {{ detallePokemon.defensa }}</li>
+        <li><strong>Defensa Especial: </strong> {{ detallePokemon.defensaEspecial }}</li>
+    </ul>
+    
+</div>
+
+
+<div>
         <table class="table" *ngFor="let tipo of efectividadSeleccionada">
             <thead class="thead-dark">
               
@@ -40,19 +67,8 @@
               </tr>
             </thead>
           </table>
-        <div>
-            <img [src]="detallePokemon.image" alt="{{ detallePokemon.name }}">
-            <img [src]="detallePokemon.imageShiny" alt="{{ detallePokemon.name }}">
         </div>
-
-        <ul>
-            <li><strong>Vida: </strong> {{ detallePokemon.vida }}</li>
-            <li><strong>Velocidad: </strong> {{ detallePokemon.velocidad }}</li>
-            <li><strong>Ataque: </strong> {{ detallePokemon.ataque }}</li>
-            <li><strong>Ataque Especial: </strong> {{ detallePokemon.ataqueEspecial }}</li>
-            <li><strong>Defensa: </strong> {{ detallePokemon.defensa }}</li>
-            <li><strong>Defensa Especial: </strong> {{ detallePokemon.defensaEspecial }}</li>
-        </ul>
-        
-    </div>
 </body>
+
+
+
