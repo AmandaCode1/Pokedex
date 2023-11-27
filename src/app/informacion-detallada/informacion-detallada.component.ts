@@ -49,7 +49,10 @@ export class InformacionDetalladaComponent implements OnInit {
     console.log('Este es el resultado de cargar json', this.tipo);
     console.log('Efectividades:', this.Efectividades);
     
-    if(this.tipo.length > 1){
+    if(this.tipo.length == 1){
+      this.efectividadSeleccionada = this.Efectividades.filter(filtro => this.tipo.includes(filtro.id));
+      console.log('filtrado en json si hay mas de un tipo', this.efectividadSeleccionada);
+    } else {
       this.efectividadSeleccionada = this.Efectividades.filter(filtro => this.tipo.includes(filtro.id));
       console.log('filtrado en json si hay mas de un tipo', this.efectividadSeleccionada);
       const nuevosEficaces = this.efectividadSeleccionada[0].EficazContra;
