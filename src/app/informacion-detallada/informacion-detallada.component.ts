@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../pokemon.service';
 import { detallePokemon } from '../model/detallePokemon';
+import { evoluciones } from '../model/evoluciones';
+//import { evoluciones } from '../model/evoluciones';
 import { ActivatedRoute } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import tablaEfectividades from 'src/assets/json/efectividades.json';
@@ -19,12 +21,111 @@ export class InformacionDetalladaComponent implements OnInit {
   auxMuyEf: any[] = [];
   auxMuyRes: any[] = [];
   tipo: string[] = [];
+  especieElegida: any;
+  idEvolucion: number = 0;
+  evolucionElegida: any;
+  triggerElegido: any[] = [];
+  evolucionaA: any[] = [];
+  todasEvoluciones: evoluciones[] = [];
+  //todosTriggers: trigger[] = [];
 
   constructor(private ruta: ActivatedRoute, private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
     this.cargarDetallesPokemon();
     this.tipoPorId();
+    //this.getTodasEvoluciones();
+    //this.getTodosTriggers();
+  }
+
+  evolucionar(){
+    console.log('Buscando evolucion');
+    this.ruta.params.subscribe(params => {
+      const id = params['id'];
+      //Obtengo url pokemon-species/id
+      const urlEvo = this.pokemonService.getIdDescripcionPokemon(id).subscribe(
+        respuesta=>{
+          this.especieElegida = respuesta;
+          console.log('especie: ', this.especieElegida);
+          console.log('cadena evolucion: ', this.especieElegida.evolution_chain.url);
+          //Trocea la url para conseguir el id de evolucion
+          let trozosUrl = this.especieElegida.evolution_chain.url.split('/');
+          this.idEvolucion = trozosUrl[trozosUrl.length - 2];//-2 porque es la penultima parte
+          console.log('id evolucion', this.idEvolucion);
+          this.getEvolucion(this.idEvolucion);
+        }
+      );
+    }
+    );
+  }
+
+  //parte evolucion a, de la url de evoluciones por especie
+  getEvolucion(idEvo:number) {
+    this.pokemonService.getIdEvolucion(idEvo).subscribe(
+      respuesta=>{
+        this.evolucionElegida = respuesta;
+        console.log('evolucion elegida: ', this.evolucionElegida);
+        console.log('array evoluciones: ', this.evolucionElegida.chain.evolves_to);
+        //this.triggerElegido = this.evolucionElegida.chain.evolves_to.;
+        //this.triggerElegido.push(this.evolucionElegida.chain.evolution_details);
+        //console.log("triggerElegido: ", this.evolucionElegida.chain.evolves_to);
+        this.ObtenerEvoluciones(this.evolucionElegida.chain.evolves_to);
+      }
+    )
+  }
+
+  //Datos de los triggers de las evoluciones, lo cargo
+  //los elementos de 
+  getTodosTriggers(){
+    
+  }
+
+  //los arrays de evolves_to
+  ObtenerEvoluciones(array: any[]){
+    let evoluciones: any[] = array;
+    //let triggers: any[] = array;
+    //this.evolucionaA = [];
+    while(evoluciones.length > 0){
+      for(let i = 0; i < evoluciones.length; i++){
+        let evolucion = evoluciones[i].species;
+        //let trigger = evoluciones[i].evolution_details[0];
+        this.evolucionaA.push(evolucion);
+        //this.triggerElegido.push(trigger);
+        if(evoluciones[i].evolves_to){
+          evoluciones.push(...evoluciones[i].evolves_to);
+        }
+        //if(evoluciones[i].evolution_details[0]){
+          //triggers.push(...evoluciones[i].evolution_details[0]);
+        //}
+      }
+      evoluciones = evoluciones.slice(evoluciones.length);
+      //triggers = evoluciones.slice(evoluciones.length);
+
+
+      //for Recorre todas las posiciones del array, no solo la 0
+      /*let evolucion = evoluciones[0].species;//Aqui cojo solo la posicion 0 del array, y en el caso de evee hay 8
+      this.evolucionaA.push(evolucion);
+      evoluciones = evoluciones[0].evolves_to;*/
+    }
+    console.log('triggersElegido: ', this.triggerElegido);
+    console.log('evolucionaA: ', this.evolucionaA);
+    this.getTodasEvoluciones();
+  }
+
+  //Datos de los pokemon de las evoluciones, lo que cargo
+  getTodasEvoluciones(){
+    this.evolucionaA.forEach(p => {
+      this.pokemonService.getPokemonNombre(p.name).subscribe(
+        respuesta => {
+          const pokemonInfo = {
+            name: respuesta.name,
+            img: respuesta.sprites.front_default
+          };
+          this.todasEvoluciones.push(pokemonInfo);
+        }
+      );
+    });
+    console.log('Evoluciones final: ', this.todasEvoluciones);
   }
 
   tipoPorId(){

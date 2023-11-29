@@ -78,6 +78,11 @@ export class PokemonService {
     return this.http.get(url);
   }
 
+  getPokemonNombre(name: string): Observable<any>{
+    const url = `${this.url}/${name}`;
+    return this.http.get(url);
+  }
+
   //Buscar tipo por id //Si hay dos tipos como la modifico?
   getTipoPorId(id: number): Observable<Tipos> {
     return this.http.get(`${this.url}/${id}`).pipe(
@@ -86,6 +91,12 @@ export class PokemonService {
       }))
     );
   }
+
+  getIdEvolucion(id: number): Observable<any> {
+    return this.http.get(`https://pokeapi.co/api/v2/evolution-chain/${id}`);
+  }
+
+
 
   /*getEfectividades(tipo: string): Observable<Efectividad> {
     //Obtenemos efectividades de los pokemon desde la api

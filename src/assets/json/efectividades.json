@@ -4,7 +4,7 @@
   "id": "normal",
   "EficazContra": ["Fighting"],
   "InmuneA": ["Ghost"],
-  "DebilContra": []
+  "DebilContra": ["Steel", "Ghost", "Rock"]
 },
 
 {
