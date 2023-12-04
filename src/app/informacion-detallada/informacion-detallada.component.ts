@@ -28,6 +28,12 @@ export class InformacionDetalladaComponent implements OnInit {
   evolucionaA: any[] = [];
   todasEvoluciones: evoluciones[] = [];
   //todosTriggers: trigger[] = [];
+  listaMovimientos: any[] = [];
+  movimGeneracion: any[] = [];
+  nombresMovimientos: string[] = [];
+  movesPokemon: any[] = [];
+  movimientosOK: string[] = [];
+
 
   constructor(private ruta: ActivatedRoute, private pokemonService: PokemonService) { }
 
@@ -36,7 +42,64 @@ export class InformacionDetalladaComponent implements OnInit {
     this.tipoPorId();
     //this.getTodasEvoluciones();
     //this.getTodosTriggers();
+    //this.movimientos();
+    this.movimientosPokemon();
+    //this.movimientosGeneracion('terrain-pulse');
   }
+
+  /*movimientos(){
+    this.pokemonService.getMovimientos().subscribe((data: any) => {
+      //console.log('movimientos: ', data);
+      this.listaMovimientos = data.results;
+      console.log('movimientos: ', this.listaMovimientos);
+
+      this.listaMovimientos.forEach((movimiento) => {
+        const nombre = movimiento.name;
+        this.nombresMovimientos.push(nombre);
+        console.log(this.nombresMovimientos);
+      });
+    });
+  }*/
+
+  movimientosPokemon(){
+    this.ruta.params.subscribe(params => {
+      const id = params['id'];
+
+      this.pokemonService.getIdDetallePokemon(id).subscribe((data: any) => {
+        this.movesPokemon = data.moves;
+        console.log('Movimientos de este pokemon: ', this.movesPokemon);
+        this.nombresMovimientos = this.movesPokemon.map(move => move.move.name);
+        //console.log('Nombres movimientos: ', this.nombresMovimientos);
+        this.nombresMovimientos.forEach(nombre => this.movimientosGeneracion(nombre));
+        console.log('Resultado filtro por generaciones', this.movimientosOK);
+      });
+    });
+  }
+  
+  //para saber de que generacion es el movimiento
+  movimientosGeneracion(name: string){
+    this.pokemonService.getDetalleMovimiento(name).subscribe((data: any) => {
+      console.log('Detalles del movimiento:', data);
+      const nombre = data.name;
+      //categoria = demage_class.name = "status"
+      //tipo = type.name = "normal"
+      //potencia(fuerza) = power = 40
+      //precision(exactitud) = accurancy = 100
+      //como se obtiene
+      const generacion = data.generation.name;
+      //console.log('La generacion del movimiento ', nombre,' es ', generacion);
+      if(generacion == 'generation-i' || generacion == 'generation-ii' || generacion == 'generation-iii' || generacion == 'generation-iv'){
+        this.movimientosOK.push(nombre);
+      }
+      //console.log(this.movimientosOK);
+    })
+  }
+      /*const generaciones = ['generation-i', 'generation-ii', 'generation-iii', 'generation-iv'];
+
+      this.movimGeneracion = this.listaMovimientos.filter((move) => {
+        return generaciones.some((generation) => move.generation.name == generation);
+      });*/
+    
 
   evolucionar(){
     console.log('Buscando evolucion');

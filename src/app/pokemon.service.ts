@@ -96,6 +96,22 @@ export class PokemonService {
     return this.http.get(`https://pokeapi.co/api/v2/evolution-chain/${id}`);
   }
 
+  /*getMovimientos(): Observable<any>{
+    return this.http.get(`https://pokeapi.co/api/v2/move?limit=922`);
+  }*/
+
+  getDetalleMovimiento(name: string){
+    return this.http.get(`https://pokeapi.co/api/v2/move/${name}`)/*.pipe(
+      map((data: any) => {
+        const datosMovimiento = data.name;
+        const generation = data.generation.name;
+        if(generation == 'generation-i' || generation == 'generation-ii' || generation == 'generation-iii' || generation == 'generation-iv'){
+          return datosMovimiento;
+        }
+      })
+    )*/;
+  }
+
 
 
   /*getEfectividades(tipo: string): Observable<Efectividad> {
