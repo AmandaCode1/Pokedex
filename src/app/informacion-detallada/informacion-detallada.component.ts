@@ -6,6 +6,7 @@ import { movimientos } from '../model/movimientos';
 import { ActivatedRoute } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import tablaEfectividades from 'src/assets/json/efectividades.json';
+import { trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-informacion-detallada',
@@ -14,8 +15,22 @@ import tablaEfectividades from 'src/assets/json/efectividades.json';
 })
 export class InformacionDetalladaComponent implements OnInit {
 
-  detallePokemon: detallePokemon | undefined;
-  descrip: any;
+  detallePokemon: detallePokemon = {
+    descripcion: '',
+    vida: 0,
+    velocidad: 0,
+    ataque: 0,
+    ataqueEspecial: 0,
+    defensa: 0,
+    defensaEspecial: 0,
+    id: 0,
+    name: '',
+    image: '',
+    imageShiny: '',
+    types: [],
+    peso: 0,
+    altura: 0
+  };
   Efectividades: any[] = tablaEfectividades;
   efectividadSeleccionada: any[] = [];
   auxMuyEf: any[] = [];
@@ -27,15 +42,10 @@ export class InformacionDetalladaComponent implements OnInit {
   triggerElegido: any[] = [];
   evolucionaA: any[] = [];
   todasEvoluciones: evoluciones[] = [];
-  //todosTriggers: trigger[] = [];
-  evoElegidas: any[] = [];
-  listaMovimientos: any[] = [];
-  movimGeneracion: any[] = [];
   nombresMovimientos: any[] = [];
   movesPokemon: any[] = [];
   movimientosNivelOK: any[] = [];
   movimientosMaquinaOK: any[] = [];
-  detallesMovimientos: any[] = [];
   interfMovimientos: movimientos = {
     nombre: "",
     tipo: '',
@@ -44,21 +54,12 @@ export class InformacionDetalladaComponent implements OnInit {
     precision: 0,
   };
   
-
-  
-
-
   constructor(private ruta: ActivatedRoute, private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
     this.cargarDetallesPokemon();
     this.tipoPorId();
-    //this.getTodasEvoluciones();
-    //this.getTodosTriggers();
-    //this.movimientos();
     this.movimientosPokemon();
-    //this.movimientosGeneracion('terrain-pulse');
-    //this.datosMovimiento();
   }
 
   movimientosPokemon(){
@@ -108,6 +109,9 @@ export class InformacionDetalladaComponent implements OnInit {
     
   evolucionar(){
     console.log('Buscando evolucion');
+    this.evolucionaA = [];
+    this.todasEvoluciones = [];
+    this.triggerElegido = [];
     this.ruta.params.subscribe(params => {
       const id = params['id'];
       //Obtengo url pokemon-species/id
@@ -133,17 +137,14 @@ export class InformacionDetalladaComponent implements OnInit {
       respuesta=>{
         this.evolucionElegida = respuesta;
         console.log('evolucion elegida: ', this.evolucionElegida);
+
         console.log('array evoluciones: ', this.evolucionElegida.chain.evolves_to);
+        //console.log('trigger', this.evolucionElegida.chain.evolves_to);
+        //A evoluciones A que sera el array que contenga los nombres de las evoluciones le añado el pokemon baby
         this.evolucionaA.push(this.evolucionElegida.chain.species);
         this.ObtenerEvoluciones(this.evolucionElegida.chain.evolves_to);
       }
     )
-  }
-
-  //Datos de los triggers de las evoluciones, lo cargo
-  //los elementos de 
-  getTodosTriggers(){
-    
   }
 
   //los arrays de evolves_to
@@ -155,9 +156,14 @@ export class InformacionDetalladaComponent implements OnInit {
     while(evoluciones.length > 0){
       for(let i = 0; i < evoluciones.length; i++){
         let evolucion = evoluciones[i].species;
+        let trigger = evoluciones[i].evolution_details[0].min_level;
+        /*if(trigger === null){
+          trigger = "Evoluciona con objeto";
+        }*/
+        console.log('trigger', trigger);
         //let trigger = evoluciones[i].evolution_details[0];
         this.evolucionaA.push(evolucion);
-        //this.triggerElegido.push(trigger);
+        this.triggerElegido.push(trigger);
         if(evoluciones[i].evolves_to){
           evoluciones.push(...evoluciones[i].evolves_to);
         }
@@ -168,14 +174,10 @@ export class InformacionDetalladaComponent implements OnInit {
       evoluciones = evoluciones.slice(evoluciones.length);
       //triggers = evoluciones.slice(evoluciones.length);
 
-
-      //for Recorre todas las posiciones del array, no solo la 0
-      /*let evolucion = evoluciones[0].species;//Aqui cojo solo la posicion 0 del array, y en el caso de evee hay 8
-      this.evolucionaA.push(evolucion);
-      evoluciones = evoluciones[0].evolves_to;*/
     }
     //console.log('triggersElegido: ', this.triggerElegido);
     console.log('evolucionaA: ', this.evolucionaA);
+    console.log('trigger', this.triggerElegido);
     this.getTodasEvoluciones();
   }
 
@@ -186,6 +188,7 @@ export class InformacionDetalladaComponent implements OnInit {
         respuesta => {
           const pokemonInfo = {
             name: respuesta.name,
+            nivel: this.triggerElegido,
             img: respuesta.sprites.other.home.front_default,
           };
           this.todasEvoluciones.push(pokemonInfo);
@@ -309,52 +312,5 @@ export class InformacionDetalladaComponent implements OnInit {
       );
     });
   }
-
-      //this.pokemonService.getJson()
-
-    /*if(this.detallePokemon && this.detallePokemon.types){
-      const tipos = this.detallePokemon.types.map((tipo: any) => tipo.type.name);
-
-      this.pokemonService.getJson().subscribe(data =>{
-        this.Efectividades = data;
-
-        this.efectividadSeleccionada = tipos.map(type =>
-          this.Efectividades.find(efectividad => efectividad.id === type)
-          );
-      });
-    } else {
-      console.log("detallepokemon es undefined")
-    }*/
-      
-  
-    /*.subscribe(data => {
-      this.efectividades = data;
-      this.seCargaJson = true;
-    });*/
-
-  /*cargarEfectividades() {
-    //Obtenemos el id de la url que se abre al hacer clic en un pokemon
-    this.ruta.params.subscribe(params => {
-      const id = params['id'];
-      
-      this.pokemonService.getTipoPorId(id).subscribe(
-        (tipos: string[]) => {
-          this.pokemonService.getEfectividades(tipos[0]).subscribe(
-            (efectividades: Efectividad) => {
-              console.log('Respuesta del servicio:', efectividades);
-              this.efectividades = efectividades;
-            },
-            error => {
-              console.log('Error al cargar efectividades', error);
-            }
-          );
-          },
-          error => {
-            console.log('Error al obtener tipos', error);
-          }
-        );
-    });
-  }*/
-
       
 }

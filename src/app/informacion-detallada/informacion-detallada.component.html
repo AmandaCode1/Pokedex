@@ -78,11 +78,13 @@
         </div>
   
 
-        <button class="boton evolucion" (click)="evolucionar()">Evolucionar</button>
-        <div *ngFor="let datospokemon of todasEvoluciones">
+        <button class="boton-evolucion" (click)="evolucionar()">Evolucionar</button>
+        <div class="texto-evoluciones" *ngFor="let datospokemon of todasEvoluciones">
          <h3>{{datospokemon.name}}</h3>
+         <p>Niveles a los que evoluciona: {{datospokemon.nivel}}</p>
          <img class="imagen-pokemon" [src]="datospokemon.img" alt="{{datospokemon.name}}">
        </div>
+       
 
       <div class="tabla-movimientos-nivel">
        <table>
