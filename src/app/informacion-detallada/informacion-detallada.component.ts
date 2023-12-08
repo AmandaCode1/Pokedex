@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../pokemon.service';
 import { detallePokemon } from '../model/detallePokemon';
 import { evoluciones } from '../model/evoluciones';
-//import { evoluciones } from '../model/evoluciones';
+import { movimientos } from '../model/movimientos';
 import { ActivatedRoute } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import tablaEfectividades from 'src/assets/json/efectividades.json';
@@ -28,11 +28,24 @@ export class InformacionDetalladaComponent implements OnInit {
   evolucionaA: any[] = [];
   todasEvoluciones: evoluciones[] = [];
   //todosTriggers: trigger[] = [];
+  evoElegidas: any[] = [];
   listaMovimientos: any[] = [];
   movimGeneracion: any[] = [];
-  nombresMovimientos: string[] = [];
+  nombresMovimientos: any[] = [];
   movesPokemon: any[] = [];
-  movimientosOK: string[] = [];
+  movimientosNivelOK: any[] = [];
+  movimientosMaquinaOK: any[] = [];
+  detallesMovimientos: any[] = [];
+  interfMovimientos: movimientos = {
+    nombre: "",
+    tipo: '',
+    categoria: '',
+    potencia: 0,
+    precision: 0,
+  };
+  
+
+  
 
 
   constructor(private ruta: ActivatedRoute, private pokemonService: PokemonService) { }
@@ -45,21 +58,8 @@ export class InformacionDetalladaComponent implements OnInit {
     //this.movimientos();
     this.movimientosPokemon();
     //this.movimientosGeneracion('terrain-pulse');
+    //this.datosMovimiento();
   }
-
-  /*movimientos(){
-    this.pokemonService.getMovimientos().subscribe((data: any) => {
-      //console.log('movimientos: ', data);
-      this.listaMovimientos = data.results;
-      console.log('movimientos: ', this.listaMovimientos);
-
-      this.listaMovimientos.forEach((movimiento) => {
-        const nombre = movimiento.name;
-        this.nombresMovimientos.push(nombre);
-        console.log(this.nombresMovimientos);
-      });
-    });
-  }*/
 
   movimientosPokemon(){
     this.ruta.params.subscribe(params => {
@@ -67,46 +67,51 @@ export class InformacionDetalladaComponent implements OnInit {
 
       this.pokemonService.getIdDetallePokemon(id).subscribe((data: any) => {
         this.movesPokemon = data.moves;
-        console.log('Movimientos de este pokemon: ', this.movesPokemon);
-        this.nombresMovimientos = this.movesPokemon.map(move => move.move.name);
-        //console.log('Nombres movimientos: ', this.nombresMovimientos);
-        this.nombresMovimientos.forEach(nombre => this.movimientosGeneracion(nombre));
-        console.log('Resultado filtro por generaciones', this.movimientosOK);
+        this.nombresMovimientos = this.movesPokemon.map(move => ({
+          nombre: move.move.name,
+          metodoAprendizaje: move.version_group_details[0].move_learn_method.name
+        }));
+
+        console.log('Datos movimientos: ', this.nombresMovimientos);
+
+        this.nombresMovimientos.forEach(objeto => this.movimientosGeneracion(objeto.nombre, objeto.metodoAprendizaje));
+        console.log('DDDmovimientos: ',this.movimientosNivelOK);
+        console.log('mmmMovimientos por maquina', this.movimientosMaquinaOK);
       });
     });
   }
-  
+        
   //para saber de que generacion es el movimiento
-  movimientosGeneracion(name: string){
+  movimientosGeneracion(name: string, learn: string){
     this.pokemonService.getDetalleMovimiento(name).subscribe((data: any) => {
-      console.log('Detalles del movimiento:', data);
+      //console.log('Detalles del movimiento:', data);
       const nombre = data.name;
-      //categoria = demage_class.name = "status"
-      //tipo = type.name = "normal"
-      //potencia(fuerza) = power = 40
-      //precision(exactitud) = accurancy = 100
-      //como se obtiene
       const generacion = data.generation.name;
-      //console.log('La generacion del movimiento ', nombre,' es ', generacion);
+      const tipo = data.type.name;
+      const categoria = data.damage_class.name;
+      const potencia = data.power;
+      //console.log('PPPPP', potencia);
+      const precision = data.accuracy;
+      //console.log('PPPPP', precision);
       if(generacion == 'generation-i' || generacion == 'generation-ii' || generacion == 'generation-iii' || generacion == 'generation-iv'){
-        this.movimientosOK.push(nombre);
+        const interfaz: movimientos = { nombre, tipo, categoria, potencia, precision };
+
+        if(learn == 'level-up'){
+          this.movimientosNivelOK.push(interfaz);
+        //console.log('datos movimiento', interfaz);
+        } else if(learn == 'machine') {
+          this.movimientosMaquinaOK.push(interfaz);
+        }
       }
-      //console.log(this.movimientosOK);
-    })
+    });
   }
-      /*const generaciones = ['generation-i', 'generation-ii', 'generation-iii', 'generation-iv'];
-
-      this.movimGeneracion = this.listaMovimientos.filter((move) => {
-        return generaciones.some((generation) => move.generation.name == generation);
-      });*/
     
-
   evolucionar(){
     console.log('Buscando evolucion');
     this.ruta.params.subscribe(params => {
       const id = params['id'];
       //Obtengo url pokemon-species/id
-      const urlEvo = this.pokemonService.getIdDescripcionPokemon(id).subscribe(
+      this.pokemonService.getIdDescripcionPokemon(id).subscribe(
         respuesta=>{
           this.especieElegida = respuesta;
           console.log('especie: ', this.especieElegida);
@@ -129,9 +134,7 @@ export class InformacionDetalladaComponent implements OnInit {
         this.evolucionElegida = respuesta;
         console.log('evolucion elegida: ', this.evolucionElegida);
         console.log('array evoluciones: ', this.evolucionElegida.chain.evolves_to);
-        //this.triggerElegido = this.evolucionElegida.chain.evolves_to.;
-        //this.triggerElegido.push(this.evolucionElegida.chain.evolution_details);
-        //console.log("triggerElegido: ", this.evolucionElegida.chain.evolves_to);
+        this.evolucionaA.push(this.evolucionElegida.chain.species);
         this.ObtenerEvoluciones(this.evolucionElegida.chain.evolves_to);
       }
     )
@@ -146,6 +149,7 @@ export class InformacionDetalladaComponent implements OnInit {
   //los arrays de evolves_to
   ObtenerEvoluciones(array: any[]){
     let evoluciones: any[] = array;
+    console.log('evoluciones que llegan: ', evoluciones);
     //let triggers: any[] = array;
     //this.evolucionaA = [];
     while(evoluciones.length > 0){
@@ -170,7 +174,7 @@ export class InformacionDetalladaComponent implements OnInit {
       this.evolucionaA.push(evolucion);
       evoluciones = evoluciones[0].evolves_to;*/
     }
-    console.log('triggersElegido: ', this.triggerElegido);
+    //console.log('triggersElegido: ', this.triggerElegido);
     console.log('evolucionaA: ', this.evolucionaA);
     this.getTodasEvoluciones();
   }
@@ -182,7 +186,7 @@ export class InformacionDetalladaComponent implements OnInit {
         respuesta => {
           const pokemonInfo = {
             name: respuesta.name,
-            img: respuesta.sprites.front_default
+            img: respuesta.sprites.other.home.front_default,
           };
           this.todasEvoluciones.push(pokemonInfo);
         }

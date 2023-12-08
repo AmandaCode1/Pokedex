@@ -1,19 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, forkJoin, map, switchMap, tap } from 'rxjs';
+import { Observable, forkJoin, map } from 'rxjs';
 import { Pokemon } from './model/pokemon';
 import { detallePokemon } from './model/detallePokemon';
 import { Tipos } from './model/tipos';
+import { movimientos } from './model/movimientos';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PokemonService {
 
-  //efectividades: any = {};
-  //seCargaJson = false;
-
-  private url: string = 'https://pokeapi.co/api/v2/pokemon';
+  private url: string = 'https://pokeapi.co/api/v2';
 
   constructor(private http: HttpClient) { }
 
@@ -25,7 +23,7 @@ export class PokemonService {
     const requests: Observable<Pokemon>[] = [];
 
     for (let i = 1; i <= count; i++) {
-      const request = this.http.get(`${this.url}/${i}`).pipe(
+      const request = this.http.get(`${this.url}/pokemon/${i}`).pipe(
         map((data: any) => ({
           id: data.id,
           name: data.species.name,
@@ -68,24 +66,24 @@ export class PokemonService {
 
   //Url para la descripcion
   getIdDescripcionPokemon(id: number): Observable<any> {
-    const url = `${this.url}-species/${id}`;
+    const url = `${this.url}/pokemon-species/${id}`;
     return this.http.get(url);
   }
 
   //Url para los detalles
   getIdDetallePokemon(id: number): Observable<any> {
-    const url = `${this.url}/${id}`;
+    const url = `${this.url}/pokemon/${id}`;
     return this.http.get(url);
   }
 
   getPokemonNombre(name: string): Observable<any>{
-    const url = `${this.url}/${name}`;
+    const url = `${this.url}/pokemon/${name}`;
     return this.http.get(url);
   }
 
-  //Buscar tipo por id //Si hay dos tipos como la modifico?
+  //Buscar tipo por id 
   getTipoPorId(id: number): Observable<Tipos> {
-    return this.http.get(`${this.url}/${id}`).pipe(
+    return this.http.get(`${this.url}/pokemon/${id}`).pipe(
       map((data: any) => ({
         types: data.types.map((tipo: any) => tipo.type.name),
       }))
@@ -93,24 +91,25 @@ export class PokemonService {
   }
 
   getIdEvolucion(id: number): Observable<any> {
-    return this.http.get(`https://pokeapi.co/api/v2/evolution-chain/${id}`);
+    return this.http.get(`${this.url}/evolution-chain/${id}`);
   }
-
-  /*getMovimientos(): Observable<any>{
-    return this.http.get(`https://pokeapi.co/api/v2/move?limit=922`);
-  }*/
 
   getDetalleMovimiento(name: string){
-    return this.http.get(`https://pokeapi.co/api/v2/move/${name}`)/*.pipe(
-      map((data: any) => {
-        const datosMovimiento = data.name;
-        const generation = data.generation.name;
-        if(generation == 'generation-i' || generation == 'generation-ii' || generation == 'generation-iii' || generation == 'generation-iv'){
-          return datosMovimiento;
-        }
-      })
-    )*/;
+    return this.http.get(`${this.url}/move/${name}`);
   }
+
+  /*getTodosMovimientos(array: string[]): Observable<movimientos>{
+    for(let nombre of array){
+      const request = this.getDetalleMovimiento(nombre)
+    }
+    return {
+      nombre: data.name,
+      tipo: data.type.name,
+      categoria: data.demage_class.name,
+      potencia: data.power,
+      precision: data.accutancy,
+    };
+  }*/
 
 
 

@@ -83,3 +83,51 @@
          <h3>{{datospokemon.name}}</h3>
          <img class="imagen-pokemon" [src]="datospokemon.img" alt="{{datospokemon.name}}">
        </div>
+
+      <div class="tabla-movimientos-nivel">
+       <table>
+        <caption>Movimientos por nivel</caption>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Categoría</th>
+            <th>Potencia</th>
+            <th>Precisión</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let movimiento of movimientosNivelOK">
+            <td>{{movimiento.nombre}}</td>
+            <td>{{movimiento.tipo}}</td>
+            <td>{{movimiento.categoria}}</td>
+            <td>{{movimiento.potencia}}</td>
+            <td>{{movimiento.precision}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <div class="tabla-movimientos-maquina">
+      <table>
+       <caption>Movimientos por maquina</caption>
+       <thead>
+         <tr>
+           <th>Nombre</th>
+           <th>Tipo</th>
+           <th>Categoría</th>
+           <th>Potencia</th>
+           <th>Precisión</th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr *ngFor="let movimiento of movimientosMaquinaOK">
+           <td>{{movimiento.nombre}}</td>
+           <td>{{movimiento.tipo}}</td>
+           <td>{{movimiento.categoria}}</td>
+           <td>{{movimiento.potencia}}</td>
+           <td>{{movimiento.precision}}</td>
+         </tr>
+       </tbody>
+     </table>
+   </div>
