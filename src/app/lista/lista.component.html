@@ -3,35 +3,35 @@
 <div class="buscador-botones">
 
   <div class="botones-generacion">
-    <button class="generacion1" (click)="generacion(0,151)">1ª Generación</button>
-    <button class="generacion2" (click)="generacion(151,251)">2ª Generación</button>
-    <button class="generacion3" (click)="generacion(251,386)">3ª Generación</button>
-    <button class="generacion4" (click)="generacion(386,493)">4ª Generación</button>
-    <button class="todasGeneraciones" (click)="generacion(0,493)">1ª a 4ª Generación</button>
-    <button class="reset" (click)="reset()">Resetear Lista</button>
+    <button class="generacion1" (click)="generacion(0,151)">{{ '1ª GENERACION' | translate }}</button>
+    <button class="generacion2" (click)="generacion(151,251)">{{ '2ª GENERACION' | translate }}</button>
+    <button class="generacion3" (click)="generacion(251,386)">{{ '3ª GENERACION' | translate }}</button>
+    <button class="generacion4" (click)="generacion(386,493)">{{ '4ª GENERACION' | translate }}</button>
+    <button class="todasGeneraciones" (click)="generacion(0,493)">{{ '1ª A 4ª GENERACION' | translate }}</button>
+    <button class="reset" (click)="reset()">{{ 'RESETEAR' | translate }}</button>
   </div>
 
-  <input class="cajatextobuscador" type="search" [(ngModel)]="nameP" (ngModelChange)="buscador()" placeholder="Nombre pokemon">
+  <input class="cajatextobuscador" type="search" [(ngModel)]="nameP" (ngModelChange)="buscador()" placeholder="{{'NOMBRE POKEMON' | translate}}">
 
   <div class="botones-tipo">
-    <button class="acero" (click)="tipos('steel')">Acero</button>
-  <button class="agua" (click)="tipos('water')">Agua</button>
-  <button class="bicho" (click)="tipos('bug')">Bicho</button>
-  <button class="dragon" (click)="tipos('dragon')">Dragon</button>
-  <button class="electrico" (click)="tipos('electric')">Eléctrico</button>
-  <button class="fantasma" (click)="tipos('ghost')">Fantasma</button>
-  <button class="fuego" (click)="tipos('fire')">Fuego</button>
-  <button class="hada" (click)="tipos('fairy')">Hada</button>
-  <button class="hielo" (click)="tipos('ice')">Hielo</button>
-  <button class="lucha" (click)="tipos('fighting')">Luchador</button>
-  <button class="normal" (click)="tipos('normal')">Normal</button>
-  <button class="planta" (click)="tipos('grass')">Planta</button>
-  <button class="psiquico" (click)="tipos('psychic')">Psiquico</button>
-  <button class="roca" (click)="tipos('rock')">Roca</button>
-  <button class="siniestro" (click)="tipos('dark')">Siniestro</button>
-  <button class="tierra" (click)="tipos('ground')">Tierra</button>
-  <button class="veneno" (click)="tipos('poison')">Veneno</button>
-  <button class="volador" (click)="tipos('flying')">Volador</button>
+    <button class="acero" (click)="tipos('steel')">{{'ACERO' | translate}}</button>
+  <button class="agua" (click)="tipos('water')">{{'AGUA' | translate}}</button>
+  <button class="bicho" (click)="tipos('bug')">{{'BICHO' | translate}}</button>
+  <button class="dragon" (click)="tipos('dragon')">{{'DRAGON' | translate}}</button>
+  <button class="electrico" (click)="tipos('electric')">{{'ELECTRICO' | translate}}</button>
+  <button class="fantasma" (click)="tipos('ghost')">{{'FANTASMA' | translate}}</button>
+  <button class="fuego" (click)="tipos('fire')">{{'FUEGO' | translate}}</button>
+  <button class="hada" (click)="tipos('fairy')">{{'HADA' | translate}}</button>
+  <button class="hielo" (click)="tipos('ice')">{{'HIELO' | translate}}</button>
+  <button class="lucha" (click)="tipos('fighting')">{{'LUCHADOR' | translate}}</button>
+  <button class="normal" (click)="tipos('normal')">{{'NORMAL' | translate}}</button>
+  <button class="planta" (click)="tipos('grass')">{{'PLANTA' | translate}}</button>
+  <button class="psiquico" (click)="tipos('psychic')">{{'PSIQUICO' | translate}}</button>
+  <button class="roca" (click)="tipos('rock')">{{'ROCA' | translate}}</button>
+  <button class="siniestro" (click)="tipos('dark')">{{'SINIESTRO' | translate}}</button>
+  <button class="tierra" (click)="tipos('ground')">{{'TIERRA' | translate}}</button>
+  <button class="veneno" (click)="tipos('poison')">{{'VENENO' | translate}}</button>
+  <button class="volador" (click)="tipos('flying')">{{'VOLADOR' | translate}}</button>
   </div>
 
 </div>

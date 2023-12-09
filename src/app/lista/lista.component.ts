@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { PokemonService } from '../pokemon.service';
 import { Pokemon } from '../model/pokemon';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class ListaComponent implements OnInit {
   inicio: number = 0;
   fin: number = 0;
 
-  constructor(private pokemonService: PokemonService) { }
+  constructor(private pokemonService: PokemonService, private translate: TranslateService) { }
 
   ngOnInit() {
     this.cargar();

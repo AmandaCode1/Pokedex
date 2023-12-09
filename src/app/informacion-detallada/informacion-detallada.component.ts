@@ -6,7 +6,7 @@ import { movimientos } from '../model/movimientos';
 import { ActivatedRoute } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import tablaEfectividades from 'src/assets/json/efectividades.json';
-import { trigger } from '@angular/animations';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-informacion-detallada',
@@ -54,7 +54,7 @@ export class InformacionDetalladaComponent implements OnInit {
     precision: 0,
   };
   
-  constructor(private ruta: ActivatedRoute, private pokemonService: PokemonService) { }
+  constructor(private ruta: ActivatedRoute, private pokemonService: PokemonService, private translate: TranslateService) { }
 
   ngOnInit(): void {
     this.cargarDetallesPokemon();
@@ -101,11 +101,10 @@ export class InformacionDetalladaComponent implements OnInit {
           metodoAprendizaje: move.version_group_details[0].move_learn_method.name
         }));
 
-        console.log('Datos movimientos: ', this.nombresMovimientos);
-
+        //console.log('Datos movimientos: ', this.nombresMovimientos);
         this.nombresMovimientos.forEach(objeto => this.movimientosGeneracion(objeto.nombre, objeto.metodoAprendizaje));
-        console.log('DDDmovimientos: ',this.movimientosNivelOK);
-        console.log('mmmMovimientos por maquina', this.movimientosMaquinaOK);
+        //console.log('DDDmovimientos: ',this.movimientosNivelOK);
+        //console.log('mmmMovimientos por maquina', this.movimientosMaquinaOK);
       });
     });
   }
@@ -179,33 +178,24 @@ export class InformacionDetalladaComponent implements OnInit {
   ObtenerEvoluciones(array: any[]){
     let evoluciones: any[] = array;
     console.log('evoluciones que llegan: ', evoluciones);
-    //let triggers: any[] = array;
-    //this.evolucionaA = [];
     while(evoluciones.length > 0){
       for(let i = 0; i < evoluciones.length; i++){
         let evolucion = evoluciones[i].species;
         let trigger = evoluciones[i].evolution_details[0].min_level;
-        /*if(trigger === null){
-          trigger = "Evoluciona con objeto";
-        }*/
-        console.log('trigger', trigger);
-        //let trigger = evoluciones[i].evolution_details[0];
+        //console.log('trigger', trigger);
         this.evolucionaA.push(evolucion);
         this.triggerElegido.push(trigger);
         if(evoluciones[i].evolves_to){
           evoluciones.push(...evoluciones[i].evolves_to);
         }
-        //if(evoluciones[i].evolution_details[0]){
-          //triggers.push(...evoluciones[i].evolution_details[0]);
-        //}
       }
       evoluciones = evoluciones.slice(evoluciones.length);
       //triggers = evoluciones.slice(evoluciones.length);
 
     }
     //console.log('triggersElegido: ', this.triggerElegido);
-    console.log('evolucionaA: ', this.evolucionaA);
-    console.log('trigger', this.triggerElegido);
+    //console.log('evolucionaA: ', this.evolucionaA);
+    //console.log('trigger', this.triggerElegido);
     this.getTodasEvoluciones();
   }
 
