@@ -13,12 +13,20 @@
        
        
       <div class="flip-card-front" *ngIf="detallePokemon">
+
+
+<div class="pokedex">  <img src="../../assets/pokedex.png"></div>
+      
+
+        <div class="detalle">
         <p>ID: {{detallePokemon.id}}</p>
         <p>Nombre: {{ detallePokemon.name }}</p>
         <p>Tipo/s: {{ detallePokemon.types }}</p>
         <p>Descripcion: {{ detallePokemon.descripcion }}</p>
         <p>Altura: {{ detallePokemon.altura }}</p>
         <p>Peso: {{ detallePokemon.peso }}</p>
+      </div>
+
       </div>
     <br>
 
@@ -41,16 +49,26 @@
   </div>
 </div>
 
+
+
 <div *ngIf="detallePokemon" class="image-container">
   <input type="checkbox" id="toggleShiny">
   <label for="toggleShiny" class="toggle-label">
+  <img class="pokeball2" src="../../assets/pokeball2.png">
   <img class="pokemon-image normal-image" [src]="detallePokemon.image" alt="{{ detallePokemon.name }}">
   <img class="pokemon-image shiny-image" [src]="detallePokemon.imageShiny" alt="{{ detallePokemon.name }}">
   </label>
   </div>
 
 <br>
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br><br>
+<br><br>
+<br>
 <div class="ContainerEfectividad">
         <table class="table" *ngFor="let tipo of efectividadSeleccionada">
             <thead class="thead-dark">
@@ -78,11 +96,11 @@
         </div>
   
 
-        <button class="boton-evolucion" (click)="evolucionar()">Evolucionar</button>
+        <button class="boton-evolucion" (click)="evolucionar()">Ver Evoluciones</button>
         <div class="texto-evoluciones" *ngFor="let datospokemon of todasEvoluciones">
          <h3>{{datospokemon.name}}</h3>
          <p>Niveles a los que evoluciona: {{datospokemon.nivel}}</p>
-         <img class="imagen-pokemon" [src]="datospokemon.img" alt="{{datospokemon.name}}">
+         <img class="imagen-pokemon-evolucion" [src]="datospokemon.img" alt="{{datospokemon.name}}">
        </div>
        
 
