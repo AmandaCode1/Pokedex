@@ -57,25 +57,27 @@
   }
 
 
-/******* Volteode de la descripcion y estadisticas*******/
+/******* Volteo de de la descripcion y estadisticas*******/
 .flip-card {
   background-color: transparent;
-  width: 700px;
-  height: 200px;
-  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  width: 600px;
+  perspective: 1000px;
+
   }
 
 
 .detalle{
   z-index: 1;
-  width: 300px;
-  margin-top:-400px;
+  width: 290px;
+  margin-top:-430px;
   color: black;
+  margin-left: 150px;
 }
 
 .pokedex{
   z-index: 0;
   margin-top: 100px;
+  
 }
 .flip-card-inner {
 position: relative;
@@ -119,32 +121,78 @@ color: rgb(250, 250, 250);
 
 * {box-sizing: border-box}
 
+p{
+  color: black;
+}
 .container {
-  background-color: #ddd;
+  background-color: #afaeae;
   * {box-sizing: border-box}
+  border-radius: 5px;
   
   }
 
   .skills {
-
-    padding-top: 10px;
-    padding-bottom: 10px;
-    color: red;
-    background-color: green;
-    
-    
+    border-radius: 5px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(37, 208, 37);  
     }
 
+.estadisticas{
+  width: 400px;
+  margin-left: 130px;
+  margin-top: 100px;
+  border: solid 2px;
+
+}
+
+
 /****************************/
+
+
+
+.ContainerEfectividad{
+
+  margin-left: 750px;
+  margin-top: 50px;
+}
+
+
+/**************************evolucion************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***********************************************************/
+
 .h3{
-  color: #ddd;
+  color: black;
 }
 .tabla-movimientos-nivel{
-  color: white;
+  color: black;
 }
 .tabla-movimientos-maquina{
-  color: white;
+  color: black;
 }
 .texto-evoluciones{
-  color: white;
+  color: black;
 }
+
+

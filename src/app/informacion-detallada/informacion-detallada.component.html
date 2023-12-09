@@ -1,11 +1,7 @@
-<!--<h1>Probando peticion a la API</h1>
-<br>
-<p>Nombre</p>
-<input type="text" [(ngModel)] = "name">
-<button (cpck)="cargaPokemon()">Buscar</button>
+  
 
-<img src="{{urpmage}}" alt="Foto Pokemon">
-<p>Tipo: {{tipo}}</p>-->
+  
+
 
 
 <div class="flip-card" *ngIf="detallePokemon">
@@ -15,34 +11,35 @@
       <div class="flip-card-front" *ngIf="detallePokemon">
 
 
-<div class="pokedex">  <img src="../../assets/pokedex.png"></div>
+       <div class="pokedex"> 
+         <img src="../../assets/pokedex.png">
+       </div>
       
 
         <div class="detalle">
-        <p>ID: {{detallePokemon.id}}</p>
-        <p>Nombre: {{ detallePokemon.name }}</p>
-        <p>Tipo/s: {{ detallePokemon.types }}</p>
-        <p>Descripcion: {{ detallePokemon.descripcion }}</p>
-        <p>Altura: {{ detallePokemon.altura }}</p>
-        <p>Peso: {{ detallePokemon.peso }}</p>
-      </div>
+         <p>ID: {{detallePokemon.id}}</p>
+         <p>Nombre: {{ detallePokemon.name }}</p>
+         <p>Tipo/s: {{ detallePokemon.types }}</p>
+         <p>Descripcion: {{ detallePokemon.descripcion }}</p>
+         <p>Altura: {{ detallePokemon.altura }}</p>
+         <p>Peso: {{ detallePokemon.peso }}</p>
+       </div>
 
       </div>
     <br>
 
       <div class="flip-card-back" *ngIf="detallePokemon">
+
         
-        <!--<p>Vida:</p> <div class="container"><div class="skills"[style.width]="barravida()">{{ detallePokemon.vida }}</div></div>-->
-
-        <p>Velocidad::</p><div class="container"><div class="skills velocidad">{{ detallePokemon.velocidad }}</div></div>
-        
-        <p>Ataque:</p><div class="container"><div class="skills ataque"> {{ detallePokemon.ataque }}</div></div>
-
-        <p>Ataque Especial::</p><div class="container"><div class="skills ataqueEspecial">{{ detallePokemon.ataqueEspecial }}</div></div>
-
-        <p>Defensa:</p><div class="container"><div class="skills vida"> {{ detallePokemon.defensa }}</div></div>
-
-        <p>Defensa Especial::</p><div class="container"><div class="skills defensaEspecial">{{ detallePokemon.defensaEspecial }}</div></div>
+        <div class="estadisticas">
+          <p><u>ESTADISCTICAS</u></p>
+        <p>Vida:</p> <div class="container"><div class="skills"[style.width]="barravida()">{{ detallePokemon.vida }}</div></div>
+        <p>Velocidad:</p> <div class="container"><div class="skills"[style.width]="barravelocidad()">{{ detallePokemon.velocidad }}</div></div>
+        <p>Ataque:</p> <div class="container"><div class="skills"[style.width]="barraataque()">{{ detallePokemon.ataque }}</div></div>
+        <p>AtaqueEspecial</p> <div class="container"><div class="skills"[style.width]="barraAtaqueespecial()">{{ detallePokemon.ataqueEspecial }}</div></div>
+        <p>Defensa:</p> <div class="container"><div class="skills"[style.width]="barradefensa()">{{ detallePokemon.defensa}}</div></div>
+        <p>Vida:</p> <div class="container"><div class="skills"[style.width]="barraDefensaespecial()">{{ detallePokemon.defensaEspecial }}</div></div>
+        </div>
 
       </div>
 
@@ -59,16 +56,8 @@
   <img class="pokemon-image shiny-image" [src]="detallePokemon.imageShiny" alt="{{ detallePokemon.name }}">
   </label>
   </div>
+<br>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br><br>
-<br><br>
-<br>
 <div class="ContainerEfectividad">
         <table class="table" *ngFor="let tipo of efectividadSeleccionada">
             <thead class="thead-dark">
@@ -94,7 +83,7 @@
             </thead>
           </table>
         </div>
-  
+  <br><br><br><br><br><br><br><br><br><br><br>
 
         <button class="boton-evolucion" (click)="evolucionar()">Ver Evoluciones</button>
         <div class="texto-evoluciones" *ngFor="let datospokemon of todasEvoluciones">
@@ -127,7 +116,9 @@
         </tbody>
       </table>
     </div>
+
     <br>
+
     <div class="tabla-movimientos-maquina">
       <table>
        <caption>Movimientos por maquina</caption>
@@ -151,3 +142,4 @@
        </tbody>
      </table>
    </div>
+  

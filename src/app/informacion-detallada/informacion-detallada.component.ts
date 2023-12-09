@@ -62,6 +62,34 @@ export class InformacionDetalladaComponent implements OnInit {
     this.movimientosPokemon();
   }
 
+
+  
+  barravida():string{
+    const vida = this.detallePokemon.vida*100/255;
+    return `${vida}%`;
+  }
+
+  barravelocidad():string{
+    const velocidad = this.detallePokemon.velocidad*100/255;
+    return `${velocidad}%`;
+  }
+  barraataque():string{
+    const ataque = this.detallePokemon.ataque*100/255;
+    return `${ataque}%`;
+  }
+  barraAtaqueespecial():string{
+    const ataqueespecial = this.detallePokemon.ataqueEspecial*100/255;
+    return `${ataqueespecial}%`;
+  }
+  barradefensa():string{
+    const defensa = this.detallePokemon.defensa*100/255;
+    return `${defensa}%`;
+  }
+  barraDefensaespecial():string{
+    const defensaespecial = this.detallePokemon.defensaEspecial*100/255;
+    return `${defensaespecial}%`;
+  }
+
   movimientosPokemon(){
     this.ruta.params.subscribe(params => {
       const id = params['id'];

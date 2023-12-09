@@ -17,7 +17,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  background-image: url(../../assets/fondo.jpg);
+ /* background-image: url(../../assets/fondo.jpg);*/
 }
 
 .pokemon-carta {
@@ -111,24 +111,106 @@ body {
   display: flex;
   flex-direction: column; /* Ajusta la dirección de los elementos a columna */
   align-items: center;
-  margin-top: 10px; /* Ajusta el margen superior para separar de la cabecera */
+  margin-top: 20px; /* Ajusta el margen superior para separar de la cabecera */
+  
 }
 
-.botones-generacion,
 .botones-tipo {
   margin-bottom: 10px; /* Ajusta el margen inferior de los contenedores de botones */
 }
 
-.botones-generacion button,
+
 .botones-tipo button {
   padding: 6px 10px; /* Ajusta el tamaño de los botones */
+  font-size: 12px; /* Ajusta el tamaño del texto de los botones */
 
+}
+
+
+/* Estilos generales de los botones */
+.boton-generacion {
+  padding: 10px 20px;
+  margin: 5px;
+
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s, color 0.3s;
+   padding: 6px 10px; /* Ajusta el tamaño de los botones */
   font-size: 12px; /* Ajusta el tamaño del texto de los botones */
 }
 
-.cajatextobuscador {
-  margin-top: 10px; /* Ajusta el margen superior del buscador */
+/* Estilos para cada generación */
+.generacion1{
+  background-color: #ffcb05;
+  color: #fff;
 }
+
+.generacion2 {
+  background-color: #8bc34a;
+  color: #fff;
+}
+
+.generacion3 {
+  background-color: #03a9f4;
+  color: #fff;
+}
+
+.generacion4 {
+  background-color: #e91e63;
+  color: #fff;
+}
+
+.todasGeneraciones {
+  background-color: #9c27b0;
+  color: #fff;
+}
+
+.reset {
+  background-color: #607d8b;
+  color: #fff;
+}
+
+/* Estilos al pasar el mouse sobre los botones */
+.boton-generacion:hover {
+  opacity: 0.8;
+}
+
+/* Estilos cuando se hace clic en los botones */
+.boton-generacion:active {
+  transform: translateY(2px);
+}
+
+
+
+/************************buscador*********************/
+
+.cajatextobuscador {
+  margin-top: 10px;
+  background: none;
+  text-align: left;
+  color: var(--text-color);
+  width: 50%;
+  height: 50%;
+  font-size: 2rem;
+  border: none;
+}
+.cajatextobuscador::placeholder {
+  color: #999;
+}
+.cajatextobuscador:hover {
+  border-color: #ffcb05;
+}
+.cajatextobuscador:focus {
+  border-color: #ff0000;
+  box-shadow: 0 0 5px #ff0000;
+}
+/***************************************************/
+
+
 
 /* Estilo de los nombres de tipos que hay */
 
@@ -240,6 +322,8 @@ body {
     border-radius: 20px;
     text-transform: capitalize;
    }
+
+
 
    /* Estilo de los botones de tipos  */
 
