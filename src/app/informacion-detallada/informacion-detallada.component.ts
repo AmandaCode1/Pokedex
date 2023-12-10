@@ -242,7 +242,7 @@ export class InformacionDetalladaComponent implements OnInit {
     )
   }
 
-  //
+  //Obtengo los nombres de la cadena evolutiva y los niveles a los que evoluciona
   ObtenerEvoluciones(array: any[]){
     //cadena evolutiva
     let evoluciones: any[] = array;

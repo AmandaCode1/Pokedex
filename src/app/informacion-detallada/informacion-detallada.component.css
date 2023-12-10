@@ -1,4 +1,9 @@
-
+body{
+  background-image: url(../../assets/fondo.jpg);
+  margin-top: -20px;
+  margin-left: -20px;
+  margin-right:-20px;
+}
 
 /******Imangen shiny********/
 .pokeball2{
@@ -156,20 +161,24 @@ p{
 
 .contenedor-evoluciones {
   display: flex;
-  justify-content: flex-end;
-  padding: 10px;
-  margin-bottom: 20px;
+  justify-content: space-between;
+  overflow-x: auto;
+  /*padding: 10px;
+  margin-bottom: 20px;*/
+  flex-wrap: wrap;
 }
 
 .texto-evoluciones {
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-transform: capitalize;
+  width: 300px;
+  margin-right: 15px;
 }
 
 .imagen-pokemon-evolucion {
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: auto;
   border-radius: 60%;
   margin-top: 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -181,12 +190,17 @@ p{
 .tabla-movimientos-nivel {
   margin-top: 30px;
   text-align: center;
+  background-color: #f2f2f2;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .tabla-movimientos-nivel table {
   width: 100%;
   border-collapse: collapse;
   font-family: 'Arial', sans-serif;
+  
 }
 
 .tabla-movimientos-nivel caption {
@@ -229,6 +243,10 @@ p{
 .tabla-movimientos-maquina {
   margin-top: 30px;
   text-align: center;
+  background-color: #f2f2f2;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .tabla-movimientos-maquina table {

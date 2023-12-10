@@ -1,95 +1,124 @@
-<div class="flip-card" *ngIf="detallePokemon">
-  <div class="flip-card-inner"*ngIf="detallePokemon" >
-       
-       
-      <div class="flip-card-front" *ngIf="detallePokemon">
-
-
-       <div class="pokedex"> 
-         <img src="../../assets/pokedex.png">
-       </div>
-      
-
-        <div class="detalle">
-         <p><b>ID:</b> {{detallePokemon.id}}</p>
-         <p><b>{{'NOMBRE' | translate}}:</b> {{ detallePokemon.name }}</p>
-         <p><b>{{'TIPO/S' | translate}}:</b> {{ detallePokemon.types }}</p>
-         <p><b>{{'DESCRIPCION' | translate}}:</b> {{ detallePokemon.descripcion }}</p>
-         <p><b>{{'ALTURA' | translate}}:</b> {{ detallePokemon.altura }}m</p>
-         <p><b>{{'PESO' | translate}}:</b> {{ detallePokemon.peso }}kg</p>
-       </div>
-
-      </div>
-    <br>
-
-      <div class="flip-card-back" *ngIf="detallePokemon">
-
+<body>
+  <div class="flip-card" *ngIf="detallePokemon">
+    <div class="flip-card-inner"*ngIf="detallePokemon" >
         
-        <div class="estadisticas">
-          <p><u>{{'ESTADISTICAS' | translate}}</u></p>
-        <p>{{'VIDA' | translate}}:</p> <div class="container"><div class="skills"[style.width]="barravida()">{{ detallePokemon.vida }}</div></div>
-        <p>{{'VELOCIDAD' | translate}}:</p> <div class="container"><div class="skills"[style.width]="barravelocidad()">{{ detallePokemon.velocidad }}</div></div>
-        <p>{{'ATAQUE' | translate}}:</p> <div class="container"><div class="skills"[style.width]="barraataque()">{{ detallePokemon.ataque }}</div></div>
-        <p>{{'ATAQUE ESPECIAL' | translate}}</p> <div class="container"><div class="skills"[style.width]="barraAtaqueespecial()">{{ detallePokemon.ataqueEspecial }}</div></div>
-        <p>{{'DEFENSA' | translate}}:</p> <div class="container"><div class="skills"[style.width]="barradefensa()">{{ detallePokemon.defensa}}</div></div>
-        <p>{{'DEFENSA ESPECIAL' | translate}}:</p> <div class="container"><div class="skills"[style.width]="barraDefensaespecial()">{{ detallePokemon.defensaEspecial }}</div></div>
+        
+        <div class="flip-card-front" *ngIf="detallePokemon">
+
+
+        <div class="pokedex"> 
+          <img src="../../assets/pokedex.png">
+        </div>
+        
+
+          <div class="detalle">
+          <p><b>ID:</b> {{detallePokemon.id}}</p>
+          <p><b>{{'NOMBRE' | translate}}:</b> {{ detallePokemon.name }}</p>
+          <p><b>{{'TIPO/S' | translate}}:</b> {{ detallePokemon.types }}</p>
+          <p><b>{{'DESCRIPCION' | translate}}:</b> {{ detallePokemon.descripcion }}</p>
+          <p><b>{{'ALTURA' | translate}}:</b> {{ detallePokemon.altura }}m</p>
+          <p><b>{{'PESO' | translate}}:</b> {{ detallePokemon.peso }}kg</p>
         </div>
 
+        </div>
+      <br>
+
+        <div class="flip-card-back" *ngIf="detallePokemon">
+
+          
+          <div class="estadisticas">
+            <p><u>{{'ESTADISTICAS' | translate}}</u></p>
+          <p>{{'VIDA' | translate}}:</p> <div class="container"><div class="skills"[style.width]="barravida()">{{ detallePokemon.vida }}</div></div>
+          <p>{{'VELOCIDAD' | translate}}:</p> <div class="container"><div class="skills"[style.width]="barravelocidad()">{{ detallePokemon.velocidad }}</div></div>
+          <p>{{'ATAQUE' | translate}}:</p> <div class="container"><div class="skills"[style.width]="barraataque()">{{ detallePokemon.ataque }}</div></div>
+          <p>{{'ATAQUE ESPECIAL' | translate}}</p> <div class="container"><div class="skills"[style.width]="barraAtaqueespecial()">{{ detallePokemon.ataqueEspecial }}</div></div>
+          <p>{{'DEFENSA' | translate}}:</p> <div class="container"><div class="skills"[style.width]="barradefensa()">{{ detallePokemon.defensa}}</div></div>
+          <p>{{'DEFENSA ESPECIAL' | translate}}:</p> <div class="container"><div class="skills"[style.width]="barraDefensaespecial()">{{ detallePokemon.defensaEspecial }}</div></div>
+          </div>
+
+        </div>
+
+    </div>
+  </div>
+
+
+
+  <div *ngIf="detallePokemon" class="image-container">
+    <input type="checkbox" id="toggleShiny">
+    <label for="toggleShiny" class="toggle-label">
+    <img class="pokeball2" src="../../assets/pokeball2.png">
+    <img class="pokemon-image normal-image" [src]="detallePokemon.image" alt="{{ detallePokemon.name }}">
+    <img class="pokemon-image shiny-image" [src]="detallePokemon.imageShiny" alt="{{ detallePokemon.name }}">
+    </label>
+    </div>
+  <br>
+
+  <div class="ContainerEfectividad">
+          <table class="table" *ngFor="let tipo of efectividadSeleccionada">
+              <thead class="thead-dark">
+                
+                <tr>
+                  <th>{{'TABLA DE EFECTIVIDADES' | translate}}</th>
+              </tr>
+              <tr>
+                <th>{{'MUY EFICAZ' | translate}}: </th><td>{{auxMuyEf}}</td>
+              </tr>
+              <tr>
+                  <th>{{'EFICAZ' | translate}}: </th><td>{{tipo.EficazContra}}</td>
+                </tr>
+                <tr> 
+                  <th>{{'RESISTENTE' | translate}}: </th><td>{{tipo.DebilContra}}</td>
+                </tr>
+                <tr>
+                  <th>{{'MUY RESISTENTE' | translate}}: </th><td>{{auxMuyRes}}</td>
+                </tr>
+                <tr>
+                  <th>{{'NO LE AFECTA' | translate}}: </th><td>{{tipo.InmuneA}}</td>
+                </tr>
+              </thead>
+            </table>
+          </div>
+    <br><br><br><br><br><br><br><br><br><br><br>
+
+          <button class="boton-evolucion" (click)="evolucionar()">{{'VER EVOLUCIONES' | translate}}</button>
+          <div class="contenedor-evoluciones">
+          <div class="texto-evoluciones" *ngFor="let datospokemon of todasEvoluciones">
+          <h3>{{datospokemon.name}}</h3>
+          <p>{{'NIVELES A LOS QUE EVOLUCIONA' | translate}}: {{datospokemon.nivel}}</p>
+          <img class="imagen-pokemon-evolucion" [src]="datospokemon.img" alt="{{datospokemon.name}}">
+        </div>
+        </div>
+        
+
+        <div class="tabla-movimientos-nivel">
+        <table>
+          <caption>{{'MOVIMIENTOS POR NIVEL' | translate}}</caption>
+          <thead>
+            <tr>
+              <th>{{'NOMBRE' | translate}}</th>
+              <th>{{'TIPO' | translate}}</th>
+              <th>{{'CATEGORIA' | translate}}</th>
+              <th>{{'POTENCIA' | translate}}</th>
+              <th>{{'PRECISION' | translate}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let movimiento of movimientosNivelOK">
+              <td>{{movimiento.nombre}}</td>
+              <td>{{movimiento.tipo}}</td>
+              <td>{{movimiento.categoria}}</td>
+              <td>{{movimiento.potencia}}</td>
+              <td>{{movimiento.precision}}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
-  </div>
-</div>
+      <br>
 
-
-
-<div *ngIf="detallePokemon" class="image-container">
-  <input type="checkbox" id="toggleShiny">
-  <label for="toggleShiny" class="toggle-label">
-  <img class="pokeball2" src="../../assets/pokeball2.png">
-  <img class="pokemon-image normal-image" [src]="detallePokemon.image" alt="{{ detallePokemon.name }}">
-  <img class="pokemon-image shiny-image" [src]="detallePokemon.imageShiny" alt="{{ detallePokemon.name }}">
-  </label>
-  </div>
-<br>
-
-<div class="ContainerEfectividad">
-        <table class="table" *ngFor="let tipo of efectividadSeleccionada">
-            <thead class="thead-dark">
-              
-              <tr>
-                <th>{{'TABLA DE EFECTIVIDADES' | translate}}</th>
-             </tr>
-             <tr>
-              <th>{{'MUY EFICAZ' | translate}}: </th><td>{{auxMuyEf}}</td>
-            </tr>
-            <tr>
-                <th>{{'EFICAZ' | translate}}: </th><td>{{tipo.EficazContra}}</td>
-              </tr>
-              <tr> 
-                <th>{{'RESISTENTE' | translate}}: </th><td>{{tipo.DebilContra}}</td>
-              </tr>
-              <tr>
-                <th>{{'MUY RESISTENTE' | translate}}: </th><td>{{auxMuyRes}}</td>
-              </tr>
-               <tr>
-                <th>{{'NO LE AFECTA' | translate}}: </th><td>{{tipo.InmuneA}}</td>
-              </tr>
-            </thead>
-          </table>
-        </div>
-  <br><br><br><br><br><br><br><br><br><br><br>
-
-        <button class="boton-evolucion" (click)="evolucionar()">{{'VER EVOLUCIONES' | translate}}</button>
-        <div class="texto-evoluciones" *ngFor="let datospokemon of todasEvoluciones">
-         <h3>{{datospokemon.name}}</h3>
-         <p>{{'NIVELES A LOS QUE EVOLUCIONA' | translate}}: {{datospokemon.nivel}}</p>
-         <img class="imagen-pokemon-evolucion" [src]="datospokemon.img" alt="{{datospokemon.name}}">
-       </div>
-       
-
-      <div class="tabla-movimientos-nivel">
-       <table>
-        <caption>{{'MOVIMIENTOS POR NIVEL' | translate}}</caption>
+      <div class="tabla-movimientos-maquina">
+        <table>
+        <caption>{{'MOVIMIENTOS POR MAQUINA' | translate}}</caption>
         <thead>
           <tr>
             <th>{{'NOMBRE' | translate}}</th>
@@ -100,7 +129,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let movimiento of movimientosNivelOK">
+          <tr *ngFor="let movimiento of movimientosMaquinaOK">
             <td>{{movimiento.nombre}}</td>
             <td>{{movimiento.tipo}}</td>
             <td>{{movimiento.categoria}}</td>
@@ -110,30 +139,5 @@
         </tbody>
       </table>
     </div>
-
-    <br>
-
-    <div class="tabla-movimientos-maquina">
-      <table>
-       <caption>{{'MOVIMIENTOS POR MAQUINA' | translate}}</caption>
-       <thead>
-         <tr>
-          <th>{{'NOMBRE' | translate}}</th>
-          <th>{{'TIPO' | translate}}</th>
-          <th>{{'CATEGORIA' | translate}}</th>
-          <th>{{'POTENCIA' | translate}}</th>
-          <th>{{'PRECISION' | translate}}</th>
-         </tr>
-       </thead>
-       <tbody>
-         <tr *ngFor="let movimiento of movimientosMaquinaOK">
-           <td>{{movimiento.nombre}}</td>
-           <td>{{movimiento.tipo}}</td>
-           <td>{{movimiento.categoria}}</td>
-           <td>{{movimiento.potencia}}</td>
-           <td>{{movimiento.precision}}</td>
-         </tr>
-       </tbody>
-     </table>
-   </div>
+  </body>
   

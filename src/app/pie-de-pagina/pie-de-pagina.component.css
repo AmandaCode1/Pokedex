@@ -1,4 +1,10 @@
-.h1{
+
+body{
    
 background-color: red;
+margin-left: -10px;
+margin-right: -22px;
+margin-top: -22px;
+margin-bottom: -22px;
+text-align: center;
 }
