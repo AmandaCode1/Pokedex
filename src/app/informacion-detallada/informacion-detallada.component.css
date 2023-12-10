@@ -161,7 +161,6 @@ p{
 
 /**************************evolucion************************/
 
-
 .contenedor-evoluciones {
   display: flex;
   justify-content: flex-end;
@@ -184,11 +183,8 @@ p{
 
 }
 
-
-
-
-
 /********************** tabla de movimientos por nivel ***********************/
+
 .tabla-movimientos-nivel {
   margin-top: 30px;
   text-align: center;
@@ -221,7 +217,6 @@ p{
   background-color: #f8f8f8;
 }
 
-
 .tipo-movimiento {
   font-weight: bold;
   text-transform: uppercase;
@@ -231,11 +226,11 @@ p{
   text-shadow: 1px 1px 2px #000;
 }
 
-
 .categoria-movimiento {
   font-style: italic;
   color: #555;
 }
+
 /********************** tabla de movimiento por maquina*****************************/
 
 .tabla-movimientos-maquina {
