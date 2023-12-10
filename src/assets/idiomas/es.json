@@ -23,8 +23,36 @@
     "SINIESTRO": "Siniestro",
     "TIERRA": "Tierra",
     "VENENO": "Veneno",
-    "VOLADOR": "Volador"
+    "VOLADOR": "Volador",
 
+    "NOMBRE": "Nombre",
+    "TIPO/S": "Tipo/s",
+    "DESCRIPCION": "Descripción",
+    "ALTURA": "Altura",
+    "PESO": "Peso",
+    "ESTADISTICAS": "ESTADÍSTICAS",
+    "VIDA": "Vida",
+    "VELOCIDAD": "Velocidad",
+    "ATAQUE": "Ataque",
+    "ATAQUE ESPECIAL": "Ataque especial",
+    "DEFENSA": "Defensa",
+    "DEFENSA ESPECIAL": "Defensa especial",
+    "TABLA DE EFECTIVIDADES": "TABLA DE EFECTIVIDADES",
+    "MUY EFICAZ": "Muy eficaz",
+    "EFICAZ": "Eficaz",
+    "RESISTENTE": "Resistente",
+    "MUY RESISTENTE": "Muy resistente",
+    "NO LE AFECTA": "No le afecta",
+    "VER EVOLUCIONES": "Ver Evoluciones",
+    "NIVELES A LOS QUE EVOLUCIONA": "Niveles a los que evoluciona",
+    "MOVIMIENTOS POR NIVEL": "MOVIMIENTOS POR NIVEL",
+    "MOVIMIENTOS POR MAQUINA": "MOVIMIENTOS POR MÁQUINA",
+    "TIPO": "Tipo",
+    "CATEGORIA": "Categoría",
+    "POTENCIA": "Potencia",
+    "PRECISION": "Precisión",
 
+    "MODO OSCURO": "Modo Oscuro",
 
+    "PAGINA NO EXISTE": "¡¡¡ESTA PÁGINA NO EXISTE"
 }

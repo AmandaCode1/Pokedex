@@ -1,9 +1,3 @@
-  
-
-  
-
-
-
 <div class="flip-card" *ngIf="detallePokemon">
   <div class="flip-card-inner"*ngIf="detallePokemon" >
        
@@ -18,11 +12,11 @@
 
         <div class="detalle">
          <p>ID: {{detallePokemon.id}}</p>
-         <p>Nombre: {{ detallePokemon.name }}</p>
-         <p>Tipo/s: {{ detallePokemon.types }}</p>
-         <p>Descripcion: {{ detallePokemon.descripcion }}</p>
-         <p>Altura: {{ detallePokemon.altura }}</p>
-         <p>Peso: {{ detallePokemon.peso }}</p>
+         <p>{{'NOMBRE' | translate}}: {{ detallePokemon.name }}</p>
+         <p>{{'TIPO/S' | translate}}: {{ detallePokemon.types }}</p>
+         <p>{{'DESCRIPCION' | translate}}: {{ detallePokemon.descripcion }}</p>
+         <p>{{'ALTURA' | translate}}: {{ detallePokemon.altura }}m</p>
+         <p>{{'PESO' | translate}}: {{ detallePokemon.peso }}kg</p>
        </div>
 
       </div>
@@ -32,13 +26,13 @@
 
         
         <div class="estadisticas">
-          <p><u>ESTADISCTICAS</u></p>
-        <p>Vida:</p> <div class="container"><div class="skills"[style.width]="barravida()">{{ detallePokemon.vida }}</div></div>
-        <p>Velocidad:</p> <div class="container"><div class="skills"[style.width]="barravelocidad()">{{ detallePokemon.velocidad }}</div></div>
-        <p>Ataque:</p> <div class="container"><div class="skills"[style.width]="barraataque()">{{ detallePokemon.ataque }}</div></div>
-        <p>AtaqueEspecial</p> <div class="container"><div class="skills"[style.width]="barraAtaqueespecial()">{{ detallePokemon.ataqueEspecial }}</div></div>
-        <p>Defensa:</p> <div class="container"><div class="skills"[style.width]="barradefensa()">{{ detallePokemon.defensa}}</div></div>
-        <p>Vida:</p> <div class="container"><div class="skills"[style.width]="barraDefensaespecial()">{{ detallePokemon.defensaEspecial }}</div></div>
+          <p><u>{{'ESTADISTICAS' | translate}}</u></p>
+        <p>{{'VIDA' | translate}}:</p> <div class="container"><div class="skills"[style.width]="barravida()">{{ detallePokemon.vida }}</div></div>
+        <p>{{'VELOCIDAD' | translate}}:</p> <div class="container"><div class="skills"[style.width]="barravelocidad()">{{ detallePokemon.velocidad }}</div></div>
+        <p>{{'ATAQUE' | translate}}:</p> <div class="container"><div class="skills"[style.width]="barraataque()">{{ detallePokemon.ataque }}</div></div>
+        <p>{{'ATAQUE ESPECIAL' | translate}}</p> <div class="container"><div class="skills"[style.width]="barraAtaqueespecial()">{{ detallePokemon.ataqueEspecial }}</div></div>
+        <p>{{'DEFENSA' | translate}}:</p> <div class="container"><div class="skills"[style.width]="barradefensa()">{{ detallePokemon.defensa}}</div></div>
+        <p>{{'DEFENSA ESPECIAL' | translate}}:</p> <div class="container"><div class="skills"[style.width]="barraDefensaespecial()">{{ detallePokemon.defensaEspecial }}</div></div>
         </div>
 
       </div>
@@ -63,46 +57,46 @@
             <thead class="thead-dark">
               
               <tr>
-                <th>TABLA DE EFECTIVIDADES</th>
+                <th>{{'TABLA DE EFECTIVIDADES' | translate}}</th>
              </tr>
              <tr>
-              <th>Muy eficaz: </th><td>{{auxMuyEf}}</td>
+              <th>{{'MUY EFICAZ' | translate}}: </th><td>{{auxMuyEf}}</td>
             </tr>
             <tr>
-                <th>Eficaz: </th><td>{{tipo.EficazContra}}</td>
+                <th>{{'EFICAZ' | translate}}: </th><td>{{tipo.EficazContra}}</td>
               </tr>
               <tr> 
-                <th>Resistente: </th><td>{{tipo.DebilContra}}</td>
+                <th>{{'RESISTENTE' | translate}}: </th><td>{{tipo.DebilContra}}</td>
               </tr>
               <tr>
-                <th>Muy resistente: </th><td>{{auxMuyRes}}</td>
+                <th>{{'MUY RESISTENTE' | translate}}: </th><td>{{auxMuyRes}}</td>
               </tr>
                <tr>
-                <th>No le afecta: </th><td>{{tipo.InmuneA}}</td>
+                <th>{{'NO LE AFECTA' | translate}}: </th><td>{{tipo.InmuneA}}</td>
               </tr>
             </thead>
           </table>
         </div>
   <br><br><br><br><br><br><br><br><br><br><br>
 
-        <button class="boton-evolucion" (click)="evolucionar()">Ver Evoluciones</button>
+        <button class="boton-evolucion" (click)="evolucionar()">{{'VER EVOLUCIONES' | translate}}</button>
         <div class="texto-evoluciones" *ngFor="let datospokemon of todasEvoluciones">
          <h3>{{datospokemon.name}}</h3>
-         <p>Niveles a los que evoluciona: {{datospokemon.nivel}}</p>
+         <p>{{'NIVELES A LOS QUE EVOLUCIONA' | translate}}: {{datospokemon.nivel}}</p>
          <img class="imagen-pokemon-evolucion" [src]="datospokemon.img" alt="{{datospokemon.name}}">
        </div>
        
 
       <div class="tabla-movimientos-nivel">
        <table>
-        <caption>Movimientos por nivel</caption>
+        <caption>{{'MOVIMIENTOS POR NIVEL' | translate}}</caption>
         <thead>
           <tr>
-            <th>Nombre</th>
-            <th>Tipo</th>
-            <th>Categoría</th>
-            <th>Potencia</th>
-            <th>Precisión</th>
+            <th>{{'NOMBRE' | translate}}</th>
+            <th>{{'TIPO' | translate}}</th>
+            <th>{{'CATEGORIA' | translate}}</th>
+            <th>{{'POTENCIA' | translate}}</th>
+            <th>{{'PRECISION' | translate}}</th>
           </tr>
         </thead>
         <tbody>
@@ -121,14 +115,14 @@
 
     <div class="tabla-movimientos-maquina">
       <table>
-       <caption>Movimientos por maquina</caption>
+       <caption>{{'MOVIMIENTOS POR MAQUINA' | translate}}</caption>
        <thead>
          <tr>
-           <th>Nombre</th>
-           <th>Tipo</th>
-           <th>Categoría</th>
-           <th>Potencia</th>
-           <th>Precisión</th>
+          <th>{{'NOMBRE' | translate}}</th>
+          <th>{{'TIPO' | translate}}</th>
+          <th>{{'CATEGORIA' | translate}}</th>
+          <th>{{'POTENCIA' | translate}}</th>
+          <th>{{'PRECISION' | translate}}</th>
          </tr>
        </thead>
        <tbody>

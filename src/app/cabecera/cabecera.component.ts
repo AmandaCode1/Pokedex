@@ -8,6 +8,9 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class CabeceraComponent { 
 
+  //modoOscuro: boolean = false;
+
+  //opciones del spinner (idioma)
   opciones = [
     {valor: 'es', muestra: "Español"},
     {valor: 'en', muestra: "English"}
@@ -15,9 +18,14 @@ export class CabeceraComponent {
 
   constructor(private translate: TranslateService){}
 
-  idioma = (event:Event) => {
+  //para cuando se seleccione un elemento del spinner (ingles o español)
+  idioma(event:Event) {
     const idioma = (event.target as HTMLSelectElement).value;
     this.translate.use(idioma);
   }
+
+  /*cambiarModo() {
+    this.modoOscuro = !this.modoOscuro
+  }*/
 
 }

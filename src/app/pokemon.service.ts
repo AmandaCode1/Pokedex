@@ -15,10 +15,12 @@ export class PokemonService {
 
   constructor(private http: HttpClient) { }
 
+  //json de efectividades
   getJson(): Observable<any[]>{
     return this.http.get<any[]>("../../assets/json/efectividades.json");
   }
 
+  //Obtengo datos de los pokemon de la lista, count es el limite de los pokemon que quiero
   getPokemons(count: number): Observable<Pokemon[]> {
     const requests: Observable<Pokemon>[] = [];
 
@@ -36,15 +38,17 @@ export class PokemonService {
       );
       requests.push(request);
     }
-
     return forkJoin(requests);
   }
 
+  //Obtengo detalles del pokemon
   getDetallePokemon(pokemon: any, species?: any): detallePokemon {
 
+    //la descripcion esta en una url distinta, filtro la busqueda para obtener la descripcion en español
     const descripcion = species.flavor_text_entries.find(
       (data: any) => data.language.name === 'es' && data.version.name === 'x').flavor_text;
 
+    //datos de los detalles del pokemon
     return {
       id: pokemon.id,
       name: pokemon.species.name,
@@ -60,28 +64,28 @@ export class PokemonService {
       ataqueEspecial: pokemon.stats[3].base_stat,
       defensa: pokemon.stats[2].base_stat,
       defensaEspecial: pokemon.stats[4].base_stat,
-      //debilidades: esta en https://pokeapi.co/api/v2/type/${tipo}
     };
   }
 
-  //Url para la descripcion
+  //Url para la descripcion pasando como parametro la id del pokemon
   getIdDescripcionPokemon(id: number): Observable<any> {
     const url = `${this.url}/pokemon-species/${id}`;
     return this.http.get(url);
   }
 
-  //Url para los detalles
+  //Url para los detalles pasando como parametro la id del pokemon
   getIdDetallePokemon(id: number): Observable<any> {
     const url = `${this.url}/pokemon/${id}`;
     return this.http.get(url);
   }
 
+  //Url para los detalles pasando como parametro el nombre del pokemon (para el buscador)
   getPokemonNombre(name: string): Observable<any>{
     const url = `${this.url}/pokemon/${name}`;
     return this.http.get(url);
   }
 
-  //Buscar tipo por id 
+  //Buscar tipo pasando como parametro la id del pokemon
   getTipoPorId(id: number): Observable<Tipos> {
     return this.http.get(`${this.url}/pokemon/${id}`).pipe(
       map((data: any) => ({
@@ -90,41 +94,14 @@ export class PokemonService {
     );
   }
 
+  //Url de la cadena evolutiva pasando como parametro la id de la cadena evolutiva
   getIdEvolucion(id: number): Observable<any> {
     return this.http.get(`${this.url}/evolution-chain/${id}`);
   }
 
+  //Url del movimiento de un pokemon pasando como parametro el nombre del movimiento
   getDetalleMovimiento(name: string){
     return this.http.get(`${this.url}/move/${name}`);
   }
-
-  /*getTodosMovimientos(array: string[]): Observable<movimientos>{
-    for(let nombre of array){
-      const request = this.getDetalleMovimiento(nombre)
-    }
-    return {
-      nombre: data.name,
-      tipo: data.type.name,
-      categoria: data.demage_class.name,
-      potencia: data.power,
-      precision: data.accutancy,
-    };
-  }*/
-
-
-
-  /*getEfectividades(tipo: string): Observable<Efectividad> {
-    //Obtenemos efectividades de los pokemon desde la api
-    return this.http.get(`https://pokeapi.co/api/v2/type/${tipo}`).pipe(
-      map((data: any) => ({
-        dobleDanoA: data.damage_relations.double_damage_to.map((dano: any) => dano.double_damage_to.name),
-        mitadDanoA: data.damage_relations.half_damage_to.map((dano: any) => dano.half_damage_to.name),
-        noDanoA: data.damage_relations.no_damage_to.map((dano: any) => dano.no_damage_to.name),
-        dobleDanoDesde: data.damage_relations.double_damage_from.map((dano: any) => dano.double_damage_from.name),
-        mitadDanoDesde: data.damage_relations.half_damage_from.map((dano: any) => dano.half_damage_from.name),
-        noDanoDesde: data.damage_relations.no_damage_from.map((dano: any) => dano.no_damage_from.name),
-      }))
-    );
-  }*/
 
 }

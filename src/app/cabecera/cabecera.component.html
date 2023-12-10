@@ -12,7 +12,7 @@
 
 
     <div class="botones">
-      <button class="tema" id="cambiarTema">Modo Oscuro</button>
+      <button class="tema" id="cambiarTema">{{'MODO OSCURO' | translate}}</button>
       <!--<button class="idioma" id="cambiarIdioma" (click)="idioma($event)">Español</button>-->
       <select (change)="idioma($event)">
         <option *ngFor="let opcion of opciones" [value]="opcion.valor">{{ opcion.muestra }}</option>

@@ -8,7 +8,7 @@
     <button class="generacion3" (click)="generacion(251,386)">{{ '3ª GENERACION' | translate }}</button>
     <button class="generacion4" (click)="generacion(386,493)">{{ '4ª GENERACION' | translate }}</button>
     <button class="todasGeneraciones" (click)="generacion(0,493)">{{ '1ª A 4ª GENERACION' | translate }}</button>
-    <button class="reset" (click)="reset()">{{ 'RESETEAR' | translate }}</button>
+    <button class="reset" (click)="reset()">{{ 'RESETEAR LISTA' | translate }}</button>
   </div>
 
   <input class="cajatextobuscador" type="search" [(ngModel)]="nameP" (ngModelChange)="buscador()" placeholder="{{'NOMBRE POKEMON' | translate}}">

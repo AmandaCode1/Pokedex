@@ -54,6 +54,7 @@ export class InformacionDetalladaComponent implements OnInit {
     precision: 0,
   };
   
+  //activateRouter para acceder a la id de la url
   constructor(private ruta: ActivatedRoute, private pokemonService: PokemonService, private translate: TranslateService) { }
 
   ngOnInit(): void {
@@ -61,8 +62,6 @@ export class InformacionDetalladaComponent implements OnInit {
     this.tipoPorId();
     this.movimientosPokemon();
   }
-
-
   
   barravida():string{
     const vida = this.detallePokemon.vida*100/255;
@@ -90,235 +89,18 @@ export class InformacionDetalladaComponent implements OnInit {
     return `${defensaespecial}%`;
   }
 
-  movimientosPokemon(){
-    this.ruta.params.subscribe(params => {
-      const id = params['id'];
+////////DETALLES////////
 
-      this.pokemonService.getIdDetallePokemon(id).subscribe((data: any) => {
-        this.movesPokemon = data.moves;
-        this.nombresMovimientos = this.movesPokemon.map(move => ({
-          nombre: move.move.name,
-          metodoAprendizaje: move.version_group_details[0].move_learn_method.name
-        }));
-
-        //console.log('Datos movimientos: ', this.nombresMovimientos);
-        this.nombresMovimientos.forEach(objeto => this.movimientosGeneracion(objeto.nombre, objeto.metodoAprendizaje));
-        //console.log('DDDmovimientos: ',this.movimientosNivelOK);
-        //console.log('mmmMovimientos por maquina', this.movimientosMaquinaOK);
-      });
-    });
-  }
-        
-  //para saber de que generacion es el movimiento
-  movimientosGeneracion(name: string, learn: string){
-    this.pokemonService.getDetalleMovimiento(name).subscribe((data: any) => {
-      //console.log('Detalles del movimiento:', data);
-      const nombre = data.name;
-      const generacion = data.generation.name;
-      const tipo = data.type.name;
-      const categoria = data.damage_class.name;
-      const potencia = data.power;
-      //console.log('PPPPP', potencia);
-      const precision = data.accuracy;
-      //console.log('PPPPP', precision);
-      if(generacion == 'generation-i' || generacion == 'generation-ii' || generacion == 'generation-iii' || generacion == 'generation-iv'){
-        const interfaz: movimientos = { nombre, tipo, categoria, potencia, precision };
-
-        if(learn == 'level-up'){
-          this.movimientosNivelOK.push(interfaz);
-        //console.log('datos movimiento', interfaz);
-        } else if(learn == 'machine') {
-          this.movimientosMaquinaOK.push(interfaz);
-        }
-      }
-    });
-  }
-    
-  evolucionar(){
-    console.log('Buscando evolucion');
-    this.evolucionaA = [];
-    this.todasEvoluciones = [];
-    this.triggerElegido = [];
-    this.ruta.params.subscribe(params => {
-      const id = params['id'];
-      //Obtengo url pokemon-species/id
-      this.pokemonService.getIdDescripcionPokemon(id).subscribe(
-        respuesta=>{
-          this.especieElegida = respuesta;
-          console.log('especie: ', this.especieElegida);
-          console.log('cadena evolucion: ', this.especieElegida.evolution_chain.url);
-          //Trocea la url para conseguir el id de evolucion
-          let trozosUrl = this.especieElegida.evolution_chain.url.split('/');
-          this.idEvolucion = trozosUrl[trozosUrl.length - 2];//-2 porque es la penultima parte
-          console.log('id evolucion', this.idEvolucion);
-          this.getEvolucion(this.idEvolucion);
-        }
-      );
-    }
-    );
-  }
-
-  //parte evolucion a, de la url de evoluciones por especie
-  getEvolucion(idEvo:number) {
-    this.pokemonService.getIdEvolucion(idEvo).subscribe(
-      respuesta=>{
-        this.evolucionElegida = respuesta;
-        console.log('evolucion elegida: ', this.evolucionElegida);
-
-        console.log('array evoluciones: ', this.evolucionElegida.chain.evolves_to);
-        //console.log('trigger', this.evolucionElegida.chain.evolves_to);
-        //A evoluciones A que sera el array que contenga los nombres de las evoluciones le añado el pokemon baby
-        this.evolucionaA.push(this.evolucionElegida.chain.species);
-        this.ObtenerEvoluciones(this.evolucionElegida.chain.evolves_to);
-      }
-    )
-  }
-
-  //los arrays de evolves_to
-  ObtenerEvoluciones(array: any[]){
-    let evoluciones: any[] = array;
-    console.log('evoluciones que llegan: ', evoluciones);
-    while(evoluciones.length > 0){
-      for(let i = 0; i < evoluciones.length; i++){
-        let evolucion = evoluciones[i].species;
-        let trigger = evoluciones[i].evolution_details[0].min_level;
-        //console.log('trigger', trigger);
-        this.evolucionaA.push(evolucion);
-        this.triggerElegido.push(trigger);
-        if(evoluciones[i].evolves_to){
-          evoluciones.push(...evoluciones[i].evolves_to);
-        }
-      }
-      evoluciones = evoluciones.slice(evoluciones.length);
-      //triggers = evoluciones.slice(evoluciones.length);
-
-    }
-    //console.log('triggersElegido: ', this.triggerElegido);
-    //console.log('evolucionaA: ', this.evolucionaA);
-    //console.log('trigger', this.triggerElegido);
-    this.getTodasEvoluciones();
-  }
-
-  //Datos de los pokemon de las evoluciones, lo que cargo
-  getTodasEvoluciones(){
-    this.evolucionaA.forEach(p => {
-      this.pokemonService.getPokemonNombre(p.name).subscribe(
-        respuesta => {
-          const pokemonInfo = {
-            name: respuesta.name,
-            nivel: this.triggerElegido,
-            img: respuesta.sprites.other.home.front_default,
-          };
-          this.todasEvoluciones.push(pokemonInfo);
-        }
-      );
-    });
-    console.log('Evoluciones final: ', this.todasEvoluciones);
-  }
-
-  tipoPorId(){
-    this.ruta.params.subscribe(params => {
-      const id = params['id'];
-
-      this.pokemonService.getTipoPorId(id).subscribe(
-        tipos => {
-          this.tipo = tipos.types;
-          console.log('tipos por id', this.tipo);
-
-          this.cargarJson();
-        },
-        error => {
-          console.log('Error obteniendo tipos', error);
-        }
-      );
-    });
-  }
-
-  cargarJson(){
-    console.log('Este es el resultado de cargar json', this.tipo);
-    console.log('Efectividades:', this.Efectividades);
-    
-    if(this.tipo.length == 1){
-      this.efectividadSeleccionada = this.Efectividades.filter(filtro => this.tipo.includes(filtro.id));
-      console.log('filtrado en json si hay mas de un tipo', this.efectividadSeleccionada);
-    } else {
-      this.efectividadSeleccionada = this.Efectividades.filter(filtro => this.tipo.includes(filtro.id));
-      console.log('filtrado en json si hay mas de un tipo', this.efectividadSeleccionada);
-      const nuevosEficaces = this.efectividadSeleccionada[0].EficazContra;
-
-      //const nuevaEfectividadSeleccionada = [...this.efectividadSeleccionada];
-      for(let i = 0; i < this.efectividadSeleccionada.length; i++){
-        for(let j = i + 1; j < this.efectividadSeleccionada.length; j++){
-          const tipo1 = this.efectividadSeleccionada[i];
-          console.log('Tipo1:', tipo1 );
-          const tipo2 = this.efectividadSeleccionada[j];
-          console.log('Tipo2:', tipo2 );
-
-          //Comparo elementos de EficazContra
-          const nuevosEficaces = [];
-          for(let tipo11 of tipo1.EficazContra){
-            //let encontrado = false;
-            for(let tipo22 of tipo2.EficazContra){
-              if(tipo11 === tipo22){
-                this.auxMuyEf.push(tipo22);
-                //encontrado = true;
-                console.log('Elemento del array Muyeficaz: ',tipo11);
-                break;//Para que salga del bucle una vez lo encuentre
-              } //else {
-                //nuevosEficaces.push(tipo22);
-              //}
-            }
-          }
-          //Comparo elementos de MuyResistente
-          //const nuevosResistentes = [];
-          for(let tipo11 of tipo1.DebilContra){
-            //let encontrado = false;
-            for(let tipo22 of tipo2.DebilContra){
-              if(tipo11 === tipo22){
-                this.auxMuyRes.push(tipo11);
-                //encontrado = true;
-                console.log('Elemento del array MuyResis: ',tipo11);
-                break;
-              } 
-            }
-          }
-        }
-
-      }
-
-      this.efectividadSeleccionada[0].EficazContra.push(...this.efectividadSeleccionada[1].EficazContra);
-      console.log('eficazContra antes ', this.efectividadSeleccionada[0].EficazContra);
-      const setEficazContra = new Set(this.efectividadSeleccionada[0].EficazContra);
-      this.efectividadSeleccionada[0].EficazContra = Array.from(setEficazContra);
-      console.log('eficazContra despues ', this.efectividadSeleccionada[0].EficazContra);
-
-      this.efectividadSeleccionada[0].DebilContra.push(...this.efectividadSeleccionada[1].DebilContra);
-      console.log('debilContra antes ', this.efectividadSeleccionada[0].DebilContra);
-      //Al convertir el array en un conjunto se eliminan los duplicados
-      const setDebilContra = new Set(this.efectividadSeleccionada[0].DebilContra);
-      //Vuelvo a convertirlo en array
-      this.efectividadSeleccionada[0].DebilContra = Array.from(setDebilContra);
-      console.log('debilContra despues del set ', this.efectividadSeleccionada[0].DebilContra);
-
-      this.efectividadSeleccionada[0].InmuneA.push(...this.efectividadSeleccionada[1].InmuneA);
-      console.log('InmuneA antes ', this.efectividadSeleccionada[0].InmuneA);
-      const setInmuneA = new Set(this.efectividadSeleccionada[0].InmuneA);
-      this.efectividadSeleccionada[0].InmuneA = Array.from(setInmuneA);
-      console.log('InmuneA despues del set ', this.efectividadSeleccionada[0].InmuneA);
-
-      this.efectividadSeleccionada.pop();
-      console.log('despues de borrar el segundo tipo',this.efectividadSeleccionada);
-
-    }
-  }
-
+  //Obtengo los detalles del pokemon y la descripcion
   cargarDetallesPokemon() {
     //Obtenemos el id de la url que se abre al hacer clic en un pokemon
     this.ruta.params.subscribe(params => {
       const id = params['id'];
       //manejamos dos respuestas cn el forkjoin
       forkJoin({
+        //los detalles
         detPokemon: this.pokemonService.getIdDetallePokemon(id),
+        //la descripcion (en una url distinta)
         descrip: this.pokemonService.getIdDescripcionPokemon(id)
       }).subscribe(
         ({ detPokemon, descrip }) => {
@@ -328,6 +110,224 @@ export class InformacionDetalladaComponent implements OnInit {
           console.log('Error obteniendo descripcion del pokemon', error);
         }
       );
+    });
+  }
+
+///////EFECTIVIDADES////////
+
+  //Obtengo tipo o tipos del pokemon
+  tipoPorId(){
+    //Obtengo la id de la url del pokemon
+    this.ruta.params.subscribe(params => {
+      const id = params['id'];
+      //para obtener el tipo/s del pokemon
+      this.pokemonService.getTipoPorId(id).subscribe(
+        tipos => {
+          this.tipo = tipos.types;
+          this.cargarJson();
+        },
+        error => {
+          console.log('Error obteniendo tipos', error);
+        }
+      );
+    });
+  }
+
+  //Leo json de efectividades creado y segun el tipo/s del pokemon, filtro el json y obtengo efectividades segun el tipo
+  cargarJson(){
+    //si el pokemon es de un tipo, filtro el json por ese tipo y obtengo efectividades
+    if(this.tipo.length == 1){
+      this.efectividadSeleccionada = this.Efectividades.filter(filtro => this.tipo.includes(filtro.id));
+      //si es de dos tipos, filtro el json 
+    } else {
+      this.efectividadSeleccionada = this.Efectividades.filter(filtro => this.tipo.includes(filtro.id));
+      //separo los tipos
+      for(let i = 0; i < this.efectividadSeleccionada.length; i++){
+        for(let j = i + 1; j < this.efectividadSeleccionada.length; j++){
+          const tipo1 = this.efectividadSeleccionada[i];
+          console.log('Tipo1:', tipo1 );
+          const tipo2 = this.efectividadSeleccionada[j];
+          console.log('Tipo2:', tipo2 );
+
+          //Comparo elementos de EficazContra de los dos tipos
+          for(let tipo11 of tipo1.EficazContra){
+            for(let tipo22 of tipo2.EficazContra){
+              //si el elemento de un tipo es igual a otro, agrego ese elemento a un array nuevo auxMuyEficaz
+              if(tipo11 === tipo22){
+                this.auxMuyEf.push(tipo22);
+                break;//Para que salga del bucle una vez lo encuentre
+              }
+            }
+          }
+          //Comparo elementos de DebilContra de los dos tipos
+          for(let tipo11 of tipo1.DebilContra){
+            for(let tipo22 of tipo2.DebilContra){
+              //si el elemento de un tipo es igual a otro, agrego ese elemento a un array nuevo auxMuyRes
+              if(tipo11 === tipo22){
+                this.auxMuyRes.push(tipo11);
+                break;//Para que salga del bucle una vez lo encuentre
+              } 
+            }
+          }
+        }
+
+      }
+
+      //paso al array de eficazContra del primer tipo todos los elementos de eficazContra del segundo tipo
+      this.efectividadSeleccionada[0].EficazContra.push(...this.efectividadSeleccionada[1].EficazContra);
+      //convierto el array a conjunto (set) el array para que automaticamente elimine los duplicados
+      const setEficazContra = new Set(this.efectividadSeleccionada[0].EficazContra);
+      //convierto el set a array
+      this.efectividadSeleccionada[0].EficazContra = Array.from(setEficazContra);
+
+      //paso al array de debilContra del primer tipo todos los elementos de debilContra del segundo tipo
+      this.efectividadSeleccionada[0].DebilContra.push(...this.efectividadSeleccionada[1].DebilContra);
+      //convierto el array a conjunto (set) el array para que automaticamente elimine los duplicados
+      const setDebilContra = new Set(this.efectividadSeleccionada[0].DebilContra);
+      //convierto el set a array
+      this.efectividadSeleccionada[0].DebilContra = Array.from(setDebilContra);
+
+      //paso al array de inmuneA del primer tipo todos los elementos de inmuneA del segundo tipo
+      this.efectividadSeleccionada[0].InmuneA.push(...this.efectividadSeleccionada[1].InmuneA);
+      //convierto el array a conjunto (set) el array para que automaticamente elimine los duplicados
+      const setInmuneA = new Set(this.efectividadSeleccionada[0].InmuneA);
+      //convierto el set a array
+      this.efectividadSeleccionada[0].InmuneA = Array.from(setInmuneA);
+
+      //Borro el segundo tipo, me quedo con el primer tipo con los elementos del primer y segundo tipo
+      this.efectividadSeleccionada.pop();
+    }
+  }
+
+  
+
+//////EVOLUCIONES///////
+
+  //Obtengo el id de la cadena de evolucion del pokemon de la id de la url
+  evolucionar(){
+    console.log('Buscando evolucion');
+    //Doy valores iniciales a los arrays para borrar los datos que puedan tener
+    this.evolucionaA = [];
+    this.todasEvoluciones = [];
+    this.triggerElegido = [];
+    //Obtengo la id de la url
+    this.ruta.params.subscribe(params => {
+      const id = params['id'];
+      //Obtengo url pokemon-species/id, donde esta el id de la cadena de evolucion del pokemon
+      this.pokemonService.getIdDescripcionPokemon(id).subscribe(
+        respuesta=>{
+          this.especieElegida = respuesta;
+          //Trocea la url para conseguir el id de evolucion
+          let trozosUrl = this.especieElegida.evolution_chain.url.split('/');
+          this.idEvolucion = trozosUrl[trozosUrl.length - 2];//-2 porque es la penultima parte
+          //paso a la funcion la id de la evolucion
+          this.getEvolucion(this.idEvolucion);
+        }
+      );
+    }
+    );
+  }
+
+  //Obtengo el nombre del pokemon baby de la evolucion y los datos de la cadena evolutiva
+  getEvolucion(idEvo:number) {
+    //Obtengo todos los datos de la evolucion
+    this.pokemonService.getIdEvolucion(idEvo).subscribe(
+      respuesta=>{
+        this.evolucionElegida = respuesta;
+        //A evolucionesA que sera el array que contenga los nombres de las evoluciones, le añado el pokemon baby
+        this.evolucionaA.push(this.evolucionElegida.chain.species);
+        //filtro todos los datos para obtener solo la cadena evolutiva
+        this.ObtenerEvoluciones(this.evolucionElegida.chain.evolves_to);
+      }
+    )
+  }
+
+  //
+  ObtenerEvoluciones(array: any[]){
+    //cadena evolutiva
+    let evoluciones: any[] = array;
+    //filtro datos para obtener solo el nombre de las evoluciones y los niveles a los que evoluciona
+    while(evoluciones.length > 0){
+      for(let i = 0; i < evoluciones.length; i++){
+        //obtengo el nombre de las evoluciones y lo añado al array
+        let evolucion = evoluciones[i].species;
+        this.evolucionaA.push(evolucion);
+        //obtengo los niveles a los que evoluciona y los añado al array
+        let trigger = evoluciones[i].evolution_details[0].min_level;
+        this.triggerElegido.push(trigger);
+        //Si hay mas evoluciones, las añado al array para procesarlas en las iteracciones
+        if(evoluciones[i].evolves_to){
+          evoluciones.push(...evoluciones[i].evolves_to);
+        }
+      }
+      //vacio el array
+      evoluciones = [];
+    }
+    this.getTodasEvoluciones();
+  }
+
+  //Nombre e imagen de los pokemon de las evoluciones, lo que cargo
+  getTodasEvoluciones(){
+    //recorro el array de evoluciones y filtro para obtener solo el nombre y la imagen.
+    //el nivel es el array (nivel al que evoluciona) obtenido anteriormente
+    this.evolucionaA.forEach(p => {
+      this.pokemonService.getPokemonNombre(p.name).subscribe(
+        respuesta => {
+          const pokemonInfo = {
+            name: respuesta.name,
+            nivel: this.triggerElegido,
+            img: respuesta.sprites.other.home.front_default,
+          };
+          //array de interfaces, le añado los datos de cada evolucion
+          this.todasEvoluciones.push(pokemonInfo);
+        }
+      );
+    });
+  }
+
+//////MOVIMIENTOS///////
+
+  //todos los movimientos del pokemon de la id de la url
+  movimientosPokemon(){
+    this.ruta.params.subscribe(params => {
+      const id = params['id'];
+
+      this.pokemonService.getIdDetallePokemon(id).subscribe((data: any) => {
+        //todos los movimientos del pokemon
+        this.movesPokemon = data.moves;
+        //filtro para obtener el nombre y el metodo de aprendizaje solo
+        this.nombresMovimientos = this.movesPokemon.map(move => ({
+          //nombre del movimiento
+          nombre: move.move.name,
+          //metodo de aprendizaje(para separar por nivel o por maquina)
+          metodoAprendizaje: move.version_group_details[0].move_learn_method.name
+        }));
+        //Llamo a la funcion para filtrar los movimientos y que aparezcan hasta los de 4 generacion
+        this.nombresMovimientos.forEach(objeto => this.movimientosGeneracion(objeto.nombre, objeto.metodoAprendizaje));
+      });
+    });
+  }
+        
+  //para saber de que generacion es el movimiento y que solo agregue al array los que sean hasta la 4 generacion
+  movimientosGeneracion(name: string, learn: string){
+    //obtengo los datos del movimiento y los filtro para obtener solo los datos que quiero
+    this.pokemonService.getDetalleMovimiento(name).subscribe((data: any) => {
+      const nombre = data.name;
+      const generacion = data.generation.name;
+      const tipo = data.type.name;
+      const categoria = data.damage_class.name;
+      const potencia = data.power;
+      const precision = data.accuracy;
+      //filtro para que solo me coja los que sean de 1, 2, 3 y 4 generacion
+      if(generacion == 'generation-i' || generacion == 'generation-ii' || generacion == 'generation-iii' || generacion == 'generation-iv'){
+        const interfaz: movimientos = { nombre, tipo, categoria, potencia, precision };
+        //separo segun el metodo de aprendizaje (por nivel o por maquina)
+        if(learn == 'level-up'){
+          this.movimientosNivelOK.push(interfaz);
+        } else if(learn == 'machine') {
+          this.movimientosMaquinaOK.push(interfaz);
+        }
+      }
     });
   }
       

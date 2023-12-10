@@ -24,6 +24,7 @@ export class ListaComponent implements OnInit {
     this.cargar();
   }
 
+  //lista todos los pokemon
   cargar() {
     this.pokemonService.getPokemons(493).subscribe((response: Pokemon[]) => {
       this.pokemons = response;
@@ -35,21 +36,14 @@ export class ListaComponent implements OnInit {
     this.filtrar();
   }
 
-  /*buscador() {
-    if(!this.nameP){
-      this.cargar();
-    } else {
-      const pokemonBuscador = this.copiapokemons.filter((pokemon) => pokemon.name.toLowerCase().includes(this.nameP.toLowerCase()));
-      this.pokemons = pokemonBuscador;
-    }
-  }*/
-
+  //filtro de generacion
   generacion(inicio: number, fin: number) {
     this.inicio = inicio;
     this.fin = fin;
     this.filtrar();
   }
 
+  //filtro de tipos
   tipos(tipo: string) {
     //Verifica si el tipo ya está seleccionado
     const indice = this.tipo.indexOf(tipo);
@@ -64,25 +58,8 @@ export class ListaComponent implements OnInit {
   
     this.filtrar();
   }
-  
 
-  /*tipos(tipo: string) {
-    this.tipo = tipo;
-    this.filtrar();
-  }*/
-
-  /*generacion(inicio: number, fin: number) {
-    this.cargarLista();
-    const pokemonGeneracion = this.pokemons.slice(inicio, fin);
-    this.copiapokemons = pokemonGeneracion;
-  }
-
-  tipos(tipo: string) {
-    this.cargarLista();
-    const pokemonTipo = this.copiapokemons.filter((pokemon) => pokemon.types.includes(tipo));
-    this.copiapokemons = pokemonTipo;
-  }*/
-
+  //Buscador que tenga en cuenta generacion, tipo y nombre
   filtrar(){
     this.pokemons = [...this.copiapokemons];
 
@@ -95,18 +72,13 @@ export class ListaComponent implements OnInit {
     }
 
     if(!this.nameP){
-      //this.cargar();
     } else {
       this.pokemons = this.pokemons.filter((pokemon) => pokemon.name.toLowerCase().includes(this.nameP.toLowerCase()));
     }
 
   }
 
-  /*listaPokemon(){
-      this.filtra();
-      return this.pokemons;
-  }*/
-
+  //Para resetear la busqueda y quitar los filtros que haya, variables a valores iniciales
   reset(){
     this.cargar();
     this.nameP = '';
