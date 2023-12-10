@@ -33,7 +33,7 @@ body {
   overflow: hidden;
   width: 250px;
   box-sizing: border-box;
-  width: calc(50%-16px);
+  
   margin-bottom: 16px;
 
 }
