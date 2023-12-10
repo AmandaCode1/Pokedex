@@ -27,13 +27,13 @@
 
           
           <div class="estadisticas">
-            <p><u>{{'ESTADISTICAS' | translate}}</u></p>
-          <p>{{'VIDA' | translate}}:</p> <div class="container"><div class="skills"[style.width]="barravida()">{{ detallePokemon.vida }}</div></div>
-          <p>{{'VELOCIDAD' | translate}}:</p> <div class="container"><div class="skills"[style.width]="barravelocidad()">{{ detallePokemon.velocidad }}</div></div>
-          <p>{{'ATAQUE' | translate}}:</p> <div class="container"><div class="skills"[style.width]="barraataque()">{{ detallePokemon.ataque }}</div></div>
-          <p>{{'ATAQUE ESPECIAL' | translate}}</p> <div class="container"><div class="skills"[style.width]="barraAtaqueespecial()">{{ detallePokemon.ataqueEspecial }}</div></div>
-          <p>{{'DEFENSA' | translate}}:</p> <div class="container"><div class="skills"[style.width]="barradefensa()">{{ detallePokemon.defensa}}</div></div>
-          <p>{{'DEFENSA ESPECIAL' | translate}}:</p> <div class="container"><div class="skills"[style.width]="barraDefensaespecial()">{{ detallePokemon.defensaEspecial }}</div></div>
+            <p class="textoskills"><u>{{'ESTADISTICAS' | translate}}</u></p>
+          <p class="textoskills">{{'VIDA' | translate}}:</p> <div class="container"><div class="skills"[style.width]="barravida()">{{ detallePokemon.vida }}</div></div>
+          <p class="textoskills">{{'VELOCIDAD' | translate}}:</p> <div class="container"><div class="skills"[style.width]="barravelocidad()">{{ detallePokemon.velocidad }}</div></div>
+          <p class="textoskills">{{'ATAQUE' | translate}}:</p> <div class="container"><div class="skills"[style.width]="barraataque()">{{ detallePokemon.ataque }}</div></div>
+          <p class="textoskills">{{'ATAQUE ESPECIAL' | translate}}</p> <div class="container"><div class="skills"[style.width]="barraAtaqueespecial()">{{ detallePokemon.ataqueEspecial }}</div></div>
+          <p class="textoskills">{{'DEFENSA' | translate}}:</p> <div class="container"><div class="skills"[style.width]="barradefensa()">{{ detallePokemon.defensa}}</div></div>
+          <p class="textoskills">{{'DEFENSA ESPECIAL' | translate}}:</p> <div class="container"><div class="skills"[style.width]="barraDefensaespecial()">{{ detallePokemon.defensaEspecial }}</div></div>
           </div>
 
         </div>
@@ -46,7 +46,7 @@
   <div *ngIf="detallePokemon" class="image-container">
     <input type="checkbox" id="toggleShiny">
     <label for="toggleShiny" class="toggle-label">
-    <img class="pokeball2" src="../../assets/pokeball2.png">
+    <img class="pokeball2" src="../../assets/fondoarbol.jpeg">
     <img class="pokemon-image normal-image" [src]="detallePokemon.image" alt="{{ detallePokemon.name }}">
     <img class="pokemon-image shiny-image" [src]="detallePokemon.imageShiny" alt="{{ detallePokemon.name }}">
     </label>
@@ -58,7 +58,7 @@
               <thead class="thead-dark">
                 
                 <tr>
-                  <th>{{'TABLA DE EFECTIVIDADES' | translate}}</th>
+                  <th class="tituloprin">{{'TABLA DE EFECTIVIDADES' | translate}}</th>
               </tr>
               <tr>
                 <th>{{'MUY EFICAZ' | translate}}: </th><td>{{auxMuyEf}}</td>
@@ -79,8 +79,9 @@
             </table>
           </div>
     <br><br><br><br><br><br><br><br><br><br><br>
-
+          <div class="botonEvo">
           <button class="boton-evolucion" (click)="evolucionar()">{{'VER EVOLUCIONES' | translate}}</button>
+          </div>
           <div class="contenedor-evoluciones">
           <div class="texto-evoluciones" *ngFor="let datospokemon of todasEvoluciones">
           <h3>{{datospokemon.name}}</h3>
