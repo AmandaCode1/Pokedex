@@ -1,11 +1,16 @@
 body {
   background-color: #828282;
   font-family: 'Arial', sans-serif;
+  background-image: url(../../assets/fondo.jpg);
+  margin-top: -20px;
+  margin-left: -20px;
+  margin-right:-20px;
 }
 
 .buscador-botones {
   display: flex;
   align-items: center;
+  
 }
 
 .titulo {
@@ -16,8 +21,9 @@ body {
 .contenedor {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
- /* background-image: url(../../assets/fondo.jpg);*/
+  justify-content: space-between;
+  margin-left: 2%;
+  
 }
 
 .pokemon-carta {
@@ -27,13 +33,18 @@ body {
   margin: 20px;
   overflow: hidden;
   width: 250px;
+  box-sizing: border-box;
+  width: calc(50%-16px);
+  margin-bottom: 16px;
 
 }
+
 
 .pokemon-carta:hover {
   background-color: #d3b024;
   border-radius: 10%;
   border: 5px solid color(red green blue);
+  border-color: white;
 }
 
 .pokemon-image {
@@ -131,7 +142,6 @@ body {
 .boton-generacion {
   padding: 10px 20px;
   margin: 5px;
-
   border: none;
   border-radius: 5px;
   font-size: 16px;
@@ -196,13 +206,14 @@ body {
   width: 50%;
   height: 50%;
   font-size: 2rem;
-  border: none;
+  border: auto;
+  color: white;
 }
 .cajatextobuscador::placeholder {
   color: #999;
 }
 .cajatextobuscador:hover {
-  border-color: #ffcb05;
+  border-color: #ff0505;
 }
 .cajatextobuscador:focus {
   border-color: #ff0000;
@@ -437,3 +448,10 @@ body {
   }
   
 
+  @media (min-width:768px) {
+
+
+
+  }
+ 
+  
