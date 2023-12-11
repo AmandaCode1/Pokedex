@@ -7,7 +7,7 @@
 
 
         <div class="pokedex"> 
-          <img src="../../assets/pokedex.png">
+          <img src="assets/pokedex.png">
         </div>
         
 
@@ -46,7 +46,7 @@
   <div *ngIf="detallePokemon" class="image-container">
     <input type="checkbox" id="toggleShiny">
     <label for="toggleShiny" class="toggle-label">
-    <img class="pokeball2" src="../../assets/fondoarbol.jpeg">
+    <img class="pokeball2" src="/assets/fondoarbol.jpeg">
     <img class="pokemon-image normal-image" [src]="detallePokemon.image" alt="{{ detallePokemon.name }}">
     <img class="pokemon-image shiny-image" [src]="detallePokemon.imageShiny" alt="{{ detallePokemon.name }}">
     </label>
