@@ -58,7 +58,6 @@ body {
   width: 100%;
   height: 100%;
   background: linear-gradient(to bottom, #4f4c4e, #6e6e6d);
-  /*ajustar los colores*/
   opacity: 0.3;
   z-index: 1;
 }
@@ -111,33 +110,33 @@ body {
   color: #000;
   border: 1px solid #000;
   border-radius: 5px;
-  padding: 8px 12px; /* Ajuste del espaciado interno para hacer los botones un poco más pequeños */
+  padding: 8px 12px; 
   margin: 5px;
   cursor: pointer;
-  font-size: 14px; /* Tamaño del texto reducido */
+  font-size: 14px;
 }
 
 .buscador-botones {
   display: flex;
-  flex-direction: column; /* Ajusta la dirección de los elementos a columna */
+  flex-direction: column; 
   align-items: center;
-  margin-top: 20px; /* Ajusta el margen superior para separar de la cabecera */
+  margin-top: 20px; 
   
 }
 
 .botones-tipo {
-  margin-bottom: 10px; /* Ajusta el margen inferior de los contenedores de botones */
+  margin-bottom: 10px; 
 }
 
 
 .botones-tipo button {
-  padding: 6px 10px; /* Ajusta el tamaño de los botones */
-  font-size: 12px; /* Ajusta el tamaño del texto de los botones */
+  padding: 6px 10px; 
+  font-size: 12px;
 
 }
 
 
-/* Estilos generales de los botones */
+/************ Estilos generales de los botones ******************/
 .boton-generacion {
   padding: 10px 20px;
   margin: 5px;
@@ -148,11 +147,11 @@ body {
   cursor: pointer;
   outline: none;
   transition: background-color 0.3s, color 0.3s;
-   padding: 6px 10px; /* Ajusta el tamaño de los botones */
-  font-size: 12px; /* Ajusta el tamaño del texto de los botones */
+   padding: 6px 10px; 
+  font-size: 12px;
 }
 
-/* Estilos para cada generación */
+/****************** Estilos para cada generación ************************/
 .generacion1{
   background-color: #ffcb05;
   color: #fff;
@@ -183,12 +182,11 @@ body {
   color: #fff;
 }
 
-/* Estilos al pasar el mouse sobre los botones */
+
 .boton-generacion:hover {
   opacity: 0.8;
 }
 
-/* Estilos cuando se hace clic en los botones */
 .boton-generacion:active {
   transform: translateY(2px);
 }
@@ -222,7 +220,7 @@ body {
 
 
 
-/* Estilo de los nombres de tipos que hay */
+/************************** Estilo de los nombres de tipos que hay *******************/
 
 .fire{
   background:  rgba(240, 128, 48);
@@ -335,114 +333,114 @@ body {
 
 
 
-   /* Estilo de los botones de tipos  */
+   /***************** Estilo de los botones de tipos  ******************************/
 
    
   .botones-tipo button.acero {
-    background-color: #b8b8d0; /* Color para el tipo Acero */
-    color: black; /* Color del texto */
+    background-color: #b8b8d0; 
+    color: black; 
     text-transform: capitalize;
   }
   
   .botones-tipo button.agua {
-    background-color: #6890f0; /* Color para el tipo Agua */
-    color: #fff; /* Color del texto */
+    background-color: #6890f0; 
+    color: #fff;
     text-transform: capitalize;
   }
   
   .botones-tipo button.bicho {
-    background-color: #a8b820; /* Color para el tipo Bicho */
-    color: #fff; /* Color del texto */
+    background-color: #a8b820; 
+    color: #fff; 
     text-transform: capitalize;
   }
   
   .botones-tipo button.dragon {
-    background-color: #7038f8; /* Color para el tipo Dragón */
-    color: #fff; /* Color del texto */
+    background-color: #7038f8; 
+    color: #fff;
     text-transform: capitalize;
   }
   
   .botones-tipo button.electrico {
-    background-color: #f8d030; /* Color para el tipo Eléctrico */
-    color: #000; /* Color del texto */
+    background-color: #f8d030; 
+    color: #000; 
     text-transform: capitalize;
   }
   
   .botones-tipo button.fantasma {
-    background-color: #705898; /* Color para el tipo Fantasma */
-    color: #fff; /* Color del texto */
+    background-color: #705898; 
+    color: #fff; 
     text-transform: capitalize;
   }
   
   .botones-tipo button.fuego {
-    background-color: #f08030; /* Color para el tipo Fuego */
-    color: #fff; /* Color del texto */
+    background-color: #f08030; 
+    color: #fff; 
     text-transform: capitalize;
   }
   
   .botones-tipo button.hada {
-    background-color: #ee99ac; /* Color para el tipo Hada */
-    color: #000; /* Color del texto */
+    background-color: #ee99ac; 
+    color: #000; 
     text-transform: capitalize;
   }
   
   .botones-tipo button.hielo {
-    background-color: #98d8d8; /* Color para el tipo Hielo */
-    color: #000; /* Color del texto */
+    background-color: #98d8d8; 
+    color: #000; 
     text-transform: capitalize;
   }
   
   .botones-tipo button.lucha {
-    background-color: #c03028; /* Color para el tipo Lucha */
-    color: #fff; /* Color del texto */
+    background-color: #c03028; 
+    color: #fff; 
     text-transform: capitalize;
   }
   
   .botones-tipo button.normal {
-    background-color: #a8a878; /* Color para el tipo Normal */
-    color: #000; /* Color del texto */
+    background-color: #a8a878; 
+    color: #000; 
     text-transform: capitalize;
   }
   
   .botones-tipo button.planta {
-    background-color: #78c850; /* Color para el tipo Planta */
-    color: #000; /* Color del texto */
+    background-color: #78c850; 
+    color: #000; 
     text-transform: capitalize;
   }
   
   .botones-tipo button.psiquico {
-    background-color: #f85888; /* Color para el tipo Psíquico */
-    color: #fff; /* Color del texto */
+    background-color: #f85888; 
+    color: #fff; 
     text-transform: capitalize;
   }
   
   .botones-tipo button.roca {
-    background-color: #b8a038; /* Color para el tipo Roca */
-    color: #000; /* Color del texto */
+    background-color: #b8a038; 
+    color: #000;
     text-transform: capitalize;
   }
   
   .botones-tipo button.siniestro {
-    background-color: #705848; /* Color para el tipo Siniestro */
-    color: #fff; /* Color del texto */
+    background-color: #705848;
+    color: #fff; 
     text-transform: capitalize;
   }
   
   .botones-tipo button.tierra {
-    background-color: #e0c068; /* Color para el tipo Tierra */
-    color: #000; /* Color del texto */
+    background-color: #e0c068; 
+    color: #000; 
     text-transform: capitalize;
   }
   
   .botones-tipo button.veneno {
-    background-color: #a040a0; /* Color para el tipo Veneno */
-    color: #fff; /* Color del texto */
+    background-color: #a040a0; 
+    color: #fff; 
     text-transform: capitalize;
   }
   
   .botones-tipo button.volador {
-    background-color: #a890f0; /* Color para el tipo Volador */
-    color: #000; /* Color del texto */
+    background-color: #a890f0; 
+    color: #000; 
     text-transform: capitalize;
   }
   
