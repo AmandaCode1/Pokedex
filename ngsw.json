@@ -1,0 +1,107 @@
+{
+  "configVersion": 1,
+  "timestamp": 1702319651441,
+  "index": "https://amandacode1.github.io/Pokedex/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "https://amandacode1.github.io/Pokedex/favicon.ico",
+        "https://amandacode1.github.io/Pokedex/index.html",
+        "https://amandacode1.github.io/Pokedex/main.a3391dff82b976a2.js",
+        "https://amandacode1.github.io/Pokedex/manifest.webmanifest",
+        "https://amandacode1.github.io/Pokedex/polyfills.cc6002e21b5b151e.js",
+        "https://amandacode1.github.io/Pokedex/runtime.82452df24e47a557.js",
+        "https://amandacode1.github.io/Pokedex/styles.ef46db3751d8e999.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "https://amandacode1.github.io/Pokedex/assets/fondo.jpg",
+        "https://amandacode1.github.io/Pokedex/assets/fondoarbol.jpeg",
+        "https://amandacode1.github.io/Pokedex/assets/icons/icon-128x128.png",
+        "https://amandacode1.github.io/Pokedex/assets/icons/icon-144x144.png",
+        "https://amandacode1.github.io/Pokedex/assets/icons/icon-152x152.png",
+        "https://amandacode1.github.io/Pokedex/assets/icons/icon-192x192.png",
+        "https://amandacode1.github.io/Pokedex/assets/icons/icon-384x384.png",
+        "https://amandacode1.github.io/Pokedex/assets/icons/icon-512x512.png",
+        "https://amandacode1.github.io/Pokedex/assets/icons/icon-72x72.png",
+        "https://amandacode1.github.io/Pokedex/assets/icons/icon-96x96.png",
+        "https://amandacode1.github.io/Pokedex/assets/idiomas/en.json",
+        "https://amandacode1.github.io/Pokedex/assets/idiomas/es.json",
+        "https://amandacode1.github.io/Pokedex/assets/json/efectividades.json",
+        "https://amandacode1.github.io/Pokedex/assets/masterball.png",
+        "https://amandacode1.github.io/Pokedex/assets/pokeball2.png",
+        "https://amandacode1.github.io/Pokedex/assets/pokeballnormal.png",
+        "https://amandacode1.github.io/Pokedex/assets/pokedex.png",
+        "https://amandacode1.github.io/Pokedex/assets/pokemon.png",
+        "https://amandacode1.github.io/Pokedex/assets/superball.png",
+        "https://amandacode1.github.io/Pokedex/assets/ultraball.png",
+        "https://amandacode1.github.io/Pokedex/fondo.a400dcad9f0b2272.jpg"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "https://amandacode1.github.io/Pokedex/assets/fondo.jpg": "e92827f70c3dbc0a68718f2221676e4180893364",
+    "https://amandacode1.github.io/Pokedex/assets/fondoarbol.jpeg": "42935294bce59472be8f98aebcbdfe011d9934ca",
+    "https://amandacode1.github.io/Pokedex/assets/icons/icon-128x128.png": "f912963bdc6d5a38d8f1dd0afbaab2ce8d657acb",
+    "https://amandacode1.github.io/Pokedex/assets/icons/icon-144x144.png": "b155fd5f2fd5d2ea7760721063003c4cd95fd783",
+    "https://amandacode1.github.io/Pokedex/assets/icons/icon-152x152.png": "eae6e0f0c8afb8aaae339e2a569b43e9238e5e6c",
+    "https://amandacode1.github.io/Pokedex/assets/icons/icon-192x192.png": "15c4180454633880d98674aa7394656196c91584",
+    "https://amandacode1.github.io/Pokedex/assets/icons/icon-384x384.png": "94a915751ef6c9282df9aea405ad679230631814",
+    "https://amandacode1.github.io/Pokedex/assets/icons/icon-512x512.png": "1de182f76f7329dfa8f9fcdd1fdcdd695bea6a99",
+    "https://amandacode1.github.io/Pokedex/assets/icons/icon-72x72.png": "aa88a6096bd973be7f6d7a5489bfa6bc2463f8c4",
+    "https://amandacode1.github.io/Pokedex/assets/icons/icon-96x96.png": "7fb8f59c30ce2ff12c700321a0b39e14b3dc8f95",
+    "https://amandacode1.github.io/Pokedex/assets/idiomas/en.json": "581a1cf7163a050105808a9ca442357af4cb7dd0",
+    "https://amandacode1.github.io/Pokedex/assets/idiomas/es.json": "e88595162c8a734244af4aec8180d4e0b2a213da",
+    "https://amandacode1.github.io/Pokedex/assets/json/efectividades.json": "2dba78ee2455ff6066534fe7147e4f49630d0655",
+    "https://amandacode1.github.io/Pokedex/assets/masterball.png": "2a5bba57550e70fc748078efa53129c17c2175a6",
+    "https://amandacode1.github.io/Pokedex/assets/pokeball2.png": "ec238a5e16a6fbebade54b8546c0553ede6d0d38",
+    "https://amandacode1.github.io/Pokedex/assets/pokeballnormal.png": "3ffc30faaa147eeb8b17e5f5c316ab4bd2bcc48e",
+    "https://amandacode1.github.io/Pokedex/assets/pokedex.png": "65dc241e486c561d921cf66354089d169c8d6bf7",
+    "https://amandacode1.github.io/Pokedex/assets/pokemon.png": "9d1b179474ad0e2f40afa8c44aa3d17c3e0d62b6",
+    "https://amandacode1.github.io/Pokedex/assets/superball.png": "742744c41423cc2da4593347da0a57f040105158",
+    "https://amandacode1.github.io/Pokedex/assets/ultraball.png": "f17ea37a9f88265070869776a8fc03a7bfa0bb00",
+    "https://amandacode1.github.io/Pokedex/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "https://amandacode1.github.io/Pokedex/fondo.a400dcad9f0b2272.jpg": "e92827f70c3dbc0a68718f2221676e4180893364",
+    "https://amandacode1.github.io/Pokedex/index.html": "f15eaaf73d9e9916f4d300243fc60bbfceab3047",
+    "https://amandacode1.github.io/Pokedex/main.a3391dff82b976a2.js": "c07667e2103d482b34e54e8b983286e25828d5ac",
+    "https://amandacode1.github.io/Pokedex/manifest.webmanifest": "d3c133305833b4a066f38b3f733e321c38f479cb",
+    "https://amandacode1.github.io/Pokedex/polyfills.cc6002e21b5b151e.js": "6698d957d30a8f65d61860b9ef9674c1f40fa7c9",
+    "https://amandacode1.github.io/Pokedex/runtime.82452df24e47a557.js": "0c859b7c56705fd3dcf910a1c40619291036d266",
+    "https://amandacode1.github.io/Pokedex/styles.ef46db3751d8e999.css": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
