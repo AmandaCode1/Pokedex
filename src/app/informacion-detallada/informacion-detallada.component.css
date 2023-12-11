@@ -39,8 +39,8 @@ body{
   width: 350px;
   display: none;
  z-index: 1;
- margin-top: -400px;
- margin-left: 70px;
+ margin-top: -420px;
+ margin-left: 290px;
 }
 /* Cuando el checkbox está marcado, muestra la imagen brillante */
 #toggleShiny:checked + .toggle-label .normal-image {
